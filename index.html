@@ -4,405 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>মেসার্স সদর আলী এন্ড সন্স - ডিজিটাল ক্যাটালগ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://script.google.com">
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary: #0284c7;
-            --primary-dark: #0369a1;
-            --accent: #38bdf8;
-            --bg-light: #f8fafc;
-            --card-bg: #ffffff;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --border-color: #e2e8f0;
-            --accent-green: #10b981;
-            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.04);
-            --shadow-lg: 0 8px 20px rgba(0, 0, 0, 0.08);
-            --radius-lg: 14px;
-        }
+        :root{--primary:#0284c7;--primary-dark:#0369a1;--accent:#38bdf8;--bg-light:#f8fafc;--card-bg:#ffffff;--text-main:#0f172a;--text-muted:#64748b;--border-color:#e2e8f0;--accent-green:#10b981;--shadow-sm:0 2px 4px rgba(0,0,0,0.04);--shadow-lg:0 8px 20px rgba(0,0,0,0.08);--radius-lg:14px}
+        body.dark-mode{--bg-light:#0f172a;--card-bg:#1e293b;--text-main:#f8fafc;--text-muted:#94a3b8;--border-color:#334155;--shadow-sm:0 2px 4px rgba(0,0,0,0.2);--shadow-lg:0 8px 20px rgba(0,0,0,0.35)}
+        *{box-sizing:border-box;margin:0;padding:0;font-family:'Hind Siliguri',sans-serif;-webkit-tap-highlight-color:transparent;transition:background-color .25s,color .25s,border-color .25s}
+        body{background-color:var(--bg-light);color:var(--text-main);padding-bottom:40px}
+        header{background:linear-gradient(135deg,#0284c7,#0f172a);color:#fff;padding:18px 14px;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.12);position:relative}
+        .header-title{font-size:20px;font-weight:700;line-height:1.2;margin-bottom:2px;padding-right:70px;text-align:left}
+        .header-subtitle{font-size:12px;opacity:.9;font-weight:400;text-align:left;padding-right:70px}
+        .top-controls{position:absolute;top:14px;right:12px;display:flex;gap:8px}
+        .icon-btn{background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.25);color:#fff;width:36px;height:36px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;backdrop-filter:blur(6px)}
+        .icon-btn:active{transform:scale(0.92)}
+        .container{max-width:1100px;margin:0 auto;padding:12px}
+        .search-card{background:var(--card-bg);border-radius:var(--radius-lg);padding:12px;box-shadow:var(--shadow-sm);border:1px solid var(--border-color);margin-bottom:14px;position:sticky;top:8px;z-index:99;backdrop-filter:blur(10px)}
+        .search-box-wrapper{position:relative;width:100%;margin-bottom:10px}
+        .search-input{width:100%;padding:12px 82px 12px 14px;font-size:15px;border:1.5px solid var(--border-color);border-radius:10px;background:var(--card-bg);color:var(--text-main);outline:none}
+        .search-input:focus{border-color:var(--primary)}
+        .clear-btn{position:absolute;right:46px;top:50%;transform:translateY(-50%);background:transparent;color:var(--text-muted);border:none;width:30px;height:30px;border-radius:50%;cursor:pointer;display:none;align-items:center;justify-content:center;font-size:14px;z-index:2}
+        .voice-btn{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:var(--primary);color:#fff;border:none;width:34px;height:34px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;z-index:2}
+        .voice-btn.listening{background:#ef4444;animation:pulse 1.2s infinite}
+        @keyframes pulse{0%{transform:translateY(-50%) scale(1)}50%{transform:translateY(-50%) scale(1.08)}100%{transform:translateY(-50%) scale(1)}}
+        .autocomplete-dropdown{position:absolute;top:calc(100% + 4px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border-color);border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,0.15);z-index:1000;max-height:220px;overflow-y:auto;display:none}
+        .suggestion-item{padding:10px 14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:13.5px;border-bottom:1px solid var(--border-color)}
+        .suggestion-item:last-child{border-bottom:none}
+        .suggestion-badge{font-size:10px;padding:2px 7px;background:var(--border-color);border-radius:10px;color:var(--text-muted)}
+        
+        /* ক্যাটাগরি ফিল্টার কন্টেইনার ও স্ক্রল স্টাইল */
+        .filter-wrapper{position:relative;display:flex;align-items:center;}
+        .filter-tags{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;scroll-behavior: smooth;scrollbar-width:none;-webkit-overflow-scrolling:touch;width: 100%;}
+        .filter-tags::-webkit-scrollbar{display:none}
+        
+        /* স্ক্রল করার জন্য ছোট নেভিগেশন বাটন */
+        .scroll-arrow {background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-main); width: 28px; height: 32px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 12px; z-index: 5; flex-shrink: 0; box-shadow: var(--shadow-sm); }
+        .scroll-arrow.left { margin-right: 4px; }
+        .scroll-arrow.right { margin-left: 4px; }
 
-        body.dark-mode {
-            --bg-light: #0f172a;
-            --card-bg: #1e293b;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-color: #334155;
-            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
-            --shadow-lg: 0 8px 20px rgba(0, 0, 0, 0.35);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Hind Siliguri', sans-serif;
-            -webkit-tap-highlight-color: transparent;
-            transition: background-color 0.25s, color 0.25s, border-color 0.25s;
-        }
-
-        body {
-            background-color: var(--bg-light);
-            color: var(--text-main);
-            padding-bottom: 40px;
-        }
-
-        /* Compact Mobile-First Header */
-        header {
-            background: linear-gradient(135deg, #0284c7, #0f172a);
-            color: white;
-            padding: 18px 14px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
-            position: relative;
-        }
-
-        .header-title {
-            font-size: 20px;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 2px;
-            padding-right: 70px; /* Space for top buttons */
-            text-align: left;
-        }
-
-        .header-subtitle {
-            font-size: 12px;
-            opacity: 0.9;
-            font-weight: 400;
-            text-align: left;
-            padding-right: 70px;
-        }
-
-        .top-controls {
-            position: absolute;
-            top: 14px;
-            right: 12px;
-            display: flex;
-            gap: 8px;
-        }
-
-        .icon-btn {
-            background: rgba(255, 255, 255, 0.18);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            color: white;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            backdrop-filter: blur(6px);
-        }
-
-        .icon-btn:active {
-            transform: scale(0.92);
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 12px;
-        }
-
-        /* Search Section UI */
-        .search-card {
-            background: var(--card-bg);
-            border-radius: var(--radius-lg);
-            padding: 12px;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border-color);
-            margin-bottom: 14px;
-        }
-
-        .search-box-wrapper {
-            position: relative;
-            width: 100%;
-            margin-bottom: 10px;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 12px 82px 12px 14px;
-            font-size: 15px;
-            border: 1.5px solid var(--border-color);
-            border-radius: 10px;
-            background: var(--card-bg);
-            color: var(--text-main);
-            outline: none;
-        }
-
-        .search-input:focus {
-            border-color: var(--primary);
-        }
-
-        /* Action Buttons inside Input */
-        .clear-btn {
-            position: absolute;
-            right: 46px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: transparent;
-            color: var(--text-muted);
-            border: none;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            z-index: 2;
-        }
-
-        .voice-btn {
-            position: absolute;
-            right: 8px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: var(--primary);
-            color: white;
-            border: none;
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 13px;
-            z-index: 2;
-        }
-
-        .voice-btn.listening {
-            background: #ef4444;
-            animation: pulse 1.2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: translateY(-50%) scale(1); }
-            50% { transform: translateY(-50%) scale(1.08); }
-            100% { transform: translateY(-50%) scale(1); }
-        }
-
-        /* Autocomplete Suggestions Overlay Dropdown */
-        .autocomplete-dropdown {
-            position: absolute;
-            top: calc(100% + 4px);
-            left: 0;
-            right: 0;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            z-index: 1000;
-            max-height: 220px;
-            overflow-y: auto;
-            display: none;
-        }
-
-        .suggestion-item {
-            padding: 10px 14px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 13.5px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .suggestion-item:last-child {
-            border-bottom: none;
-        }
-
-        .suggestion-badge {
-            font-size: 10px;
-            padding: 2px 7px;
-            background: var(--border-color);
-            border-radius: 10px;
-            color: var(--text-muted);
-        }
-
-        /* Horizontal Scrollable Filter Tags */
-        .filter-tags {
-            display: flex;
-            gap: 6px;
-            overflow-x: auto;
-            padding-bottom: 2px;
-            scrollbar-width: none;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .filter-tags::-webkit-scrollbar {
-            display: none;
-        }
-
-        .tag {
-            padding: 6px 14px;
-            background: var(--bg-light);
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            font-size: 12.5px;
-            font-weight: 600;
-            cursor: pointer;
-            white-space: nowrap;
-            user-select: none;
-            flex-shrink: 0;
-        }
-
-        .tag.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        /* Stats Bar */
-        .stats-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-            font-size: 12.5px;
-            color: var(--text-muted);
-            padding: 0 2px;
-        }
-
-        .sync-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            background: rgba(16, 185, 129, 0.12);
-            color: var(--accent-green);
-            padding: 3px 9px;
-            border-radius: 12px;
-            font-size: 11.5px;
-            font-weight: 600;
-        }
-
-        .sync-dot {
-            width: 6px;
-            height: 6px;
-            background-color: var(--accent-green);
-            border-radius: 50%;
-            display: inline-block;
-            animation: blink 1.5s infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
-        /* Mobile Grid Layout */
-        .grid-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 14px;
-        }
-
-        @media (min-width: 640px) {
-            .grid-container {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            }
-            .header-title, .header-subtitle {
-                text-align: center;
-                padding-right: 0;
-            }
-        }
-
-        .brand-card {
-            background: var(--card-bg);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .brand-header {
-            background: linear-gradient(135deg, rgba(2, 132, 199, 0.08), rgba(56, 189, 248, 0.02));
-            padding: 10px 14px;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .brand-icon {
-            width: 26px;
-            height: 26px;
-            background: var(--primary);
-            color: white;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-        }
-
-        .brand-title {
-            font-size: 15px;
-            font-weight: 700;
-            color: var(--primary-dark);
-        }
-
-        .dark-mode .brand-title {
-            color: #38bdf8;
-        }
-
-        /* Ultra Clean Mobile Table Layout */
-        .price-table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: center;
-            font-size: 13.5px;
-        }
-
-        .price-table th {
-            background: rgba(0, 0, 0, 0.02);
-            padding: 7px 8px;
-            color: var(--text-muted);
-            font-weight: 600;
-            font-size: 11.5px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .dark-mode .price-table th {
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        .price-table td {
-            padding: 8px 8px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .price-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .badge-piece {
-            font-weight: 700;
-            color: var(--accent-green);
-        }
-
-        .loading-text, .empty-text {
-            text-align: center;
-            padding: 40px 15px;
-            font-size: 15px;
-            color: var(--primary);
-            grid-column: 1 / -1;
-        }
-
-        footer {
-            margin-top: 30px;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 12px;
-            padding: 0 10px;
-        }
+        .tag{padding:6px 14px;background:var(--bg-light);color:var(--text-main);border:1px solid var(--border-color);border-radius:16px;font-size:12.5px;font-weight:600;cursor:pointer;white-space:nowrap;user-select:none;flex-shrink:0}
+        .tag.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+        .stats-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:12.5px;color:var(--text-muted);padding:0 2px;flex-wrap:wrap;gap:6px}
+        .sync-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(16,185,129,0.12);color:var(--accent-green);padding:3px 9px;border-radius:12px;font-size:11.5px;font-weight:600}
+        .sync-dot{width:6px;height:6px;background-color:var(--accent-green);border-radius:50%;display:inline-block;animation:blink 1.5s infinite}
+        @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+        .grid-container{display:grid;grid-template-columns:1fr;gap:14px}
+        @media(min-width:640px){.grid-container{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}.header-title,.header-subtitle{text-align:center;padding-right:0}}
+        .brand-card{background:var(--card-bg);border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border-color);box-shadow:var(--shadow-sm)}
+        .brand-header{background:linear-gradient(135deg,rgba(2,132,199,0.08),rgba(56,189,248,0.02));padding:10px 14px;border-bottom:1px solid var(--border-color);display:flex;align-items:center;gap:8px}
+        .brand-icon{width:26px;height:26px;background:var(--primary);color:#fff;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px}
+        .brand-title{font-size:15px;font-weight:700;color:var(--primary-dark)}
+        .dark-mode .brand-title{color:#38bdf8}
+        .price-table{width:100%;border-collapse:collapse;text-align:center;font-size:13.5px}
+        .price-table th{background:rgba(0,0,0,0.02);padding:7px 8px;color:var(--text-muted);font-weight:600;font-size:11.5px;border-bottom:1px solid var(--border-color)}
+        .dark-mode .price-table th{background:rgba(255,255,255,0.02)}
+        .price-table td{padding:8px;border-bottom:1px solid var(--border-color)}
+        .price-table tr:last-child td{border-bottom:none}
+        .badge-piece{font-weight:700;color:var(--accent-green)}
+        .empty-text{text-align:center;padding:40px 15px;font-size:15px;color:var(--primary);grid-column:1 / -1}
+        .skeleton-card{background:var(--card-bg);border-radius:var(--radius-lg);border:1px solid var(--border-color);padding:14px;overflow:hidden}
+        .skeleton-block{background:linear-gradient(90deg,var(--border-color) 25%,rgba(200,200,200,0.15) 37%,var(--border-color) 63%);background-size:400% 100%;animation:skeleton-shimmer 1.4s ease infinite;border-radius:6px}
+        @keyframes skeleton-shimmer{0%{background-position:100% 50%}100%{background-position:0 50%}}
+        .skeleton-header{height:22px;width:60%;margin-bottom:14px}
+        .skeleton-row{height:16px;width:100%;margin-bottom:10px}
+        footer{margin-top:30px;text-align:center;color:var(--text-muted);font-size:12px;padding:0 10px}
     </style>
 </head>
 <body>
@@ -417,7 +85,6 @@
 </header>
 
 <div class="container">
-    <!-- Search Section -->
     <div class="search-card">
         <div class="search-box-wrapper">
             <input type="text" id="searchInput" class="search-input" placeholder="খুঁজুন (যেমন: london, 28, মারজান)..." autocomplete="off">
@@ -429,48 +96,39 @@
             </button>
             <div class="autocomplete-dropdown" id="autocompleteList"></div>
         </div>
-        
-        <!-- Category Filter Buttons -->
-        <div class="filter-tags" id="categoryTags">
-            <div class="tag active" onclick="filterCategory('all', this)">সব দেখান</div>
-            <div class="tag" onclick="filterCategory('মারজান RN', this)">মারজান RN</div>
-            <div class="tag" onclick="filterCategory('মারজান RNS', this)">মারজান RNS</div>
-            <div class="tag" onclick="filterCategory('লন্ডন বয় RN', this)">লন্ডন বয় RN</div>
-            <div class="tag" onclick="filterCategory('লন্ডন বয় RNS', this)">লন্ডন বয় RNS</div>
-            <div class="tag" onclick="filterCategory('কার্নেল গোল্ড RN', this)">কার্নেল গোল্ড RN</div>
-            <div class="tag" onclick="filterCategory('কার্নেল গোল্ড RNS', this)">কার্নেল গোল্ড RNS</div>
-            <div class="tag" onclick="filterCategory('বিগবস', this)">বিগবস</div>
-            <div class="tag" onclick="filterCategory('আনাস জুনিয়র', this)">আনাস জুনিয়র</div>
+        <!-- ডাইনামিক ফিল্টার ট্যাগস কন্টেইনার with Scroll Buttons -->
+        <div class="filter-wrapper">
+            <button class="scroll-arrow left" onclick="scrollTags('left')"><i class="fa-solid fa-chevron-left"></i></button>
+            <div class="filter-tags" id="categoryTags">
+                <div class="tag active" onclick="filterCategory('all', this)">সব দেখান</div>
+            </div>
+            <button class="scroll-arrow right" onclick="scrollTags('right')"><i class="fa-solid fa-chevron-right"></i></button>
         </div>
     </div>
 
-    <!-- Stats Bar -->
     <div class="stats-bar">
-        <div>
-            <span id="resultCount">ডাটা লোড হচ্ছে...</span>
-        </div>
-        <div>
+        <div><span id="resultCount">ডাটা লোড হচ্ছে...</span></div>
+        <div style="display: flex; align-items: center; gap: 8px;">
             <span class="sync-badge" id="syncStatus"><span class="sync-dot"></span> লাইভ</span>
-            <span id="listeningStatus" style="color: #ef4444; font-weight: bold; display: none; margin-left:5px;"><i class="fa-solid fa-spinner fa-spin"></i> শুনছি...</span>
+            <span id="listeningStatus" style="color: #ef4444; font-weight: bold; display: none;"><i class="fa-solid fa-spinner fa-spin"></i> শুনছি...</span>
         </div>
     </div>
 
-    <!-- Product Cards Grid -->
-    <div class="grid-container" id="productGrid">
-        <div class="loading-text"><i class="fa-solid fa-spinner fa-spin"></i> গুগল শীট থেকে লোড হচ্ছে...</div>
-    </div>
+    <div class="grid-container" id="productGrid"></div>
 
     <footer>
-        <p>© ২০২৬ মেসার্স সদর আলী এন্ড সন্স (সুজন গার্মেন্টস)</p>
+        <p>© ২০২৬ মেসার্স সদর আলী এন্ড সন্স (সুজন গার্মেন্টস) <span id="lastUpdated"></span></p>
     </footer>
 </div>
 
 <script>
     const API_URL = "https://script.google.com/macros/s/AKfycbwaTrytcr8gk8T6xCPhjgI38oJDAAfYDgy2fPWfEGpacvKIP7GWfCjx2RQ_7wjr5fzKrA/exec";
+    const CACHE_KEY = "sodor_ali_catalog_cache_v2";
 
     let productsData = [];
     let currentSelectedCategory = 'all';
     let isInitialLoad = true;
+    let lastFetchedRawJsonStr = "";
 
     const PHONETIC_MAP = {
         'london': 'লন্ডন', 'londone': 'লন্ডন', 'londan': 'লন্ডন',
@@ -575,17 +233,112 @@
         }));
     }
 
+    function renderSkeletonLoader() {
+        const grid = document.getElementById('productGrid');
+        let skeletonHtml = '';
+        for (let i = 0; i < 4; i++) {
+            skeletonHtml += `
+                <div class="skeleton-card">
+                    <div class="skeleton-block skeleton-header"></div>
+                    <div class="skeleton-block skeleton-row"></div>
+                    <div class="skeleton-block skeleton-row"></div>
+                    <div class="skeleton-block skeleton-row"></div>
+                </div>
+            `;
+        }
+        grid.innerHTML = skeletonHtml;
+    }
+
+    function updateTimestamp(sheetDateStr) {
+        const lastUpdatedEl = document.getElementById('lastUpdated');
+        if (!lastUpdatedEl) return;
+
+        if (sheetDateStr) {
+            lastUpdatedEl.innerText = `| সর্বশেষ আপডেট: ${toBnDigits(sheetDateStr)}`;
+        }
+    }
+
+    function renderCategoryTags() {
+        const categoryTagsContainer = document.getElementById('categoryTags');
+        
+        let tagsHTML = `<div class="tag ${currentSelectedCategory === 'all' ? 'active' : ''}" onclick="filterCategory('all', this)">সব দেখান</div>`;
+        
+        productsData.forEach(cat => {
+            const isActive = currentSelectedCategory === cat.brand ? 'active' : '';
+            tagsHTML += `<div class="tag ${isActive}" onclick="filterCategory('${cat.brand}', this)">${cat.brand}</div>`;
+        });
+
+        categoryTagsContainer.innerHTML = tagsHTML;
+    }
+
+    // মাউস ক্লিক বা বাটনে ক্লিক করে ডানে বা বামে স্ক্রল করার ফাংশন
+    function scrollTags(direction) {
+        const container = document.getElementById('categoryTags');
+        const scrollAmount = 200; // প্রতি ক্লিকে কত পিক্সেল স্ক্রল করবে
+        if (direction === 'left') {
+            container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        } else {
+            container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+    }
+
+    function loadFromCache() {
+        try {
+            const cached = localStorage.getItem(CACHE_KEY);
+            if (cached) {
+                const parsed = JSON.parse(cached);
+                if (parsed && parsed.products && parsed.products.length > 0) {
+                    productsData = parsed.products;
+                    if (parsed.lastUpdated) {
+                        updateTimestamp(parsed.lastUpdated);
+                    }
+                    isInitialLoad = false;
+                    renderCategoryTags();
+                    renderProducts(document.getElementById('searchInput').value);
+                }
+            }
+        } catch (e) {
+            console.warn("Cache reading error:", e);
+        }
+    }
+
     async function fetchFromGoogleSheet() {
         try {
             const response = await fetch(API_URL);
             const rawData = await response.json();
+            const jsonStr = JSON.stringify(rawData);
+
+            let sheetLastUpdated = rawData.lastUpdated || rawData.last_updated || rawData.updatedAt || rawData.date || rawData.last_modified;
+            if (!sheetLastUpdated && Array.isArray(rawData) && rawData.length > 0) {
+                sheetLastUpdated = rawData[0].last_updated || rawData[0].lastUpdated || rawData[0].date || rawData[0]['সর্বশেষ আপডেট'];
+            }
+
+            if (jsonStr === lastFetchedRawJsonStr && !isInitialLoad) {
+                if (sheetLastUpdated) updateTimestamp(sheetLastUpdated);
+                return;
+            }
+
+            lastFetchedRawJsonStr = jsonStr;
             productsData = processSheetData(rawData);
+            
+            if (sheetLastUpdated) {
+                updateTimestamp(sheetLastUpdated);
+            }
+
+            try {
+                localStorage.setItem(CACHE_KEY, JSON.stringify({
+                    products: productsData,
+                    lastUpdated: sheetLastUpdated || ""
+                }));
+            } catch(e) {}
+
             isInitialLoad = false;
+            renderCategoryTags();
             renderProducts(document.getElementById('searchInput').value);
         } catch (error) {
             console.error("কানেকশন সমস্যা:", error);
-            if (isInitialLoad) {
-                document.getElementById('productGrid').innerHTML = `<div class="empty-text" style="color:#ef4444;"><i class="fa-solid fa-triangle-exclamation"></i> ডাটা লোড করা যায়নি। কানেকশন চেক করুন।</div>`;
+            if (isInitialLoad && productsData.length === 0) {
+                document.getElementById('productGrid').innerHTML = `<div class="empty-text" style="color:#ef4444;"><i class="fa-solid fa-triangle-exclamation"></i> ডাটা লোড করা যায়নি। কানেকশন চেক করুন।</div>`;
                 document.getElementById('resultCount').innerText = 'ত্রুটি';
             }
         }
@@ -600,7 +353,7 @@
             return;
         }
 
-        grid.innerHTML = '';
+        const fragment = document.createDocumentFragment();
         let totalCategoriesCount = 0;
         const query = filterQuery.trim();
 
@@ -653,12 +406,15 @@
                         </tbody>
                     </table>
                 `;
-                grid.appendChild(card);
+                fragment.appendChild(card);
             }
         });
 
-        if (totalCategoriesCount === 0 && !isInitialLoad) {
-            grid.innerHTML = `<div class="empty-text"><i class="fa-solid fa-magnifying-glass"></i> "${query}" দিয়ে কোনো রেজাল্ট পাওয়া যায়নি।</div>`;
+        grid.innerHTML = '';
+        if (totalCategoriesCount > 0) {
+            grid.appendChild(fragment);
+        } else if (!isInitialLoad) {
+            grid.innerHTML = `<div class="empty-text"><i class="fa-solid fa-magnifying-glass"></i> "${query}" দিয়ে কোনো রেজাল্ট পাওয়া যায়নি।</div>`;
         }
 
         document.getElementById('resultCount').innerText = `মোট ক্যাটাগরি: ${totalCategoriesCount}টি`;
@@ -668,11 +424,23 @@
     const autocompleteList = document.getElementById('autocompleteList');
     const clearBtn = document.getElementById('clearBtn');
 
+    function debounce(func, delay = 100) {
+        let timeout;
+        return function(...args) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), delay);
+        };
+    }
+
+    const handleInput = debounce((val) => {
+        renderProducts(val);
+        showSuggestions(val);
+    }, 80);
+
     searchInput.addEventListener('input', (e) => {
         const val = e.target.value;
         toggleClearButton(val);
-        renderProducts(val);
-        showSuggestions(val);
+        handleInput(val);
     });
 
     searchInput.addEventListener('focus', (e) => {
@@ -750,7 +518,6 @@
         }
     });
 
-    // Voice Search
     const voiceBtn = document.getElementById('voiceBtn');
     const listeningStatus = document.getElementById('listeningStatus');
 
@@ -790,11 +557,10 @@
     function filterCategory(catName, element) {
         currentSelectedCategory = catName;
         document.querySelectorAll('.tag').forEach(t => t.classList.remove('active'));
-        element.classList.add('active');
+        if(element) element.classList.add('active');
         renderProducts(searchInput.value);
     }
 
-    // Dark/Light Theme Switcher
     const themeToggle = document.getElementById('themeToggle');
     themeToggle.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
@@ -802,8 +568,10 @@
         themeToggle.innerHTML = isDark ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
     });
 
+    renderSkeletonLoader();
+    loadFromCache();
     fetchFromGoogleSheet();
-    setInterval(fetchFromGoogleSheet, 10000);
+    setInterval(fetchFromGoogleSheet, 4000);
 </script>
 </body>
 </html>
