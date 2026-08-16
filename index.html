@@ -11,19 +11,40 @@
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root{--primary:#0284c7;--primary-dark:#0369a1;--accent:#38bdf8;--bg-light:#f8fafc;--card-bg:#ffffff;--text-main:#0f172a;--text-muted:#64748b;--border-color:#e2e8f0;--accent-green:#10b981;--shadow-sm:0 2px 4px rgba(0,0,0,0.04);--shadow-lg:0 8px 20px rgba(0,0,0,0.08);--radius-lg:14px}
-        body.dark-mode{--bg-light:#0f172a;--card-bg:#1e293b;--text-main:#f8fafc;--text-muted:#94a3b8;--border-color:#334155;--shadow-sm:0 2px 4px rgba(0,0,0,0.2);--shadow-lg:0 8px 20px rgba(0,0,0,0.35)}
+        :root{--primary:#0284c7;--primary-dark:#0369a1;--accent:#38bdf8;--bg-light:#f8fafc;--card-bg:#ffffff;--text-main:#0f172a;--text-muted:#64748b;--border-color:#e2e8f0;--accent-green:#10b981;--shadow-sm:0 2px 4px rgba(0,0,0,0.04);--shadow-lg:0 12px 30px rgba(0,0,0,0.15);--radius-lg:14px}
+        body.dark-mode{--bg-light:#0f172a;--card-bg:#1e293b;--text-main:#f8fafc;--text-muted:#94a3b8;--border-color:#334155;--shadow-sm:0 2px 4px rgba(0,0,0,0.2);--shadow-lg:0 12px 30px rgba(0,0,0,0.4)}
         *{box-sizing:border-box;margin:0;padding:0;font-family:'Hind Siliguri',sans-serif;-webkit-tap-highlight-color:transparent;transition:background-color .25s,color .25s,border-color .25s}
         body{background-color:var(--bg-light);color:var(--text-main);padding-bottom:40px}
         header{background:linear-gradient(135deg,#0284c7,#0f172a);color:#fff;padding:18px 14px;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.12);position:relative}
-        .header-content{cursor:pointer;display:inline-block;text-align:left;width:100%}
-        .header-title{font-size:20px;font-weight:700;line-height:1.2;margin-bottom:2px;padding-right:70px;text-align:left}
-        .header-subtitle{font-size:12px;opacity:.9;font-weight:400;text-align:left;padding-right:70px}
-        .top-controls{position:absolute;top:14px;right:12px;display:flex;gap:8px;z-index:2}
-        .icon-btn{background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.25);color:#fff;width:36px;height:36px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;backdrop-filter:blur(6px)}
-        .icon-btn:active{transform:scale(0.92)}
+        .header-content{cursor:pointer;display:inline-block;text-align:center;width:100%}
+        .header-title{font-size:20px;font-weight:700;line-height:1.2;margin-bottom:2px;text-align:center}
+        .header-subtitle{font-size:12px;opacity:.9;font-weight:400;text-align:center}
+        
+        /* প্রিমিয়াম এনিমেটেড মেনু বার ও ড্রপডাউন স্টাইল */
+        .top-controls{position:absolute;top:14px;right:12px;display:flex;align-items:center;z-index:10}
+        .menu-toggle-btn{background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.3);color:#fff;width:38px;height:38px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;backdrop-filter:blur(8px);transition:transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s ease;box-shadow:0 4px 10px rgba(0,0,0,0.15);}
+        .menu-toggle-btn:active{transform:scale(0.88)}
+        .menu-dropdown{position:absolute;top:50px;right:0;background:var(--card-bg);border:1px solid var(--border-color);border-radius:16px;box-shadow:var(--shadow-lg);padding:10px;display:flex;flex-direction:column;gap:8px;opacity:0;visibility:hidden;transform:translateY(-12px) scale(0.95);transition:all 0.3s cubic-bezier(0.16, 1, 0.3, 1);z-index:11;min-width:190px;backdrop-filter:blur(12px);}
+        .menu-dropdown.active{opacity:1;visibility:visible;transform:translateY(0) scale(1)}
+        .menu-item{background:transparent;border:none;color:var(--text-main);padding:10px 12px;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-size:14px;font-weight:500;text-align:left;width:100%;transition:background 0.2s;}
+        .menu-item:hover{background:var(--bg-light)}
+        .dark-mode .menu-item:hover{background:rgba(255,255,255,0.06)}
+        .menu-item-content {display:flex;align-items:center;gap:10px;}
+        .menu-item i{width:18px;text-align:center;color:var(--primary)}
+
+        /* ছবির মতো সুইচ ডিজাইন (Toggle Switch) */
+        .toggle-switch{position:relative;width:48px;height:26px;background:#dc2626;border-radius:20px;cursor:pointer;transition:background 0.3s ease;box-shadow:inset 0 2px 4px rgba(0,0,0,0.2);display:inline-flex;align-items:center;padding:2px;}
+        .toggle-switch.active{background:#16a34a;}
+        .toggle-thumb{width:22px;height:22px;background:#ffffff;border-radius:50%;box-shadow:0 2px 5px rgba(0,0,0,0.3);transform:translateX(0);transition:transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);position:absolute;}
+        .toggle-switch.active .toggle-thumb{transform:translateX(22px);}
+        .toggle-label{font-size:10px;font-weight:700;color:#fff;position:absolute;width:100%;text-align:center;pointer-events:none;letter-spacing:0.5px;}
+        .toggle-switch.active .off-text{opacity:0;}
+        .toggle-switch:not(.active) .on-text{opacity:0;}
+        .on-text{left:4px;}
+        .off-text{right:6px;}
+
         .container{max-width:1100px;margin:0 auto;padding:12px}
-        .search-card{background:var(--card-bg);border-radius:var(--radius-lg);padding:12px;box-shadow:var(--shadow-sm);border:1px solid var(--border-color);margin-bottom:14px;position:sticky;top:8px;z-index:99;backdrop-filter:blur(10px)}
+        .search-card{background:var(--card-bg);border-radius:var(--radius-lg);padding:12px;box-shadow:var(--shadow-sm);border:1px solid var(--border-color);margin-bottom:14px;position:sticky;top:8px;z-index:9;backdrop-filter:blur(10px)}
         .search-box-wrapper{position:relative;width:100%;margin-bottom:10px}
         .search-input{width:100%;padding:12px 82px 12px 14px;font-size:15px;border:1.5px solid var(--border-color);border-radius:10px;background:var(--card-bg);color:var(--text-main);outline:none}
         .search-input:focus{border-color:var(--primary)}
@@ -48,7 +69,7 @@
         .sync-dot{width:6px;height:6px;background-color:var(--accent-green);border-radius:50%;display:inline-block;animation:blink 1.5s infinite}
         @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
         .grid-container{display:grid;grid-template-columns:1fr;gap:14px}
-        @media(min-width:640px){.grid-container{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}.header-title,.header-subtitle{text-align:center;padding-right:0}}
+        @media(min-width:640px){.grid-container{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}}
         .brand-card{background:var(--card-bg);border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border-color);box-shadow:var(--shadow-sm)}
         .brand-header{background:linear-gradient(135deg,rgba(2,132,199,0.08),rgba(56,189,248,0.02));padding:10px 14px;border-bottom:1px solid var(--border-color);display:flex;align-items:center;gap:8px}
         .brand-icon{width:26px;height:26px;background:var(--primary);color:#fff;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px}
@@ -71,15 +92,32 @@
 </head>
 <body>
 <header>
+    <!-- অ্যানিমেটেড মেনু বার (ডান পাশে) -->
     <div class="top-controls">
-        <button class="icon-btn" id="themeToggle" title="ডার্ক/लाइट মোড"><i class="fa-solid fa-moon"></i></button>
-        <button class="icon-btn" onclick="window.print()" title="প্রিন্ট করুন"><i class="fa-solid fa-print"></i></button>
+        <button class="menu-toggle-btn" id="menuToggleBtn" title="মেনু"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+        <div class="menu-dropdown" id="menuDropdown">
+            <button class="menu-item" id="themeToggle">
+                <div class="menu-item-content"><i class="fa-solid fa-moon" id="themeIcon"></i> <span id="themeText">ডার্ক মোড</span></div>
+                <div class="toggle-switch" id="themeSwitch">
+                    <span class="toggle-label on-text">ON</span>
+                    <span class="toggle-label off-text">OFF</span>
+                    <div class="toggle-thumb"></div>
+                </div>
+            </button>
+            <button class="menu-item" onclick="window.print()">
+                <div class="menu-item-content"><i class="fa-solid fa-print"></i> প্রিন্ট করুন</div>
+            </button>
+            <!-- ভবিষ্যতে নতুন অপশন এখানে যুক্ত করতে পারবেন -->
+        </div>
     </div>
+    
+    <!-- হেডার টেক্সট (মাঝখানে বিন্যস্ত) -->
     <div class="header-content" onclick="goHome()" title="হোমে যান">
         <div class="header-title">মেসার্স সদর আলী এন্ড সন্স</div>
         <div class="header-subtitle">সুজন গার্মেন্টস - পাইকারি রেট লিস্ট</div>
     </div>
 </header>
+
 <div class="container">
     <div class="search-card">
         <div class="search-box-wrapper">
@@ -106,19 +144,23 @@
     <div class="grid-container" id="productGrid"></div>
     <footer><p>© ২০২৬ মেসার্স সদর আলী এন্ড সন্স (সুজন গার্মেন্টস) <span id="lastUpdated"></span></p></footer>
 </div>
+
 <script>
     const API_URL = "https://script.google.com/macros/s/AKfycbwaTrytcr8gk8T6xCPhjgI38oJDAAfYDgy2fPWfEGpacvKIP7GWfCjx2RQ_7wjr5fzKrA/exec";
     const CACHE_KEY = "sodor_ali_catalog_cache_v3";
     let rawSheetData = [], currentSelectedCompany = 'all', isInitialLoad = true, lastFetchedRawJsonStr = "";
+    
     const PHONETIC_MAP = {
-        'london':'লন্ডন','londone':'লন্ডন','londan':'লন্ডন','boy':'বয়','boi':'বয়','marjan':'মারজান','marzan':'মারজান',
+        'london':'লন্ডন','londone':'londone','londan':'লন্ডন','boy':'বয়','boi':'বয়','marjan':'মারজান','marzan':'মারজান',
         'kernel':'কার্নেল','karnel':'কার্নেল','kornel':'কার্নেল','karnelgold':'কার্নেল গোল্ড','kornelgold':'কার্নেল গোল্ড','kernelgold':'কার্নেল গোল্ড',
-        'gold':'গোল্ড','bigboss':'বিগবস','big':'বিগ','boss':'বস','anas':'আনাস','junior':'জুনিয়র','sada':'সাদা','rong':'রং',
+        'gold':'গোল্ড','bigboss':'বিগবস','big':'big','boss':'বস','anas':'আনাস','junior':'জুনিয়র','sada':'সাদা','rong':'রং',
         'rn':'আরএন','rns':'আরএনএস','লন্ডন':'london','বয়':'boy','মারজান':'marjan','কার্নেল':'kernel karnel kornel',
         'গোল্ড':'gold','বিগবস':'bigboss','আনাস':'anas','জুনিয়র':'junior'
     };
+
     function toBnDigits(s){return String(s||'').replace(/[0-9]/g,w=>'০১২৩৪৫৬৭৮৯'[w]);}
     function toEnDigits(s){return String(s||'').replace(/[০-৯]/g,w=>{let d={'০':'0','১':'1','২':'2','৩':'3','৪':'4','৫':'5','৬':'6','৭':'7','৮':'8','৯':'9'};return d[w];});}
+    
     function getSearchVariants(text){
         if(!text)return[];
         let raw=String(text).toLowerCase().trim(),variants=new Set([raw,toBnDigits(raw),toEnDigits(raw),raw.replace(/\s+/g,'')]);
@@ -127,11 +169,13 @@
         words.forEach(w=>{if(PHONETIC_MAP[w])variants.add(PHONETIC_MAP[w]);});
         return Array.from(variants);
     }
+
     function isMatch(target,query){
         if(!query)return true;
         let qVars=getSearchVariants(query),tVars=getSearchVariants(target);
         return qVars.some(q=>q.split(/\s+/).filter(Boolean).every(tok=>tVars.some(t=>t.includes(tok))));
     }
+
     function processSheetData(rawData){
         if(!rawData)return[];
         let rows=Array.isArray(rawData)?rawData:(rawData.data||rawData.items||[]);
@@ -152,23 +196,28 @@
         });
         return Object.keys(grouped).map(t=>({cardTitle:t,company:grouped[t].company,category:grouped[t].category,items:grouped[t].items}));
     }
+
     function renderSkeletonLoader(){
         let html='';for(let i=0;i<4;i++)html+=`<div class="skeleton-card"><div class="skeleton-block skeleton-header"></div><div class="skeleton-block skeleton-row"></div><div class="skeleton-block skeleton-row"></div></div>`;
         document.getElementById('productGrid').innerHTML=html;
     }
+
     function updateTimestamp(dateStr){
         if(dateStr)document.getElementById('lastUpdated').innerText=`| সর্বশেষ আপডেট: ${toBnDigits(dateStr)}`;
     }
+
     function renderCompanyTags(){
         const container=document.getElementById('categoryTags');
         const comps=[...new Set(rawSheetData.map(i=>i.company))];
-        let html=`<div class="tag ${currentSelectedCompany==='all'?'active':''}" onclick="filterCompany('all',this)">সব দেখান</div>`;
+        let html=`<div class="tag ${currentSelectedCompany==='all'?'active':''}" onclick="filterCompany('all', this)">সব দেখান</div>`;
         comps.forEach(comp=>html+=`<div class="tag ${currentSelectedCompany===comp?'active':''}" onclick="filterCompany('${comp}',this)">${comp}</div>`);
         container.innerHTML=html;
     }
+
     function scrollTags(dir){
         document.getElementById('categoryTags').scrollBy({left:dir==='left'?-200:200,behavior:'smooth'});
     }
+
     function loadFromCache(){
         try{
             let cached=localStorage.getItem(CACHE_KEY);
@@ -182,6 +231,7 @@
             }
         }catch(e){}
     }
+
     async function fetchFromGoogleSheet(){
         if(isInitialLoad && !rawSheetData.length) {
             renderSkeletonLoader();
@@ -199,6 +249,7 @@
             if(isInitialLoad&&!rawSheetData.length)document.getElementById('productGrid').innerHTML=`<div class="empty-text" style="color:#ef4444;"><i class="fa-solid fa-triangle-exclamation"></i> ডাটা লোড করা যায়নি।</div>`;
         }
     }
+
     function renderProducts(query=''){
         const grid=document.getElementById('productGrid');
         if(!rawSheetData.length&&!isInitialLoad){grid.innerHTML=`<div class="empty-text">কোনো প্রোডাক্ট ডাটা পাওয়া যায়নি।</div>`;document.getElementById('resultCount').innerText=`কার্ড: ০টি`;return;}
@@ -219,6 +270,7 @@
         grid.innerHTML='';if(total)grid.appendChild(frag);else if(!isInitialLoad)grid.innerHTML=`<div class="empty-text"><i class="fa-solid fa-magnifying-glass"></i> "${q}" দিয়ে কোনো রেজাল্ট পাওয়া যায়নি।</div>`;
         document.getElementById('resultCount').innerText=`মোট কার্ড: ${total}টি`;
     }
+
     const searchInput=document.getElementById('searchInput'),autocompleteList=document.getElementById('autocompleteList'),clearBtn=document.getElementById('clearBtn');
     function debounce(fn,delay=100){let t;return(...args)=>{clearTimeout(t);t=setTimeout(()=>fn.apply(this,args),delay);};}
     const handleInput=debounce(val=>{renderProducts(val);showSuggestions(val);},80);
@@ -226,6 +278,7 @@
     searchInput.addEventListener('focus',e=>{if(e.target.value.trim())showSuggestions(e.target.value);});
     clearBtn.addEventListener('click',()=>{searchInput.value='';toggleClearButton('');autocompleteList.style.display='none';renderProducts('');searchInput.focus();});
     function toggleClearButton(val){clearBtn.style.display=val.trim()?'flex':'none';}
+
     function showSuggestions(val){
         let q=val.trim();if(!q){autocompleteList.style.display='none';return;}
         let map=new Map();
@@ -245,7 +298,12 @@
         });
         autocompleteList.style.display='block';
     }
-    document.addEventListener('click',e=>{if(!e.target.closest('.search-box-wrapper'))autocompleteList.style.display='none';});
+
+    document.addEventListener('click',e=>{
+        if(!e.target.closest('.search-box-wrapper'))autocompleteList.style.display='none';
+        if(!e.target.closest('.top-controls'))document.getElementById('menuDropdown').classList.remove('active');
+    });
+
     const voiceBtn=document.getElementById('voiceBtn'),listeningStatus=document.getElementById('listeningStatus');
     if('webkitSpeechRecognition' in window||'SpeechRecognition' in window){
         const Rec=window.SpeechRecognition||window.webkitSpeechRecognition,rec=new Rec();
@@ -262,31 +320,53 @@
         };
         function procVoice(t){let cl=t.trim();searchInput.value=cl;toggleClearButton(cl);autocompleteList.style.display='none';currentSelectedCompany='all';renderCompanyTags();renderProducts(cl);}
     }else{voiceBtn.onclick=()=>alert('ব্রাউজার ভয়েস সার্চ সাপোর্ট করে না।');}
+
     function filterCompany(name,el){
         currentSelectedCompany=name;document.querySelectorAll('.tag').forEach(t=>t.classList.remove('active'));
         if(el)el.classList.add('active');renderProducts(searchInput.value);
     }
-    const themeToggle=document.getElementById('themeToggle');
-    themeToggle.addEventListener('click',()=>{
-        document.body.classList.toggle('dark-mode');
-        let isDark=document.body.classList.contains('dark-mode');
-        themeToggle.innerHTML=isDark?'<i class="fa-solid fa-sun"></i>':'<i class="fa-solid fa-moon"></i>';
+
+    // মেনু ড্রপডাউন টগল করার জন্য
+    const menuToggleBtn = document.getElementById('menuToggleBtn');
+    const menuDropdown = document.getElementById('menuDropdown');
+    menuToggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menuDropdown.classList.toggle('active');
     });
 
-    // হোম বাটন ফাংশন (হেডারে ক্লিক করলে কাজ করবে)
+    // ডার্ক মোড টগল ফাংশন ও সুইচ আপডেট
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeText = document.getElementById('themeText');
+    const themeSwitch = document.getElementById('themeSwitch');
+    
+    themeToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        document.body.classList.toggle('dark-mode');
+        let isDark = document.body.classList.contains('dark-mode');
+        themeIcon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+        themeText.innerText = isDark ? 'লাইট মোড' : 'ডার্ক মোড';
+        if(isDark) {
+            themeSwitch.classList.add('active');
+        } else {
+            themeSwitch.classList.remove('active');
+        }
+    });
+
+    // হোম বাটন ফাংশন
     function goHome(){
         searchInput.value = '';
         toggleClearButton('');
         autocompleteList.style.display = 'none';
         currentSelectedCompany = 'all';
         renderCompanyTags();
-        fetchFromGoogleSheet(); // গুগল শিট থেকে ডাটা রিফ্রেশ করবে
+        fetchFromGoogleSheet();
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     
     loadFromCache();
     fetchFromGoogleSheet();
-    setInterval(fetchFromGoogleSheet,4000);
+    setInterval(fetchFromGoogleSheet, 4000);
 </script>
 </body>
 </html>
