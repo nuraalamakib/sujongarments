@@ -16,9 +16,10 @@
         *{box-sizing:border-box;margin:0;padding:0;font-family:'Hind Siliguri',sans-serif;-webkit-tap-highlight-color:transparent;transition:background-color .25s,color .25s,border-color .25s}
         body{background-color:var(--bg-light);color:var(--text-main);padding-bottom:40px}
         header{background:linear-gradient(135deg,#0284c7,#0f172a);color:#fff;padding:18px 14px;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.12);position:relative}
+        .header-content{cursor:pointer;display:inline-block;text-align:left;width:100%}
         .header-title{font-size:20px;font-weight:700;line-height:1.2;margin-bottom:2px;padding-right:70px;text-align:left}
         .header-subtitle{font-size:12px;opacity:.9;font-weight:400;text-align:left;padding-right:70px}
-        .top-controls{position:absolute;top:14px;right:12px;display:flex;gap:8px}
+        .top-controls{position:absolute;top:14px;right:12px;display:flex;gap:8px;z-index:2}
         .icon-btn{background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.25);color:#fff;width:36px;height:36px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;backdrop-filter:blur(6px)}
         .icon-btn:active{transform:scale(0.92)}
         .container{max-width:1100px;margin:0 auto;padding:12px}
@@ -34,15 +35,12 @@
         .suggestion-item{padding:10px 14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:13.5px;border-bottom:1px solid var(--border-color)}
         .suggestion-item:last-child{border-bottom:none}
         .suggestion-badge{font-size:10px;padding:2px 7px;background:var(--border-color);border-radius:10px;color:var(--text-muted)}
-        
         .filter-wrapper{position:relative;display:flex;align-items:center;}
-        .filter-tags{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;scroll-behavior: smooth;scrollbar-width:none;-webkit-overflow-scrolling:touch;width: 100%;}
+        .filter-tags{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;scroll-behavior:smooth;scrollbar-width:none;-webkit-overflow-scrolling:touch;width:100%;}
         .filter-tags::-webkit-scrollbar{display:none}
-        
-        .scroll-arrow {background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-main); width: 28px; height: 32px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 12px; z-index: 5; flex-shrink: 0; box-shadow: var(--shadow-sm); }
-        .scroll-arrow.left { margin-right: 4px; }
-        .scroll-arrow.right { margin-left: 4px; }
-
+        .scroll-arrow{background:var(--card-bg);border:1px solid var(--border-color);color:var(--text-main);width:28px;height:32px;border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:12px;z-index:5;flex-shrink:0;box-shadow:var(--shadow-sm);}
+        .scroll-arrow.left{margin-right:4px;}
+        .scroll-arrow.right{margin-left:4px;}
         .tag{padding:6px 14px;background:var(--bg-light);color:var(--text-main);border:1px solid var(--border-color);border-radius:16px;font-size:12.5px;font-weight:600;cursor:pointer;white-space:nowrap;user-select:none;flex-shrink:0}
         .tag.active{background:var(--primary);color:#fff;border-color:var(--primary)}
         .stats-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:12.5px;color:var(--text-muted);padding:0 2px;flex-wrap:wrap;gap:6px}
@@ -72,29 +70,24 @@
     </style>
 </head>
 <body>
-
 <header>
     <div class="top-controls">
-        <button class="icon-btn" id="themeToggle" title="ডার্ক/লাইট মোড"><i class="fa-solid fa-moon"></i></button>
+        <button class="icon-btn" id="themeToggle" title="ডার্ক/लाइट মোড"><i class="fa-solid fa-moon"></i></button>
         <button class="icon-btn" onclick="window.print()" title="প্রিন্ট করুন"><i class="fa-solid fa-print"></i></button>
     </div>
-    <div class="header-title">মেসার্স সদর আলী এন্ড সন্স</div>
-    <div class="header-subtitle">সুজন গার্মেন্টস - পাইকারি রেট লিস্ট</div>
+    <div class="header-content" onclick="goHome()" title="হোমে যান">
+        <div class="header-title">মেসার্স সদর আলী এন্ড সন্স</div>
+        <div class="header-subtitle">সুজন গার্মেন্টস - পাইকারি রেট লিস্ট</div>
+    </div>
 </header>
-
 <div class="container">
     <div class="search-card">
         <div class="search-box-wrapper">
             <input type="text" id="searchInput" class="search-input" placeholder="খুঁজুন (যেমন: london, 28, মারজান)..." autocomplete="off">
-            <button class="clear-btn" id="clearBtn" title="ক্লিয়ার">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <button class="voice-btn" id="voiceBtn" title="কথা বলে খুঁজুন">
-                <i class="fa-solid fa-microphone"></i>
-            </button>
+            <button class="clear-btn" id="clearBtn" title="ক্লিয়ার"><i class="fa-solid fa-xmark"></i></button>
+            <button class="voice-btn" id="voiceBtn" title="কথা বলে খুঁজুন"><i class="fa-solid fa-microphone"></i></button>
             <div class="autocomplete-dropdown" id="autocompleteList"></div>
         </div>
-        <!-- কোম্পানি ফিল্টার ট্যাগস কন্টেইনার -->
         <div class="filter-wrapper">
             <button class="scroll-arrow left" onclick="scrollTags('left')"><i class="fa-solid fa-chevron-left"></i></button>
             <div class="filter-tags" id="categoryTags">
@@ -103,541 +96,197 @@
             <button class="scroll-arrow right" onclick="scrollTags('right')"><i class="fa-solid fa-chevron-right"></i></button>
         </div>
     </div>
-
     <div class="stats-bar">
         <div><span id="resultCount">ডাটা লোড হচ্ছে...</span></div>
-        <div style="display: flex; align-items: center; gap: 8px;">
+        <div style="display:flex;align-items:center;gap:8px;">
             <span class="sync-badge" id="syncStatus"><span class="sync-dot"></span> লাইভ</span>
-            <span id="listeningStatus" style="color: #ef4444; font-weight: bold; display: none;"><i class="fa-solid fa-spinner fa-spin"></i> শুনছি...</span>
+            <span id="listeningStatus" style="color:#ef4444;font-weight:bold;display:none;"><i class="fa-solid fa-spinner fa-spin"></i> শুনছি...</span>
         </div>
     </div>
-
     <div class="grid-container" id="productGrid"></div>
-
-    <footer>
-        <p>© ২০২৬ মেসার্স সদর আলী এন্ড সন্স (সুজন গার্মেন্টস) <span id="lastUpdated"></span></p>
-    </footer>
+    <footer><p>© ২০২৬ মেসার্স সদর আলী এন্ড সন্স (সুজন গার্মেন্টস) <span id="lastUpdated"></span></p></footer>
 </div>
-
 <script>
     const API_URL = "https://script.google.com/macros/s/AKfycbwaTrytcr8gk8T6xCPhjgI38oJDAAfYDgy2fPWfEGpacvKIP7GWfCjx2RQ_7wjr5fzKrA/exec";
     const CACHE_KEY = "sodor_ali_catalog_cache_v3";
-
-    let rawSheetData = [];
-    let currentSelectedCompany = 'all';
-    let isInitialLoad = true;
-    let lastFetchedRawJsonStr = "";
-
+    let rawSheetData = [], currentSelectedCompany = 'all', isInitialLoad = true, lastFetchedRawJsonStr = "";
     const PHONETIC_MAP = {
-        'london': 'লন্ডন', 'londone': 'লন্ডন', 'londan': 'লন্ডন',
-        'boy': 'বয়', 'boi': 'বয়',
-        'marjan': 'মারজান', 'marzan': 'মারজান',
-        'kernel': 'কার্নেল', 'karnel': 'কার্নেল', 'kornel': 'কার্নেল', 'karnelgold': 'কার্নেল গোল্ড', 'kornelgold': 'কার্নেল গোল্ড', 'kernelgold': 'কার্নেল গোল্ড',
-        'gold': 'গোল্ড',
-        'bigboss': 'বিগবস', 'big': 'বিগ', 'boss': 'বস',
-        'anas': 'আনাস',
-        'junior': 'জুনিয়র',
-        'sada': 'সাদা',
-        'rong': 'রং',
-        'rn': 'আরএন', 'rns': 'আরএনএস',
-        'লন্ডন': 'london', 'বয়': 'boy', 'মারজান': 'marjan',
-        'কার্নেল': 'kernel karnel kornel', 'গোল্ড': 'gold', 'বিগবস': 'bigboss',
-        'আনাস': 'anas', 'জুনিয়র': 'junior'
+        'london':'লন্ডন','londone':'লন্ডন','londan':'লন্ডন','boy':'বয়','boi':'বয়','marjan':'মারজান','marzan':'মারজান',
+        'kernel':'কার্নেল','karnel':'কার্নেল','kornel':'কার্নেল','karnelgold':'কার্নেল গোল্ড','kornelgold':'কার্নেল গোল্ড','kernelgold':'কার্নেল গোল্ড',
+        'gold':'গোল্ড','bigboss':'বিগবস','big':'বিগ','boss':'বস','anas':'আনাস','junior':'জুনিয়র','sada':'সাদা','rong':'রং',
+        'rn':'আরএন','rns':'আরএনএস','লন্ডন':'london','বয়':'boy','মারজান':'marjan','কার্নেল':'kernel karnel kornel',
+        'গোল্ড':'gold','বিগবস':'bigboss','আনাস':'anas','জুনিয়র':'junior'
     };
-
-    function toBnDigits(str) {
-        const bnDigits = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
-        return String(str || '').replace(/[0-9]/g, w => bnDigits[parseInt(w)]);
-    }
-
-    function toEnDigits(str) {
-        const enDigits = {'০':'0','১':'1','২':'2','৩':'3','৪':'4','৫':'5','৬':'6','৭':'7','৮':'8','৯':'9'};
-        return String(str || '').replace(/[০-৯]/g, w => enDigits[w]);
-    }
-
-    function getSearchVariants(text) {
-        if (!text) return [];
-        let raw = String(text).toLowerCase().trim();
-        let variants = new Set();
-        variants.add(raw);
-        variants.add(toBnDigits(raw));
-        variants.add(toEnDigits(raw));
-
-        // Remove space version for combined words like kornelgold -> kornel gold
-        let noSpaceRaw = raw.replace(/\s+/g, '');
-        variants.add(noSpaceRaw);
-
-        let words = raw.split(/\s+/);
-        let translatedWords = words.map(w => PHONETIC_MAP[w] || w);
-        let joinedTranslation = translatedWords.join(' ');
-        variants.add(joinedTranslation);
-        variants.add(toBnDigits(joinedTranslation));
-        variants.add(toEnDigits(joinedTranslation));
-        variants.add(joinedTranslation.replace(/\s+/g, ''));
-
-        // Reverse check phonetic mappings
-        words.forEach(w => {
-            if (PHONETIC_MAP[w]) {
-                variants.add(PHONETIC_MAP[w]);
-            }
-        });
-
+    function toBnDigits(s){return String(s||'').replace(/[0-9]/g,w=>'০১২৩৪৫৬৭৮৯'[w]);}
+    function toEnDigits(s){return String(s||'').replace(/[০-৯]/g,w=>{let d={'০':'0','১':'1','২':'2','৩':'3','৪':'4','৫':'5','৬':'6','৭':'7','৮':'8','৯':'9'};return d[w];});}
+    function getSearchVariants(text){
+        if(!text)return[];
+        let raw=String(text).toLowerCase().trim(),variants=new Set([raw,toBnDigits(raw),toEnDigits(raw),raw.replace(/\s+/g,'')]);
+        let words=raw.split(/\s+/),trans=words.map(w=>PHONETIC_MAP[w]||w).join(' ');
+        variants.add(trans);variants.add(toBnDigits(trans));variants.add(toEnDigits(trans));variants.add(trans.replace(/\s+/g,''));
+        words.forEach(w=>{if(PHONETIC_MAP[w])variants.add(PHONETIC_MAP[w]);});
         return Array.from(variants);
     }
-
-    function isMatch(targetText, queryText) {
-        if (!queryText) return true;
-        const qVariants = getSearchVariants(queryText);
-        const tVariants = getSearchVariants(targetText);
-
-        return qVariants.some(qVar => {
-            let qTokens = qVar.split(/\s+/).filter(Boolean);
-            return qTokens.every(qToken => {
-                return tVariants.some(tVar => tVar.includes(qToken));
-            });
+    function isMatch(target,query){
+        if(!query)return true;
+        let qVars=getSearchVariants(query),tVars=getSearchVariants(target);
+        return qVars.some(q=>q.split(/\s+/).filter(Boolean).every(tok=>tVars.some(t=>t.includes(tok))));
+    }
+    function processSheetData(rawData){
+        if(!rawData)return[];
+        let rows=Array.isArray(rawData)?rawData:(rawData.data||rawData.items||[]);
+        if(!rows.length)return[];
+        const grouped={};
+        rows.forEach(row=>{
+            if(typeof row!=='object')return;
+            let c={};
+            Object.keys(row).forEach(k=>c[k.toLowerCase().trim().replace(/[^a-z0-9_]/g,'')]=row[k]);
+            let comp=row['item_name']||row['Item_Name']||c['item_name']||c['brand']||'অন্যান্য';
+            let cat=row['category']||row['Category']||c['category']||'';
+            let size=row['size']||row['Size']||c['size']||'';
+            let dozen=parseFloat(row['dozen_price']||row['Dozen_Price']||row['dozen']||c['dozen_price']||c['dozen']||0);
+            let piece=parseFloat(row['piece_price']||row['Piece_Price']||row['piece']||c['piece_price']||c['piece']||0);
+            let title=cat?`${comp} ${cat}`:comp;
+            if(!grouped[title])grouped[title]={company:comp.trim(),category:cat.trim(),items:[]};
+            grouped[title].items.push({size:String(size),dozen,piece});
         });
+        return Object.keys(grouped).map(t=>({cardTitle:t,company:grouped[t].company,category:grouped[t].category,items:grouped[t].items}));
     }
-
-    // শিটের ডাটা থেকে কার্ড ভিত্তিক গ্রুপ তৈরি করা (কোম্পানি এবং ক্যাটাগরি আলাদা রাখা)
-    function processSheetData(rawData) {
-        if (!rawData) return [];
-        let rows = Array.isArray(rawData) ? rawData : (rawData.data || rawData.items || []);
-        if (rows.length === 0) return [];
-
-        const grouped = {};
-
-        rows.forEach(row => {
-            if (typeof row !== 'object') return;
-
-            let cleanRow = {};
-            Object.keys(row).forEach(k => {
-                let cleanKey = k.toLowerCase().trim().replace(/[^a-z0-9_]/g, '');
-                cleanRow[cleanKey] = row[k];
-            });
-
-            let company = row['item_name'] || row['Item_Name'] || cleanRow['item_name'] || cleanRow['brand'] || 'অন্যান্য';
-            let category = row['category'] || row['Category'] || cleanRow['category'] || '';
-            let size = row['size'] || row['Size'] || cleanRow['size'] || '';
-            let dozen = parseFloat(row['dozen_price'] || row['Dozen_Price'] || row['dozen'] || cleanRow['dozen_price'] || cleanRow['dozen'] || 0);
-            let piece = parseFloat(row['piece_price'] || row['Piece_Price'] || row['piece'] || cleanRow['piece_price'] || cleanRow['piece'] || 0);
-
-            // কার্ডের টাইটেল হবে: "কোম্পানি ক্যাটাগরি" (যেমন: মারজান RN)
-            let cardTitle = category ? `${company} ${category}` : company;
-
-            if (!grouped[cardTitle]) {
-                grouped[cardTitle] = {
-                    company: company.trim(),
-                    category: category.trim(),
-                    items: []
-                };
-            }
-
-            grouped[cardTitle].items.push({
-                size: String(size),
-                dozen: dozen,
-                piece: piece
-            });
-        });
-
-        return Object.keys(grouped).map(title => ({
-            cardTitle: title,
-            company: grouped[title].company,
-            category: grouped[title].category,
-            items: grouped[title].items
-        }));
+    function renderSkeletonLoader(){
+        let html='';for(let i=0;i<4;i++)html+=`<div class="skeleton-card"><div class="skeleton-block skeleton-header"></div><div class="skeleton-block skeleton-row"></div><div class="skeleton-block skeleton-row"></div></div>`;
+        document.getElementById('productGrid').innerHTML=html;
     }
-
-    function renderSkeletonLoader() {
-        const grid = document.getElementById('productGrid');
-        let skeletonHtml = '';
-        for (let i = 0; i < 4; i++) {
-            skeletonHtml += `
-                <div class="skeleton-card">
-                    <div class="skeleton-block skeleton-header"></div>
-                    <div class="skeleton-block skeleton-row"></div>
-                    <div class="skeleton-block skeleton-row"></div>
-                    <div class="skeleton-block skeleton-row"></div>
-                </div>
-            `;
-        }
-        grid.innerHTML = skeletonHtml;
+    function updateTimestamp(dateStr){
+        if(dateStr)document.getElementById('lastUpdated').innerText=`| সর্বশেষ আপডেট: ${toBnDigits(dateStr)}`;
     }
-
-    function updateTimestamp(sheetDateStr) {
-        const lastUpdatedEl = document.getElementById('lastUpdated');
-        if (!lastUpdatedEl) return;
-        if (sheetDateStr) {
-            lastUpdatedEl.innerText = `| সর্বশেষ আপডেট: ${toBnDigits(sheetDateStr)}`;
-        }
+    function renderCompanyTags(){
+        const container=document.getElementById('categoryTags');
+        const comps=[...new Set(rawSheetData.map(i=>i.company))];
+        let html=`<div class="tag ${currentSelectedCompany==='all'?'active':''}" onclick="filterCompany('all',this)">সব দেখান</div>`;
+        comps.forEach(comp=>html+=`<div class="tag ${currentSelectedCompany===comp?'active':''}" onclick="filterCompany('${comp}',this)">${comp}</div>`);
+        container.innerHTML=html;
     }
-
-    // ইউনিক কোম্পানির নাম দিয়ে ফিল্টার বাটন তৈরি করা
-    function renderCompanyTags() {
-        const categoryTagsContainer = document.getElementById('categoryTags');
-        
-        // সব ইউনিক কোম্পানির নাম সংগ্রহ করা
-        const companies = [...new Set(rawSheetData.map(item => item.company))];
-        
-        let tagsHTML = `<div class="tag ${currentSelectedCompany === 'all' ? 'active' : ''}" onclick="filterCompany('all', this)">সব দেখান</div>`;
-        
-        companies.forEach(comp => {
-            const isActive = currentSelectedCompany === comp ? 'active' : '';
-            tagsHTML += `<div class="tag ${isActive}" onclick="filterCompany('${comp}', this)">${comp}</div>`;
-        });
-
-        categoryTagsContainer.innerHTML = tagsHTML;
+    function scrollTags(dir){
+        document.getElementById('categoryTags').scrollBy({left:dir==='left'?-200:200,behavior:'smooth'});
     }
-
-    function scrollTags(direction) {
-        const container = document.getElementById('categoryTags');
-        const scrollAmount = 200;
-        if (direction === 'left') {
-            container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-        } else {
-            container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-        }
-    }
-
-    function loadFromCache() {
-        try {
-            const cached = localStorage.getItem(CACHE_KEY);
-            if (cached) {
-                const parsed = JSON.parse(cached);
-                if (parsed && parsed.data && parsed.data.length > 0) {
-                    rawSheetData = processSheetData(parsed.data);
-                    if (parsed.lastUpdated) {
-                        updateTimestamp(parsed.lastUpdated);
-                    }
-                    isInitialLoad = false;
-                    renderCompanyTags();
-                    renderProducts(document.getElementById('searchInput').value);
+    function loadFromCache(){
+        try{
+            let cached=localStorage.getItem(CACHE_KEY);
+            if(cached){
+                let p=JSON.parse(cached);
+                if(p&&p.data&&p.data.length){
+                    rawSheetData=processSheetData(p.data);
+                    if(p.lastUpdated)updateTimestamp(p.lastUpdated);
+                    isInitialLoad=false;renderCompanyTags();renderProducts(document.getElementById('searchInput').value);
                 }
             }
-        } catch (e) {
-            console.warn("Cache reading error:", e);
+        }catch(e){}
+    }
+    async function fetchFromGoogleSheet(){
+        if(isInitialLoad && !rawSheetData.length) {
+            renderSkeletonLoader();
+        }
+        try{
+            let res=await fetch(API_URL),raw=await res.json(),jsonStr=JSON.stringify(raw);
+            let sheetDate=raw.lastUpdated||raw.last_updated||raw.updatedAt||raw.date;
+            let rows=Array.isArray(raw)?raw:(raw.data||raw.items||[]);
+            if(jsonStr===lastFetchedRawJsonStr&&!isInitialLoad){if(sheetDate)updateTimestamp(sheetDate);return;}
+            lastFetchedRawJsonStr=jsonStr;rawSheetData=processSheetData(rows);
+            if(sheetDate)updateTimestamp(sheetDate);
+            try{localStorage.setItem(CACHE_KEY,JSON.stringify({data:rows,lastUpdated:sheetDate||""}));}catch(e){}
+            isInitialLoad=false;renderCompanyTags();renderProducts(document.getElementById('searchInput').value);
+        }catch(err){
+            if(isInitialLoad&&!rawSheetData.length)document.getElementById('productGrid').innerHTML=`<div class="empty-text" style="color:#ef4444;"><i class="fa-solid fa-triangle-exclamation"></i> ডাটা লোড করা যায়নি।</div>`;
         }
     }
-
-    async function fetchFromGoogleSheet() {
-        try {
-            const response = await fetch(API_URL);
-            const rawData = await response.json();
-            const jsonStr = JSON.stringify(rawData);
-
-            let sheetLastUpdated = rawData.lastUpdated || rawData.last_updated || rawData.updatedAt || rawData.date;
-            let rowsData = Array.isArray(rawData) ? rawData : (rawData.data || rawData.items || []);
-
-            if (jsonStr === lastFetchedRawJsonStr && !isInitialLoad) {
-                if (sheetLastUpdated) updateTimestamp(sheetLastUpdated);
-                return;
-            }
-
-            lastFetchedRawJsonStr = jsonStr;
-            rawSheetData = processSheetData(rowsData);
-            
-            if (sheetLastUpdated) {
-                updateTimestamp(sheetLastUpdated);
-            }
-
-            try {
-                localStorage.setItem(CACHE_KEY, JSON.stringify({
-                    data: rowsData,
-                    lastUpdated: sheetLastUpdated || ""
-                }));
-            } catch(e) {}
-
-            isInitialLoad = false;
-            renderCompanyTags();
-            renderProducts(document.getElementById('searchInput').value);
-        } catch (error) {
-            console.error("কানেকশন সমস্যা:", error);
-            if (isInitialLoad && rawSheetData.length === 0) {
-                document.getElementById('productGrid').innerHTML = `<div class="empty-text" style="color:#ef4444;"><i class="fa-solid fa-triangle-exclamation"></i> ডাটা লোড করা যায়নি। কানেকশন চেক করুন।</div>`;
-                document.getElementById('resultCount').innerText = 'ত্রুটি';
-            }
-        }
-    }
-
-    function renderProducts(filterQuery = '') {
-        const grid = document.getElementById('productGrid');
-        
-        if (rawSheetData.length === 0 && !isInitialLoad) {
-            grid.innerHTML = `<div class="empty-text">কোনো প্রোডাক্ট ডাটা পাওয়া যায়নি।</div>`;
-            document.getElementById('resultCount').innerText = `কার্ড: ০টি`;
-            return;
-        }
-
-        const fragment = document.createDocumentFragment();
-        let totalCardsCount = 0;
-        const query = filterQuery.trim();
-
-        rawSheetData.forEach(cardData => {
-            // যদি কোম্পানি ফিল্টার করা থাকে এবং বর্তমান কার্ডের কোম্পানি তার সাথে না মিলে, তবে বাদ যাবে
-            if (currentSelectedCompany !== 'all' && cardData.company !== currentSelectedCompany) {
-                return;
-            }
-
-            // সার্চ কুয়েরি ম্যাচিং চেক (কোম্পানি, ক্যাটাগরি, সাইজ এবং প্রাইস সব কভার করবে)
-            const isCardMatched = isMatch(cardData.cardTitle, query) || 
-                                  isMatch(cardData.company, query) ||
-                                  isMatch(cardData.category, query);
-
-            const filteredItems = cardData.items.filter(item => {
-                return isCardMatched ||
-                       isMatch(item.size, query) ||
-                       isMatch(item.dozen.toString(), query) ||
-                       isMatch(item.piece.toString(), query);
-            });
-
-            // যদি কার্ড লেভেলের ম্যাচ হয়, তবে ঐ কোম্পানির সব ক্যাটাগরি/আইটেম ওপেন দেখাবে
-            const itemsToShow = isCardMatched ? cardData.items : filteredItems;
-
-            if (itemsToShow.length > 0) {
-                totalCardsCount++;
-                const card = document.createElement('div');
-                card.className = 'brand-card';
-
-                let rowsHtml = '';
-                itemsToShow.forEach(item => {
-                    let piecePriceFormatted = item.piece > 0 ? `৳ ${Number(item.piece).toFixed(2)}` : '-';
-                    let dozenPriceFormatted = item.dozen > 0 ? `৳ ${item.dozen}` : '-';
-
-                    rowsHtml += `
-                        <tr>
-                            <td><strong>${item.size}</strong></td>
-                            <td>${dozenPriceFormatted}</td>
-                            <td class="badge-piece">${piecePriceFormatted}</td>
-                        </tr>
-                    `;
+    function renderProducts(query=''){
+        const grid=document.getElementById('productGrid');
+        if(!rawSheetData.length&&!isInitialLoad){grid.innerHTML=`<div class="empty-text">কোনো প্রোডাক্ট ডাটা পাওয়া যায়নি।</div>`;document.getElementById('resultCount').innerText=`কার্ড: ০টি`;return;}
+        let frag=document.createDocumentFragment(),total=0,q=query.trim();
+        rawSheetData.forEach(card=>{
+            if(currentSelectedCompany!=='all'&&card.company!==currentSelectedCompany)return;
+            let isCardMatched=isMatch(card.cardTitle,q)||isMatch(card.company,q)||isMatch(card.category,q);
+            let itemsToShow=isCardMatched?card.items:card.items.filter(i=>isCardMatched||isMatch(i.size,q)||isMatch(i.dozen.toString(),q)||isMatch(i.piece.toString(),q));
+            if(itemsToShow.length){
+                total++;let div=document.createElement('div');div.className='brand-card';
+                let rows='';itemsToShow.forEach(i=>{
+                    rows+=`<tr><td><strong>${i.size}</strong></td><td>${i.dozen>0?`৳ ${i.dozen}`:'-'}</td><td class="badge-piece">${i.piece>0?`৳ ${Number(i.piece).toFixed(2)}`:'-'}</td></tr>`;
                 });
-
-                card.innerHTML = `
-                    <div class="brand-header">
-                        <div class="brand-icon"><i class="fa-solid fa-shirt"></i></div>
-                        <span class="brand-title">${cardData.cardTitle}</span>
-                    </div>
-                    <table class="price-table">
-                        <thead>
-                            <tr>
-                                <th>সাইজ</th>
-                                <th>ডজন (৳)</th>
-                                <th>পিছ (৳)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${rowsHtml}
-                        </tbody>
-                    </table>
-                `;
-                fragment.appendChild(card);
+                div.innerHTML=`<div class="brand-header"><div class="brand-icon"><i class="fa-solid fa-shirt"></i></div><span class="brand-title">${card.cardTitle}</span></div><table class="price-table"><thead><tr><th>সাইজ</th><th>ডজন (৳)</th><th>পিছ (৳)</th></tr></thead><tbody>${rows}</tbody></table>`;
+                frag.appendChild(div);
             }
         });
-
-        grid.innerHTML = '';
-        if (totalCardsCount > 0) {
-            grid.appendChild(fragment);
-        } else if (!isInitialLoad) {
-            grid.innerHTML = `<div class="empty-text"><i class="fa-solid fa-magnifying-glass"></i> "${query}" দিয়ে কোনো রেজাল্ট পাওয়া যায়নি।</div>`;
-        }
-
-        document.getElementById('resultCount').innerText = `মোট কার্ড: ${totalCardsCount}টি`;
+        grid.innerHTML='';if(total)grid.appendChild(frag);else if(!isInitialLoad)grid.innerHTML=`<div class="empty-text"><i class="fa-solid fa-magnifying-glass"></i> "${q}" দিয়ে কোনো রেজাল্ট পাওয়া যায়নি।</div>`;
+        document.getElementById('resultCount').innerText=`মোট কার্ড: ${total}টি`;
     }
-
-    const searchInput = document.getElementById('searchInput');
-    const autocompleteList = document.getElementById('autocompleteList');
-    const clearBtn = document.getElementById('clearBtn');
-
-    function debounce(func, delay = 100) {
-        let timeout;
-        return function(...args) {
-            clearTimeout(timeout);
-            timeout = setTimeout(() => func.apply(this, args), delay);
+    const searchInput=document.getElementById('searchInput'),autocompleteList=document.getElementById('autocompleteList'),clearBtn=document.getElementById('clearBtn');
+    function debounce(fn,delay=100){let t;return(...args)=>{clearTimeout(t);t=setTimeout(()=>fn.apply(this,args),delay);};}
+    const handleInput=debounce(val=>{renderProducts(val);showSuggestions(val);},80);
+    searchInput.addEventListener('input',e=>{toggleClearButton(e.target.value);handleInput(e.target.value);});
+    searchInput.addEventListener('focus',e=>{if(e.target.value.trim())showSuggestions(e.target.value);});
+    clearBtn.addEventListener('click',()=>{searchInput.value='';toggleClearButton('');autocompleteList.style.display='none';renderProducts('');searchInput.focus();});
+    function toggleClearButton(val){clearBtn.style.display=val.trim()?'flex':'none';}
+    function showSuggestions(val){
+        let q=val.trim();if(!q){autocompleteList.style.display='none';return;}
+        let map=new Map();
+        rawSheetData.forEach(card=>{
+            if(isMatch(card.company,q))map.set(card.company,{text:card.company,fillText:card.company,type:'কোম্পানি'});
+            if(isMatch(card.cardTitle,q))map.set(card.cardTitle,{text:card.cardTitle,fillText:card.cardTitle,type:'ক্যাটাগরি'});
+            card.items.forEach(i=>{if(isMatch(i.size,q))map.set(`${card.cardTitle}-${i.size}`,{text:`${card.cardTitle} (সাইজ: ${i.size})`,fillText:card.cardTitle,type:'সাইজ'});});
+        });
+        let arr=Array.from(map.values()).slice(0,6);
+        if(!arr.length){autocompleteList.style.display='none';return;}
+        autocompleteList.innerHTML='';
+        arr.forEach(s=>{
+            let item=document.createElement('div');item.className='suggestion-item';
+            item.innerHTML=`<span><i class="fa-solid fa-magnifying-glass" style="font-size:11px;margin-right:6px;color:var(--primary);"></i>${s.text}</span> <span class="suggestion-badge">${s.type}</span>`;
+            item.addEventListener('click',()=>{searchInput.value=s.fillText;toggleClearButton(s.fillText);autocompleteList.style.display='none';renderProducts(s.fillText);});
+            autocompleteList.appendChild(item);
+        });
+        autocompleteList.style.display='block';
+    }
+    document.addEventListener('click',e=>{if(!e.target.closest('.search-box-wrapper'))autocompleteList.style.display='none';});
+    const voiceBtn=document.getElementById('voiceBtn'),listeningStatus=document.getElementById('listeningStatus');
+    if('webkitSpeechRecognition' in window||'SpeechRecognition' in window){
+        const Rec=window.SpeechRecognition||window.webkitSpeechRecognition,rec=new Rec();
+        rec.lang='bn-BD';rec.interimResults=true;rec.continuous=false;let finalTrans='';
+        voiceBtn.addEventListener('click',()=>{finalTrans='';try{rec.start();}catch(e){}});
+        rec.onstart=()=>{voiceBtn.classList.add('listening');listeningStatus.style.display='inline-block';};
+        rec.onend=()=>{voiceBtn.classList.remove('listening');listeningStatus.style.display='none';if(finalTrans.trim())procVoice(finalTrans);};
+        rec.onerror=()=>{voiceBtn.classList.remove('listening');listeningStatus.style.display='none';};
+        rec.onresult=e=>{
+            let interim='';
+            for(let i=e.resultIndex;i<e.results.length;++i)if(e.results[i].isFinal)finalTrans+=e.results[i][0].transcript;else interim+=e.results[i][0].transcript;
+            let text=finalTrans||interim;
+            if(text){searchInput.value=text;toggleClearButton(text);renderProducts(text);showSuggestions(text);}
         };
+        function procVoice(t){let cl=t.trim();searchInput.value=cl;toggleClearButton(cl);autocompleteList.style.display='none';currentSelectedCompany='all';renderCompanyTags();renderProducts(cl);}
+    }else{voiceBtn.onclick=()=>alert('ব্রাউজার ভয়েস সার্চ সাপোর্ট করে না।');}
+    function filterCompany(name,el){
+        currentSelectedCompany=name;document.querySelectorAll('.tag').forEach(t=>t.classList.remove('active'));
+        if(el)el.classList.add('active');renderProducts(searchInput.value);
     }
-
-    const handleInput = debounce((val) => {
-        renderProducts(val);
-        showSuggestions(val);
-    }, 80);
-
-    searchInput.addEventListener('input', (e) => {
-        const val = e.target.value;
-        toggleClearButton(val);
-        handleInput(val);
+    const themeToggle=document.getElementById('themeToggle');
+    themeToggle.addEventListener('click',()=>{
+        document.body.classList.toggle('dark-mode');
+        let isDark=document.body.classList.contains('dark-mode');
+        themeToggle.innerHTML=isDark?'<i class="fa-solid fa-sun"></i>':'<i class="fa-solid fa-moon"></i>';
     });
 
-    searchInput.addEventListener('focus', (e) => {
-        if (e.target.value.trim()) {
-            showSuggestions(e.target.value);
-        }
-    });
-
-    clearBtn.addEventListener('click', () => {
+    // হোম বাটন ফাংশন (হেডারে ক্লিক করলে কাজ করবে)
+    function goHome(){
         searchInput.value = '';
         toggleClearButton('');
         autocompleteList.style.display = 'none';
-        renderProducts('');
-        searchInput.focus();
-    });
-
-    function toggleClearButton(val) {
-        clearBtn.style.display = val.trim().length > 0 ? 'flex' : 'none';
+        currentSelectedCompany = 'all';
+        renderCompanyTags();
+        fetchFromGoogleSheet(); // গুগল শিট থেকে ডাটা রিফ্রেশ করবে
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-
-    function showSuggestions(val) {
-        const query = val.trim();
-        if (!query) {
-            autocompleteList.style.display = 'none';
-            return;
-        }
-
-        const suggestionsMap = new Map();
-
-        rawSheetData.forEach(card => {
-            if (isMatch(card.company, query)) {
-                suggestionsMap.set(card.company, { text: card.company, fillText: card.company, type: 'কোম্পানি' });
-            }
-            if (isMatch(card.cardTitle, query)) {
-                suggestionsMap.set(card.cardTitle, { text: card.cardTitle, fillText: card.cardTitle, type: 'ক্যাটাগরি' });
-            }
-
-            card.items.forEach(item => {
-                if (isMatch(item.size, query)) {
-                    let key = `${card.cardTitle}-${item.size}`;
-                    suggestionsMap.set(key, { 
-                        text: `${card.cardTitle} (সাইজ: ${item.size})`, 
-                        fillText: card.cardTitle, 
-                        type: 'সাইজ' 
-                    });
-                }
-            });
-        });
-
-        const listArray = Array.from(suggestionsMap.values()).slice(0, 6);
-
-        if (listArray.length === 0) {
-            autocompleteList.style.display = 'none';
-            return;
-        }
-
-        autocompleteList.innerHTML = '';
-        listArray.forEach(sug => {
-            const item = document.createElement('div');
-            item.className = 'suggestion-item';
-            item.innerHTML = `<span><i class="fa-solid fa-magnifying-glass" style="font-size:11px; margin-right:6px; color:var(--primary);"></i>${sug.text}</span> <span class="suggestion-badge">${sug.type}</span>`;
-            
-            item.addEventListener('click', () => {
-                searchInput.value = sug.fillText;
-                toggleClearButton(sug.fillText);
-                autocompleteList.style.display = 'none';
-                renderProducts(sug.fillText);
-            });
-            autocompleteList.appendChild(item);
-        });
-
-        autocompleteList.style.display = 'block';
-    }
-
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.search-box-wrapper')) {
-            autocompleteList.style.display = 'none';
-        }
-    });
-
-    const voiceBtn = document.getElementById('voiceBtn');
-    const listeningStatus = document.getElementById('listeningStatus');
-
-    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
-        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-        const recognition = new SpeechRecognition();
-        recognition.lang = 'bn-BD';
-        recognition.interimResults = true;
-        recognition.continuous = false;
-
-        let finalTranscript = '';
-
-        voiceBtn.addEventListener('click', () => {
-            finalTranscript = '';
-            try {
-                recognition.start();
-            } catch (err) {
-                console.error(err);
-            }
-        });
-
-        recognition.onstart = () => {
-            voiceBtn.classList.add('listening');
-            listeningStatus.style.display = 'inline-block';
-        };
-
-        recognition.onend = () => {
-            voiceBtn.classList.remove('listening');
-            listeningStatus.style.display = 'none';
-            if (finalTranscript.trim()) {
-                processVoiceSearch(finalTranscript);
-            }
-        };
-
-        recognition.onerror = (event) => {
-            console.warn("Speech recognition error", event.error);
-            voiceBtn.classList.remove('listening');
-            listeningStatus.style.display = 'none';
-        };
-
-        recognition.onresult = (event) => {
-            let interim = '';
-            for (let i = event.resultIndex; i < event.results.length; ++i) {
-                if (event.results[i].isFinal) {
-                    finalTranscript += event.results[i][0].transcript;
-                } else {
-                    interim += event.results[i][0].transcript;
-                }
-            }
-            
-            const currentSpokenText = finalTranscript || interim;
-            if (currentSpokenText) {
-                searchInput.value = currentSpokenText;
-                toggleClearButton(currentSpokenText);
-                renderProducts(currentSpokenText);
-                showSuggestions(currentSpokenText);
-            }
-        };
-
-        function processVoiceSearch(spokenText) {
-            let cleanedText = spokenText.trim();
-            searchInput.value = cleanedText;
-            toggleClearButton(cleanedText);
-            autocompleteList.style.display = 'none';
-            currentSelectedCompany = 'all';
-            renderCompanyTags();
-            renderProducts(cleanedText);
-        }
-
-    } else {
-        voiceBtn.onclick = () => {
-            alert('আপনার ব্রাউজার ভয়েস সার্চ সাপোর্ট করছে না। Chrome ব্রাউজার ব্যবহার করুন।');
-        };
-    }
-
-    // কোম্পানি ফিল্টার ফাংশন
-    function filterCompany(companyName, element) {
-        currentSelectedCompany = companyName;
-        document.querySelectorAll('.tag').forEach(t => t.classList.remove('active'));
-        if(element) element.classList.add('active');
-        renderProducts(searchInput.value);
-    }
-
-    const themeToggle = document.getElementById('themeToggle');
-    themeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        const isDark = document.body.classList.contains('dark-mode');
-        themeToggle.innerHTML = isDark ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
-    });
-
-    renderSkeletonLoader();
+    
     loadFromCache();
     fetchFromGoogleSheet();
-    setInterval(fetchFromGoogleSheet, 4000);
+    setInterval(fetchFromGoogleSheet,4000);
 </script>
 </body>
 </html>
