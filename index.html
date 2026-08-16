@@ -20,17 +20,24 @@
         .header-title{font-size:20px;font-weight:700;line-height:1.2;margin-bottom:2px;text-align:center}
         .header-subtitle{font-size:12px;opacity:.9;font-weight:400;text-align:center}
         
-        /* প্রিমিয়াম এনিমেটেড মেনু বার ও ড্রপডাউন স্টাইল */
-        .top-controls{position:absolute;top:14px;right:12px;display:flex;align-items:center;z-index:10}
-        .menu-toggle-btn{background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.3);color:#fff;width:38px;height:38px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;backdrop-filter:blur(8px);transition:transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s ease;box-shadow:0 4px 10px rgba(0,0,0,0.15);}
+        /* প্রিমিয়াম স্লাইডিং সাইডবার মেনু স্টাইল (ডান দিক থেকে স্ক্রীন জুড়ে উপর থেকে নিচ পর্যন্ত) */
+        .top-controls{position:absolute;top:14px;right:12px;display:flex;align-items:center;z-index:100}
+        .menu-toggle-btn{background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.3);color:#fff;width:38px;height:38px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;backdrop-filter:blur(8px);transition:transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s ease;box-shadow:0 4px 10px rgba(0,0,0,0.15);z-index:102;}
         .menu-toggle-btn:active{transform:scale(0.88)}
-        .menu-dropdown{position:absolute;top:50px;right:0;background:var(--card-bg);border:1px solid var(--border-color);border-radius:16px;box-shadow:var(--shadow-lg);padding:10px;display:flex;flex-direction:column;gap:8px;opacity:0;visibility:hidden;transform:translateY(-12px) scale(0.95);transition:all 0.3s cubic-bezier(0.16, 1, 0.3, 1);z-index:11;min-width:190px;backdrop-filter:blur(12px);}
-        .menu-dropdown.active{opacity:1;visibility:visible;transform:translateY(0) scale(1)}
-        .menu-item{background:transparent;border:none;color:var(--text-main);padding:10px 12px;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-size:14px;font-weight:500;text-align:left;width:100%;transition:background 0.2s;}
+        
+        /* ওভারলে ব্যাকড্রপ */
+        .sidebar-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);backdrop-filter:blur(4px);z-index:99;opacity:0;visibility:hidden;transition:all 0.3s ease;}
+        .sidebar-overlay.active{opacity:1;visibility:visible;}
+
+        /* সাইডবার প্যানেল */
+        .menu-dropdown{position:fixed;top:0;right:-280px;width:280px;height:100vh;background:var(--card-bg);border-left:1px solid var(--border-color);box-shadow:-5px 0 25px rgba(0,0,0,0.2);padding:70px 16px 20px 16px;display:flex;flex-direction:column;gap:10px;transition:right 0.35s cubic-bezier(0.16, 1, 0.3, 1);z-index:101;overflow-y:auto;}
+        .menu-dropdown.active{right:0;}
+        
+        .menu-item{background:transparent;border:none;color:var(--text-main);padding:12px 14px;border-radius:12px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-size:14.5px;font-weight:500;text-align:left;width:100%;transition:background 0.2s;}
         .menu-item:hover{background:var(--bg-light)}
         .dark-mode .menu-item:hover{background:rgba(255,255,255,0.06)}
-        .menu-item-content {display:flex;align-items:center;gap:10px;}
-        .menu-item i{width:18px;text-align:center;color:var(--primary)}
+        .menu-item-content {display:flex;align-items:center;gap:12px;}
+        .menu-item i{width:20px;text-align:center;color:var(--primary)}
 
         /* ছবির মতো সুইচ ডিজাইন (Toggle Switch) */
         .toggle-switch{position:relative;width:48px;height:26px;background:#dc2626;border-radius:20px;cursor:pointer;transition:background 0.3s ease;box-shadow:inset 0 2px 4px rgba(0,0,0,0.2);display:inline-flex;align-items:center;padding:2px;}
@@ -92,9 +99,12 @@
 </head>
 <body>
 <header>
-    <!-- অ্যানিমেটেড মেনু বার (ডান পাশে) -->
+    <!-- ব্যাকড্রপ ওভারলে -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- ডান পাশের স্লাইডিং মেনু বার ও ড্রপডাউন -->
     <div class="top-controls">
-        <button class="menu-toggle-btn" id="menuToggleBtn" title="মেনু"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+        <button class="menu-toggle-btn" id="menuToggleBtn" title="মেনু"><i class="fa-solid fa-list-dots"></i></button>
         <div class="menu-dropdown" id="menuDropdown">
             <button class="menu-item" id="themeToggle">
                 <div class="menu-item-content"><i class="fa-solid fa-moon" id="themeIcon"></i> <span id="themeText">ডার্ক মোড</span></div>
@@ -104,7 +114,7 @@
                     <div class="toggle-thumb"></div>
                 </div>
             </button>
-            <button class="menu-item" onclick="window.print()">
+            <button class="menu-item" onclick="window.print(); closeMenu();">
                 <div class="menu-item-content"><i class="fa-solid fa-print"></i> প্রিন্ট করুন</div>
             </button>
             <!-- ভবিষ্যতে নতুন অপশন এখানে যুক্ত করতে পারবেন -->
@@ -301,7 +311,6 @@
 
     document.addEventListener('click',e=>{
         if(!e.target.closest('.search-box-wrapper'))autocompleteList.style.display='none';
-        if(!e.target.closest('.top-controls'))document.getElementById('menuDropdown').classList.remove('active');
     });
 
     const voiceBtn=document.getElementById('voiceBtn'),listeningStatus=document.getElementById('listeningStatus');
@@ -326,12 +335,32 @@
         if(el)el.classList.add('active');renderProducts(searchInput.value);
     }
 
-    // মেনু ড্রপডাউন টগল করার জন্য
+    // স্লাইডিং সাইডবার মেনু টগল ও বন্ধ করার ফাংশন
     const menuToggleBtn = document.getElementById('menuToggleBtn');
     const menuDropdown = document.getElementById('menuDropdown');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    function openMenu(){
+        menuDropdown.classList.add('active');
+        sidebarOverlay.classList.add('active');
+    }
+
+    function closeMenu(){
+        menuDropdown.classList.remove('active');
+        sidebarOverlay.classList.remove('active');
+    }
+
     menuToggleBtn.addEventListener('click', (e) => {
         e.stopPropagation();
-        menuDropdown.classList.toggle('active');
+        if(menuDropdown.classList.contains('active')){
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+        closeMenu();
     });
 
     // ডার্ক মোড টগল ফাংশন ও সুইচ আপডেট
