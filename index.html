@@ -525,10 +525,18 @@
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         const recognition = new SpeechRecognition();
         recognition.lang = 'bn-BD';
-        recognition.interimResults = false;
+        recognition.interimResults = true; // রিয়েল-টাইম সার্চ করার জন্য ট্রু করা হলো
+        recognition.continuous = false;
+
+        let finalTranscript = '';
 
         voiceBtn.addEventListener('click', () => {
-            recognition.start();
+            finalTranscript = '';
+            try {
+                recognition.start();
+            } catch (err) {
+                console.error(err);
+            }
         });
 
         recognition.onstart = () => {
@@ -539,15 +547,49 @@
         recognition.onend = () => {
             voiceBtn.classList.remove('listening');
             listeningStatus.style.display = 'none';
+            if (finalTranscript.trim()) {
+                processVoiceSearch(finalTranscript);
+            }
+        };
+
+        recognition.onerror = (event) => {
+            console.warn("Speech recognition error", event.error);
+            voiceBtn.classList.remove('listening');
+            listeningStatus.style.display = 'none';
         };
 
         recognition.onresult = (event) => {
-            const transcript = event.results[0][0].transcript;
-            searchInput.value = transcript;
-            toggleClearButton(transcript);
-            autocompleteList.style.display = 'none';
-            renderProducts(transcript);
+            let interim = '';
+            for (let i = event.resultIndex; i < event.results.length; ++i) {
+                if (event.results[i].isFinal) {
+                    finalTranscript += event.results[i][0].transcript;
+                } else {
+                    interim += event.results[i][0].transcript;
+                }
+            }
+            
+            const currentSpokenText = finalTranscript || interim;
+            if (currentSpokenText) {
+                searchInput.value = currentSpokenText;
+                toggleClearButton(currentSpokenText);
+                renderProducts(currentSpokenText);
+                showSuggestions(currentSpokenText);
+            }
         };
+
+        function processVoiceSearch(spokenText) {
+            let cleanedText = spokenText.trim();
+            // প্রয়োজনে অতিরিক্ত কোনো কমন ভয়েস প্রিফিক্স থাকলে তা দূর করার লজিক এখানে যুক্ত করা যেতে পারে
+            searchInput.value = cleanedText;
+            toggleClearButton(cleanedText);
+            autocompleteList.style.display = 'none';
+            
+            // স্মার্ট ম্যাচিং নিশ্চিত করার জন্য ক্যাটাগরি রিসেট বা 'all' সিলেক্ট করা যেতে পারে যাতে নতুন ডাটা বা যেকোনো আইটেম সাথে সাথে খুঁজে পাওয়া যায়
+            currentSelectedCategory = 'all';
+            renderCategoryTags();
+            renderProducts(cleanedText);
+        }
+
     } else {
         voiceBtn.onclick = () => {
             alert('আপনার ব্রাউজার ভয়েস সার্চ সাপোর্ট করছে না। Chrome ব্রাউজার ব্যবহার করুন।');
