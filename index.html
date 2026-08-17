@@ -10,6 +10,20 @@
     <link rel="preconnect" href="https://script.google.com">
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- পিডব্লিউএ এবং সার্ভিস ওয়ার্কার কনফিগারেশন যোগ করা হয়েছে -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0284c7">
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('Service Worker registered!'))
+            .catch(err => console.log('Service Worker error:', err));
+        });
+      }
+    </script>
+
     <style>
         :root{--primary:#0284c7;--primary-dark:#0369a1;--accent:#38bdf8;--bg-light:#f8fafc;--card-bg:#ffffff;--text-main:#0f172a;--text-muted:#64748b;--border-color:#e2e8f0;--accent-green:#10b981;--shadow-sm:0 2px 4px rgba(0,0,0,0.04);--shadow-lg:0 12px 30px rgba(0,0,0,0.15);--radius-lg:14px}
         body.dark-mode{--bg-light:#0f172a;--card-bg:#1e293b;--text-main:#f8fafc;--text-muted:#94a3b8;--border-color:#334155;--shadow-sm:0 2px 4px rgba(0,0,0,0.2);--shadow-lg:0 12px 30px rgba(0,0,0,0.4)}
@@ -19,12 +33,12 @@
         .header-content{cursor:pointer;display:inline-block;text-align:center;width:100%}
         .header-title{font-size:20px;font-weight:700;line-height:1.2;margin-bottom:2px;text-align:center}
         .header-subtitle{font-size:12px;opacity:.9;font-weight:400;text-align:center}
-        
+
         /* প্রিমিয়াম স্লাইডিং সাইডবার মেনু স্টাইল (ডান দিক থেকে স্ক্রীন জুড়ে উপর থেকে নিচ পর্যন্ত) */
         .top-controls{position:absolute;top:14px;right:12px;display:flex;align-items:center;z-index:100}
         .menu-toggle-btn{background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.3);color:#fff;width:38px;height:38px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;backdrop-filter:blur(8px);transition:transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s ease;box-shadow:0 4px 10px rgba(0,0,0,0.15);z-index:102;}
         .menu-toggle-btn:active{transform:scale(0.88)}
-        
+
         /* ওভারলে ব্যাকড্রপ */
         .sidebar-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);backdrop-filter:blur(4px);z-index:99;opacity:0;visibility:hidden;transition:all 0.3s ease;}
         .sidebar-overlay.active{opacity:1;visibility:visible;}
@@ -32,7 +46,7 @@
         /* সাইডবার প্যানেল */
         .menu-dropdown{position:fixed;top:0;right:-280px;width:280px;height:100vh;background:var(--card-bg);border-left:1px solid var(--border-color);box-shadow:-5px 0 25px rgba(0,0,0,0.2);padding:70px 16px 20px 16px;display:flex;flex-direction:column;gap:10px;transition:right 0.35s cubic-bezier(0.16, 1, 0.3, 1);z-index:101;overflow-y:auto;}
         .menu-dropdown.active{right:0;}
-        
+
         .menu-item{background:transparent;border:none;color:var(--text-main);padding:12px 14px;border-radius:12px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-size:14.5px;font-weight:500;text-align:left;width:100%;transition:background 0.2s;}
         .menu-item:hover{background:var(--bg-light)}
         .dark-mode .menu-item:hover{background:rgba(255,255,255,0.06)}
@@ -120,7 +134,7 @@
             <!-- ভবিষ্যতে নতুন অপশন এখানে যুক্ত করতে পারবেন -->
         </div>
     </div>
-    
+
     <!-- হেডার টেক্সট (মাঝখানে বিন্যস্ত) -->
     <div class="header-content" onclick="goHome()" title="হোমে যান">
         <div class="header-title">মেসার্স সদর আলী এন্ড সন্স</div>
@@ -159,7 +173,7 @@
     const API_URL = "https://script.google.com/macros/s/AKfycbwaTrytcr8gk8T6xCPhjgI38oJDAAfYDgy2fPWfEGpacvKIP7GWfCjx2RQ_7wjr5fzKrA/exec";
     const CACHE_KEY = "sodor_ali_catalog_cache_v3";
     let rawSheetData = [], currentSelectedCompany = 'all', isInitialLoad = true, lastFetchedRawJsonStr = "";
-    
+
     const PHONETIC_MAP = {
         'london':'লন্ডন','londone':'londone','londan':'লন্ডন','boy':'বয়','boi':'বয়','marjan':'মারজান','marzan':'মারজান',
         'kernel':'কার্নেল','karnel':'কার্নেল','kornel':'কার্নেল','karnelgold':'কার্নেল গোল্ড','kornelgold':'কার্নেল গোল্ড','kernelgold':'কার্নেল গোল্ড',
@@ -170,7 +184,7 @@
 
     function toBnDigits(s){return String(s||'').replace(/[0-9]/g,w=>'০১২৩৪৫৬৭৮৯'[w]);}
     function toEnDigits(s){return String(s||'').replace(/[০-৯]/g,w=>{let d={'০':'0','১':'1','২':'2','৩':'3','৪':'4','৫':'5','৬':'6','৭':'7','৮':'8','৯':'9'};return d[w];});}
-    
+
     function getSearchVariants(text){
         if(!text)return[];
         let raw=String(text).toLowerCase().trim(),variants=new Set([raw,toBnDigits(raw),toEnDigits(raw),raw.replace(/\s+/g,'')]);
@@ -368,7 +382,7 @@
     const themeIcon = document.getElementById('themeIcon');
     const themeText = document.getElementById('themeText');
     const themeSwitch = document.getElementById('themeSwitch');
-    
+
     themeToggle.addEventListener('click', (e) => {
         e.stopPropagation();
         document.body.classList.toggle('dark-mode');
@@ -392,7 +406,7 @@
         fetchFromGoogleSheet();
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-    
+
     loadFromCache();
     fetchFromGoogleSheet();
     setInterval(fetchFromGoogleSheet, 4000);
