@@ -1,6 +1,6 @@
 self.addEventListener('install', (e) => {
   e.waitUntil(
-    caches.use('sodor-ali-cache-v1').then((cache) => {
+    caches.open('app-cache-v1').then((cache) => {
       return cache.addAll([
         '/',
         '/index.html'

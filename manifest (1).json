@@ -1,0 +1,18 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "শব্দর আলী এন্ড সন্স",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "সুজন গার্মেন্টস",
+  "start_url": "/",
+  "theme_color": "#0284c7",
+  "id": "imailakib@gmail.com",
+  "description": "মেসার্স সদর আলী এন্ড সন্স\nসুজন গার্মেন্টস - পাইকারি রেট লিস্ট",
+  "lang": "bn",
+  "display_override": [
+    "standalone",
+    "window-controls-overlay"
+  ]
+}
