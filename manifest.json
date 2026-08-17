@@ -10,5 +10,9 @@
   "theme_color": "#0284c7",
   "id": "imailakib@gmail.com",
   "description": "মেসার্স সদর আলী এন্ড সন্স\nসুজন গার্মেন্টস - পাইকারি রেট লিস্ট",
-  "lang": "bn"
+  "lang": "bn",
+  "display_override": [
+    "standalone",
+    "window-controls-overlay"
+  ]
 }
