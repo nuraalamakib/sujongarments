@@ -63,6 +63,60 @@ body.professional-v62 button:focus-visible,body.professional-v62 a:focus-visible
   #priceListModal>div{padding-bottom:env(safe-area-inset-bottom,0px)}
   #summary .grid{min-width:0}
 }
+
+/* ===== Minimal mobile scrolling fix: preserve existing UI and features ===== */
+html{
+  height:auto !important;
+  min-height:100%;
+  overflow-x:hidden !important;
+  overflow-y:auto !important;
+  -webkit-overflow-scrolling:touch;
+}
+body.professional-v62{
+  height:auto !important;
+  min-height:100vh;
+  min-height:100dvh;
+  overflow-x:hidden !important;
+  overflow-y:auto !important;
+  position:relative;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior-y:auto;
+}
+#main-content{
+  height:auto !important;
+  min-height:0;
+  overflow:visible !important;
+}
+.tab-content.active-tab{
+  overflow:visible;
+}
+@media (max-width:640px){
+  html,body{
+    height:auto !important;
+    min-height:100%;
+    overflow-y:auto !important;
+    overscroll-behavior-y:auto;
+    touch-action:pan-y;
+  }
+  body{
+    padding-bottom:calc(88px + env(safe-area-inset-bottom,0px)) !important;
+  }
+  #main-content{
+    overflow:visible !important;
+    padding-bottom:calc(24px + env(safe-area-inset-bottom,0px)) !important;
+  }
+  #customerList,#companyList{
+    min-height:0;
+    overflow:visible !important;
+  }
+  #priceListModal .flex-1{
+    min-height:0;
+  }
+  #priceListFrame{
+    height:100%;
+    min-height:0;
+  }
+}
 </style></head><body class="bg-[#f4f7f6] pb-20"><!-- LOADING --><div id="loadingOverlay" class="loading-overlay"><div class="text-center text-white"><div class="spinner mx-auto mb-3"></div><div id="loadingText">আপনার হিসাব প্রস্তুত করছি…</div></div></div><!-- LOGIN --><div id="loginOverlay" class="fixed inset-0 z-[200] flex items-center justify-center bg-rose-600"><div class="bg-white/20 backdrop-blur-lg p-8 rounded-3xl shadow-2xl w-80 text-center animate__animated animate__fadeInDown"><div class="mb-6"><div class="bg-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg"><i class="fa-solid fa-lock text-3xl text-rose-600"></i></div><h2 class="text-white text-2xl font-bold"> সুজন গার্মেন্টস </h2><p class="text-rose-100 text-sm"> প্রবেশ করতে পিন দিন </p></div><div class="space-y-4"><input type="password" id="pinInput" maxlength="4" placeholder="••••" class="w-full text-center text-3xl tracking-[15px] p-3 rounded-xl outline-none" ><button onclick="checkPin()" class="w-full bg-white text-rose-600 font-bold py-3 rounded-xl active:scale-95 transition-all" > আনলক করুন </button><button onclick="showRecovery()" class="text-rose-100 text-xs mt-4 underline" > পিন ভুলে গেছেন? </button></div></div></div><!-- HEADER --><header class="bg-rose-600 text-white p-4 shadow-lg sticky top-0 z-50 flex flex-col items-center justify-center"><span class="text-xl font-bold"> সুজন গার্মেন্টস </span><div class="flex items-center gap-3 mt-1"><div id="statusIndicator" class="flex items-center gap-1"><span class="relative flex h-2 w-2"><span id="statusPing" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span id="statusDot" class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span></span><span id="statusText" class="text-[10px] uppercase tracking-widest"> Online </span><span id="syncBadge" class="synced">সিঙ্ক ঠিক আছে</span></div><span class="text-rose-300">|</span><button onclick="toggleDarkMode()" class="text-white text-lg" ><i id="darkIcon" class="fa-solid fa-moon"></i></button></div></header><main class="p-4" id="main-content"><!-- ===================================================== CUSTOMER ===================================================== --><div id="customer" class="tab-content active-tab"><div class="grid grid-cols-3 gap-2 mb-4 text-center"><div class="bg-white p-2 rounded shadow"><p class="text-xs text-gray-500"> মোট জমা </p><p id="dashJoma" class="text-green-600 font-bold"> ৳ ০ </p></div><div class="bg-white p-2 rounded shadow"><p class="text-xs text-gray-500"> মোট বাকি </p><p id="dashBaki" class="text-rose-600 font-bold"> ৳ ০ </p></div><div class="bg-white p-2 rounded shadow"><p class="text-xs text-gray-500"> মোট ব্যালেন্স </p><p id="dashBalance" class="font-bold"> ৳ ০ </p></div></div><!-- CUSTOMER SEARCH --><div class="search-wrap mb-3"><input type="text" id="custSearch" oninput="searchCustomer()" placeholder="নাম / মোবাইল / ঠিকানা / টাকা / ID খুঁজুন..." class="search-input w-full p-3 border rounded-lg focus:ring-2 focus:ring-rose-500 outline-none" ><div class="search-actions"><button onclick="voiceSearch('custSearch')" class="search-btn bg-rose-100 text-rose-600" title="ভয়েস সার্চ" ><i class="fa-solid fa-microphone"></i></button><button onclick="clearSearch('custSearch')" class="search-btn bg-gray-200 text-gray-700" title="Clear" ><i class="fa-solid fa-xmark"></i></button></div></div><div id="custVoiceStatus" class="voice-status" aria-live="polite"><span class="voice-dot"></span><span class="voice-status-text">শুনছি...</span></div><div class="flex justify-between items-center px-1 mb-2"><span id="customerResultCount" class="text-xs text-gray-500" > ০ জন </span><div class="flex gap-2"><button onclick="sortDataByBalance('desc')" class="flex items-center gap-1 text-xs font-medium text-rose-600 px-2 py-1 rounded" ><i class="fa-solid fa-arrow-down-9-1"></i> বেশি বাকি </button><button onclick="sortDataByBalance('asc')" class="flex items-center gap-1 text-xs font-medium text-green-600 px-2 py-1 rounded" ><i class="fa-solid fa-arrow-up-1-9"></i> কম বাকি </button></div></div><div class="space-y-3" id="customerList" ></div></div><!-- ===================================================== COMPANY ===================================================== --><div id="company" class="tab-content"><div class="grid grid-cols-3 gap-2 mb-4 text-center"><div class="bg-white p-2 rounded shadow"><p class="text-xs text-gray-500"> মোট পরিশোধ </p><p id="compPaid" class="text-green-600 font-bold"> ৳ ০ </p></div><div class="bg-white p-2 rounded shadow"><p class="text-xs text-gray-500"> মোট ক্রয় </p><p id="compBuy" class="text-rose-600 font-bold"> ৳ ০ </p></div><div class="bg-white p-2 rounded shadow"><p class="text-xs text-gray-500"> মোট দেনা </p><p id="compDena" class="font-bold"> ৳ ০ </p></div></div><!-- COMPANY SEARCH --><div class="search-wrap mb-3"><input type="text" id="compSearch" oninput="searchCompany()" placeholder="কোম্পানি / মোবাইল / নোট / টাকা / ID..." class="search-input w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none" ><div class="search-actions"><button onclick="voiceSearch('compSearch')" class="search-btn bg-blue-100 text-blue-600" title="ভয়েস সার্চ" ><i class="fa-solid fa-microphone"></i></button><button onclick="clearSearch('compSearch')" class="search-btn bg-gray-200 text-gray-700" title="Clear" ><i class="fa-solid fa-xmark"></i></button></div></div><div id="compVoiceStatus" class="voice-status" aria-live="polite"><span class="voice-dot"></span><span class="voice-status-text">শুনছি...</span></div><div class="flex justify-between items-center mb-2"><span id="companyResultCount" class="text-xs text-gray-500" > ০ জন </span><button onclick="clearSearch('compSearch')" class="text-xs text-blue-600" > সার্চ ক্লিয়ার </button></div><div class="space-y-3" id="companyList" ></div></div><!-- ===================================================== SUMMARY ===================================================== --><div id="summary" class="tab-content"><div class="bg-white dark:bg-[#2d2d2d] p-4 rounded-xl shadow-md mb-6 border-b-4 border-rose-500">
 <div class="mb-4 rounded-xl bg-rose-50 dark:bg-[#3a242b] p-3 border border-rose-100 dark:border-rose-900/40">
 <div class="flex items-center justify-between gap-2 mb-2"><h2 class="text-sm font-bold flex items-center gap-2"><i class="fa-solid fa-calendar-days text-rose-500"></i> বছর ও মাস অনুযায়ী হিসাব</h2><button type="button" onclick="resetSummaryPeriod()" class="text-[11px] font-semibold text-rose-600 px-2 py-1 rounded-lg hover:bg-rose-100 dark:hover:bg-rose-900/30">রিসেট</button></div>
@@ -3092,6 +3146,18 @@ async function() {
       openPriceList();
     }
   };
+
+  /* Ensure long lists remain vertically scrollable on mobile browsers. */
+  window.addEventListener("pageshow",function(){
+    document.documentElement.style.overflowY="auto";
+    document.body.style.overflowY="auto";
+  });
+  window.addEventListener("orientationchange",function(){
+    setTimeout(function(){
+      document.documentElement.style.overflowY="auto";
+      document.body.style.overflowY="auto";
+    },250);
+  });
 
   /* Better mobile/desktop scrolling and keyboard focus. */
   document.documentElement.style.scrollBehavior="smooth";
