@@ -1,0 +1,3199 @@
+<!DOCTYPE html><html lang="bn" class="transition-all"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content"><meta name="theme-color" content="#e11d48"><title>Sujan Garments</title><link rel="manifest" href="manifest.json"><script src="https://cdn.tailwindcss.com"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"><script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/pulltorefreshjs/0.1.22/index.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/chart.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script><script src="https://unpkg.com/dexie/dist/dexie.js"></script><script>
+tailwind.config = {
+    darkMode: 'class'
+};
+</script><style>@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;500;700&display=swap');body{font-family:'Hind Siliguri',sans-serif;transition:.3s}.tab-content{display:none;animation:fadeIn .3s ease}.active-tab{display:block}@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}nav{height:65px;display:flex;align-items:center;background:rgba(255,255,255,.95);border-top:1px solid rgba(0,0,0,.05)}.nav-btn{display:flex;flex-direction:column;align-items:center;transition:.3s;color:#6b7280;background:0;border:0;padding:0 15px}.nav-active{color:#e11d48 !important;transform:scale(1.25);text-shadow:0 0 12px rgba(225,29,72,.6),0 0 25px rgba(225,29,72,.3)}.nav-btn i{font-size:1.2rem;margin-bottom:2px}.dark body{background:#1a1a1a;color:#e5e7eb}.dark nav{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.1)}.dark .bg-white{background:#2d2d2d}.dark .border{border-color:#404040}.dark input,.dark select,.dark textarea{background:#3d3d3d;border-color:#4d4d4d;color:#fff}.fab-button{position:fixed;bottom:80px;right:20px;z-index:50}#receiptArea{font-family:'Hind Siliguri',sans-serif !important;line-height:1.4 !important;letter-spacing:.01rem;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}#receiptArea table{border-collapse:collapse !important;width:100% !important}#receiptArea td,#receiptArea th{border-bottom:1px solid #eee !important}.search-wrap{position:relative}.search-input{padding-right:95px !important}.search-actions{position:absolute;right:7px;top:50%;transform:translateY(-50%);display:flex;gap:4px}.search-btn{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center}.loading-overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);backdrop-filter:blur(3px);z-index:300;display:none;align-items:center;justify-content:center}.loading-overlay.show{display:flex}.spinner{width:45px;height:45px;border:4px solid rgba(255,255,255,.35);border-top-color:white;border-radius:50%;animation:spin .7s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.empty-state{text-align:center;padding:35px 15px;color:#9ca3af}.voice-status{min-height:18px;margin:4px 4px 0;display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:#e11d48;opacity:0;transform:translateY(-2px);transition:opacity .2s ease,transform .2s ease}.voice-status.show{opacity:1;transform:translateY(0)}.voice-status .voice-dot{width:7px;height:7px;border-radius:999px;background:currentColor;animation:voicePulse 1s ease-in-out infinite;flex:0 0 auto}.voice-status.listening{color:#e11d48}.voice-status.processing{color:#2563eb}.voice-status.success{color:#16a34a}.voice-status.error{color:#dc2626}@keyframes voicePulse{0%,100%{transform:scale(.75);opacity:.55}50%{transform:scale(1.25);opacity:1}}.report-action-cell{white-space:nowrap;min-width:62px}.report-action-btn{width:26px;height:26px;border-radius:7px;display:inline-flex;align-items:center;justify-content:center;margin-left:2px;border:0;cursor:pointer;font-size:11px;transition:transform .15s ease,opacity .15s ease}.report-action-btn:active{transform:scale(.9)}.report-action-edit{background:#fef3c7;color:#b45309}.report-action-delete{background:#fee2e2;color:#dc2626}@media (max-width:640px){.report-action-cell{min-width:58px}.report-action-btn{width:25px;height:25px;font-size:10px}}html,body{max-width:100%;overflow-x:hidden}#main-content{width:100%;max-width:100%;box-sizing:border-box}.search-wrap{width:100%;min-width:0}.search-input{min-width:0;width:100%;box-sizing:border-box;font-size:14px}@media (max-width:640px){body{padding-bottom:74px !important}header{padding:10px 12px !important}#main-content{padding:10px !important}.search-input{min-height:44px;padding:10px 88px 10px 12px !important;font-size:14px !important;border-radius:12px !important}.search-actions{right:6px;gap:3px}.search-btn{width:34px;height:34px;min-width:34px}.voice-status{font-size:10px;min-height:16px}#customerList>div,#companyList>div{max-width:100%;box-sizing:border-box;gap:8px}#customerList h3,#companyList h3{font-size:16px !important;overflow-wrap:anywhere}#customerList button,#companyList button{max-width:48%}nav{height:64px !important;padding:6px 3px !important}.nav-btn{min-width:0;flex:1;padding:0 4px !important;font-size:10px}.nav-btn i{font-size:1.05rem}.nav-active{transform:scale(1.08)}.fab-button{right:14px;bottom:76px;width:50px !important;height:50px !important}#reportModal{padding:0 !important;align-items:stretch !important}#reportModal>div{width:100% !important;max-width:none !important;height:100dvh !important;max-height:100dvh !important;border-radius:0 !important}#reportModal .p-4{padding:10px !important}#reportModal #receiptArea{padding:12px !important;width:100% !important;max-width:100% !important;box-sizing:border-box;overflow:hidden}#receiptArea h1{font-size:23px !important}#receiptArea table{font-size:11px !important}#receiptArea th,#receiptArea td{padding:4px 2px !important;word-break:break-word}#entryModal{padding:8px !important}#entryModal>div{max-height:calc(100dvh - 16px) !important;padding:14px !important;border-radius:16px !important}}
+/* ===== V6.1 MOBILE / KEYBOARD / OFFLINE POLISH ===== */
+:root{--app-vh:100dvh;--safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px)}
+html{height:100%;background:#f4f7f6}
+body{min-height:100%;min-height:100dvh;overscroll-behavior-y:contain}
+body.keyboard-open{padding-bottom:calc(74px + var(--safe-bottom)) !important}
+header{padding-top:calc(10px + var(--safe-top)) !important}
+nav{padding-bottom:calc(6px + var(--safe-bottom)) !important}
+#entryModal,#reportModal{height:var(--app-vh);min-height:0}
+#entryModal>div{max-height:calc(var(--app-vh) - 16px) !important}
+#reportModal>div{height:calc(var(--app-vh) - 8px) !important;max-height:calc(var(--app-vh) - 8px) !important}
+#entryModal input,#entryModal select,#entryModal textarea{font-size:16px !important}
+#entryModal,#reportModal{overscroll-behavior:contain}
+input,select,textarea,button{touch-action:manipulation}
+.swal2-container{z-index:5000 !important}
+.swal2-popup{font-family:'Hind Siliguri',sans-serif !important;border-radius:18px !important}
+.swal2-toast{font-size:14px !important}
+#syncBadge{font-size:9px;line-height:1;padding:3px 7px;border-radius:999px;background:rgba(255,255,255,.18);white-space:nowrap}
+#syncBadge.syncing{background:rgba(251,191,36,.25)}
+#syncBadge.synced{background:rgba(34,197,94,.25)}
+#syncBadge.pending{background:rgba(248,113,113,.25)}
+@media (max-width:640px){
+  body{padding-bottom:calc(74px + var(--safe-bottom)) !important}
+  header{padding-top:calc(10px + var(--safe-top)) !important}
+  #main-content{padding-bottom:calc(18px + var(--safe-bottom)) !important}
+  #entryModal{padding:8px !important;align-items:flex-start !important}
+  #entryModal>div{width:100% !important;margin-top:4px !important}
+  #reportModal{padding:0 !important}
+  #reportModal>div{width:100% !important;border-radius:0 !important}
+  .fab-button{bottom:calc(76px + var(--safe-bottom)) !important}
+}
+
+/* ===== V6.2 PROFESSIONAL UI OVERRIDES ===== */
+body.professional-v62{touch-action:pan-y;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+body.professional-v62 *{scrollbar-width:thin}
+body.professional-v62 button,body.professional-v62 a,body.professional-v62 input,body.professional-v62 select,body.professional-v62 textarea{outline:none}
+body.professional-v62 button:focus-visible,body.professional-v62 a:focus-visible,body.professional-v62 input:focus-visible,body.professional-v62 select:focus-visible,body.professional-v62 textarea:focus-visible{box-shadow:0 0 0 3px rgba(225,29,72,.18);outline:2px solid rgba(225,29,72,.45);outline-offset:1px}
+.menu-card{transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.menu-card:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(15,23,42,.08);border-color:rgba(245,158,11,.35)}
+.menu-card:active{transform:scale(.985)}
+#priceListModal{overscroll-behavior:contain}
+#priceListFrame{background:#fff}
+.previous-balance-row{display:none !important}
+#customerList>div,#companyList>div{animation:none !important;transition:box-shadow .18s ease,transform .18s ease}
+#customerList>div:hover,#companyList>div:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(15,23,42,.07)}
+#summary select,#summary input[type="date"]{min-height:42px}
+@media (min-width:641px){
+  #main-content{max-width:1180px;margin:0 auto;padding:22px !important}
+  nav{height:72px !important;padding:8px 18px !important}
+  .nav-btn{min-width:120px;padding:8px 18px !important;border-radius:14px}
+  .nav-btn:hover{background:rgba(225,29,72,.06)}
+  .nav-active{transform:none !important;background:rgba(225,29,72,.10);text-shadow:none}
+  #customerList,#companyList{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  #customerList>div,#companyList>div{margin-bottom:0}
+}
+@media (max-width:640px){
+  #main-content{padding:10px 10px 20px !important}
+  .menu-card{min-height:68px}
+  #priceListModal>div{padding-bottom:env(safe-area-inset-bottom,0px)}
+  #summary .grid{min-width:0}
+}
+</style></head><body class="bg-[#f4f7f6] pb-20"><!-- LOADING --><div id="loadingOverlay" class="loading-overlay"><div class="text-center text-white"><div class="spinner mx-auto mb-3"></div><div id="loadingText">আপনার হিসাব প্রস্তুত করছি…</div></div></div><!-- LOGIN --><div id="loginOverlay" class="fixed inset-0 z-[200] flex items-center justify-center bg-rose-600"><div class="bg-white/20 backdrop-blur-lg p-8 rounded-3xl shadow-2xl w-80 text-center animate__animated animate__fadeInDown"><div class="mb-6"><div class="bg-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg"><i class="fa-solid fa-lock text-3xl text-rose-600"></i></div><h2 class="text-white text-2xl font-bold"> সুজন গার্মেন্টস </h2><p class="text-rose-100 text-sm"> প্রবেশ করতে পিন দিন </p></div><div class="space-y-4"><input type="password" id="pinInput" maxlength="4" placeholder="••••" class="w-full text-center text-3xl tracking-[15px] p-3 rounded-xl outline-none" ><button onclick="checkPin()" class="w-full bg-white text-rose-600 font-bold py-3 rounded-xl active:scale-95 transition-all" > আনলক করুন </button><button onclick="showRecovery()" class="text-rose-100 text-xs mt-4 underline" > পিন ভুলে গেছেন? </button></div></div></div><!-- HEADER --><header class="bg-rose-600 text-white p-4 shadow-lg sticky top-0 z-50 flex flex-col items-center justify-center"><span class="text-xl font-bold"> সুজন গার্মেন্টস </span><div class="flex items-center gap-3 mt-1"><div id="statusIndicator" class="flex items-center gap-1"><span class="relative flex h-2 w-2"><span id="statusPing" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span id="statusDot" class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span></span><span id="statusText" class="text-[10px] uppercase tracking-widest"> Online </span><span id="syncBadge" class="synced">সিঙ্ক ঠিক আছে</span></div><span class="text-rose-300">|</span><button onclick="toggleDarkMode()" class="text-white text-lg" ><i id="darkIcon" class="fa-solid fa-moon"></i></button></div></header><main class="p-4" id="main-content"><!-- ===================================================== CUSTOMER ===================================================== --><div id="customer" class="tab-content active-tab"><div class="grid grid-cols-3 gap-2 mb-4 text-center"><div class="bg-white p-2 rounded shadow"><p class="text-xs text-gray-500"> মোট জমা </p><p id="dashJoma" class="text-green-600 font-bold"> ৳ ০ </p></div><div class="bg-white p-2 rounded shadow"><p class="text-xs text-gray-500"> মোট বাকি </p><p id="dashBaki" class="text-rose-600 font-bold"> ৳ ০ </p></div><div class="bg-white p-2 rounded shadow"><p class="text-xs text-gray-500"> মোট ব্যালেন্স </p><p id="dashBalance" class="font-bold"> ৳ ০ </p></div></div><!-- CUSTOMER SEARCH --><div class="search-wrap mb-3"><input type="text" id="custSearch" oninput="searchCustomer()" placeholder="নাম / মোবাইল / ঠিকানা / টাকা / ID খুঁজুন..." class="search-input w-full p-3 border rounded-lg focus:ring-2 focus:ring-rose-500 outline-none" ><div class="search-actions"><button onclick="voiceSearch('custSearch')" class="search-btn bg-rose-100 text-rose-600" title="ভয়েস সার্চ" ><i class="fa-solid fa-microphone"></i></button><button onclick="clearSearch('custSearch')" class="search-btn bg-gray-200 text-gray-700" title="Clear" ><i class="fa-solid fa-xmark"></i></button></div></div><div id="custVoiceStatus" class="voice-status" aria-live="polite"><span class="voice-dot"></span><span class="voice-status-text">শুনছি...</span></div><div class="flex justify-between items-center px-1 mb-2"><span id="customerResultCount" class="text-xs text-gray-500" > ০ জন </span><div class="flex gap-2"><button onclick="sortDataByBalance('desc')" class="flex items-center gap-1 text-xs font-medium text-rose-600 px-2 py-1 rounded" ><i class="fa-solid fa-arrow-down-9-1"></i> বেশি বাকি </button><button onclick="sortDataByBalance('asc')" class="flex items-center gap-1 text-xs font-medium text-green-600 px-2 py-1 rounded" ><i class="fa-solid fa-arrow-up-1-9"></i> কম বাকি </button></div></div><div class="space-y-3" id="customerList" ></div></div><!-- ===================================================== COMPANY ===================================================== --><div id="company" class="tab-content"><div class="grid grid-cols-3 gap-2 mb-4 text-center"><div class="bg-white p-2 rounded shadow"><p class="text-xs text-gray-500"> মোট পরিশোধ </p><p id="compPaid" class="text-green-600 font-bold"> ৳ ০ </p></div><div class="bg-white p-2 rounded shadow"><p class="text-xs text-gray-500"> মোট ক্রয় </p><p id="compBuy" class="text-rose-600 font-bold"> ৳ ০ </p></div><div class="bg-white p-2 rounded shadow"><p class="text-xs text-gray-500"> মোট দেনা </p><p id="compDena" class="font-bold"> ৳ ০ </p></div></div><!-- COMPANY SEARCH --><div class="search-wrap mb-3"><input type="text" id="compSearch" oninput="searchCompany()" placeholder="কোম্পানি / মোবাইল / নোট / টাকা / ID..." class="search-input w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none" ><div class="search-actions"><button onclick="voiceSearch('compSearch')" class="search-btn bg-blue-100 text-blue-600" title="ভয়েস সার্চ" ><i class="fa-solid fa-microphone"></i></button><button onclick="clearSearch('compSearch')" class="search-btn bg-gray-200 text-gray-700" title="Clear" ><i class="fa-solid fa-xmark"></i></button></div></div><div id="compVoiceStatus" class="voice-status" aria-live="polite"><span class="voice-dot"></span><span class="voice-status-text">শুনছি...</span></div><div class="flex justify-between items-center mb-2"><span id="companyResultCount" class="text-xs text-gray-500" > ০ জন </span><button onclick="clearSearch('compSearch')" class="text-xs text-blue-600" > সার্চ ক্লিয়ার </button></div><div class="space-y-3" id="companyList" ></div></div><!-- ===================================================== SUMMARY ===================================================== --><div id="summary" class="tab-content"><div class="bg-white dark:bg-[#2d2d2d] p-4 rounded-xl shadow-md mb-6 border-b-4 border-rose-500">
+<div class="mb-4 rounded-xl bg-rose-50 dark:bg-[#3a242b] p-3 border border-rose-100 dark:border-rose-900/40">
+<div class="flex items-center justify-between gap-2 mb-2"><h2 class="text-sm font-bold flex items-center gap-2"><i class="fa-solid fa-calendar-days text-rose-500"></i> বছর ও মাস অনুযায়ী হিসাব</h2><button type="button" onclick="resetSummaryPeriod()" class="text-[11px] font-semibold text-rose-600 px-2 py-1 rounded-lg hover:bg-rose-100 dark:hover:bg-rose-900/30">রিসেট</button></div>
+<div class="grid grid-cols-2 gap-2">
+<select id="sumYear" onchange="applySummaryPeriod()" class="w-full p-2 text-sm border rounded-lg dark:bg-[#2d2d2d]" aria-label="বছর নির্বাচন"><option value="">সব বছর</option></select>
+<select id="sumMonth" onchange="applySummaryPeriod()" class="w-full p-2 text-sm border rounded-lg dark:bg-[#2d2d2d]" aria-label="মাস নির্বাচন"><option value="">সব মাস</option><option value="1">জানুয়ারি</option><option value="2">ফেব্রুয়ারি</option><option value="3">মার্চ</option><option value="4">এপ্রিল</option><option value="5">মে</option><option value="6">জুন</option><option value="7">জুলাই</option><option value="8">আগস্ট</option><option value="9">সেপ্টেম্বর</option><option value="10">অক্টোবর</option><option value="11">নভেম্বর</option><option value="12">ডিসেম্বর</option></select>
+</div><p id="summaryPeriodHint" class="text-[11px] text-gray-500 dark:text-gray-400 mt-2">সব ডাটা দেখানো হচ্ছে</p></div>
+<h2 class="text-lg font-bold mb-4 flex items-center gap-2"><i class="fa-solid fa-filter text-rose-500"></i> তারিখ ফিল্টার </h2><div class="grid grid-cols-2 gap-3"><div><label class="text-xs text-gray-500 block mb-1"> শুরু (dd/mm/yy) </label><input type="date" id="sumStart" class="w-full p-2 text-sm border rounded" ></div><div><label class="text-xs text-gray-500 block mb-1"> শেষ (dd/mm/yy) </label><input type="date" id="sumEnd" class="w-full p-2 text-sm border rounded" ></div></div><button onclick="processAndDisplayData()" class="w-full mt-3 bg-rose-600 text-white p-2 rounded font-bold text-sm shadow-sm" > রিপোর্ট দেখুন </button></div><div class="space-y-6"><div class="bg-white dark:bg-[#2d2d2d] p-4 rounded-xl shadow-md"><h3 class="font-bold text-rose-600 mb-3 border-b pb-1"> কাস্টমার সামারি </h3><div class="grid grid-cols-2 gap-4 text-sm"><div><span class="text-gray-500"> মোট বিক্রি </span><br><span id="sumCustBakiTotal" class="font-bold text-rose-600" > ৳ ০ </span></div><div><span class="text-gray-500"> মোট জমা </span><br><span id="sumCustJomaTotal" class="font-bold text-green-600" > ৳ ০ </span></div><div class="col-span-2 border-t pt-2"><span class="text-gray-500"> অবশিষ্টাংশ </span><span id="sumCustRemaining" class="font-bold dark:text-white" > ৳ ০ </span></div></div><div class="mt-4 h-48"><canvas id="custChart"></canvas></div></div><div class="bg-white dark:bg-[#2d2d2d] p-4 rounded-xl shadow-md"><h3 class="font-bold text-blue-600 mb-3 border-b pb-1"> কোম্পানি সামারি </h3><div class="grid grid-cols-2 gap-4 text-sm"><div><span class="text-gray-500"> মোট ক্রয় </span><br><span id="sumCompBuyTotal" class="font-bold text-rose-600" > ৳ ০ </span></div><div><span class="text-gray-500"> মোট পরিশোধ </span><br><span id="sumCompPaidTotal" class="font-bold text-green-600" > ৳ ০ </span></div><div class="col-span-2 border-t pt-2"><span class="text-gray-500"> বর্তমান দেনা </span><span id="sumCompDenaTotal" class="font-bold dark:text-white" > ৳ ০ </span></div></div><div class="mt-4 h-48"><canvas id="compChart"></canvas></div></div></div></div><!-- ===================================================== MENU ===================================================== --><div id="menu" class="tab-content"><div class="space-y-4"><button onclick="openAllCustomerReports()" class="w-full bg-white dark:bg-[#2d2d2d] p-4 rounded-lg shadow-sm flex items-center gap-4" ><i class="fa-solid fa-file-invoice text-rose-500"></i> কাস্টমার রিপোর্ট </button><button onclick="showTab('company')" class="w-full bg-white dark:bg-[#2d2d2d] p-4 rounded-lg shadow-sm flex items-center gap-4" ><i class="fa-solid fa-building text-blue-500"></i> কোম্পানি রিপোর্ট </button><button onclick="openPriceList()" class="menu-card w-full bg-white dark:bg-[#2d2d2d] p-4 rounded-xl shadow-sm flex items-center gap-4 border border-transparent text-left" >
+<i class="fa-solid fa-tags text-amber-500 text-xl w-7 text-center"></i><span><strong class="block">মূল্য তালিকা</strong><small class="text-xs text-gray-500">অ্যাপের ভিতরেই মূল্য তালিকা খুলুন</small></span><i class="fa-solid fa-chevron-right ml-auto text-gray-400"></i></button><a href="https://eremonrahman.blogspot.com/" target="_blank" class="w-full bg-blue-600 text-white p-4 rounded-lg shadow-sm flex items-center justify-center gap-4 active:scale-95 transition-transform" ><i class="fa-solid fa-globe text-2xl"></i> আমাদের ওয়েবসাইট </a><a href="https://wa.me/8801816311351" target="_blank" class="w-full bg-green-500 text-white p-4 rounded-lg shadow-sm flex items-center justify-center gap-4 active:scale-95 transition-transform" ><i class="fa-brands fa-whatsapp text-2xl"></i> হেল্পলাইন </a><div class="text-center pt-10 text-gray-400 text-sm italic"> © ২০২৬ সুজন গার্মেন্টস | ডেভলপড বাই নুর-এ-আলম আকিব </div></div></div><!-- ===================================================== REPORT MODAL ===================================================== --><div id="reportModal" class="fixed inset-0 bg-black/70 hidden z-[110] flex items-center justify-center p-2 backdrop-blur-sm" ><div class="bg-white w-full max-w-4xl h-[95vh] rounded-xl flex flex-col dark:bg-[#2d2d2d]" ><div class="p-4 border-b dark:border-gray-600 bg-gray-50 dark:bg-[#383838] rounded-t-xl" ><div class="flex justify-between items-center mb-3"><h2 class="text-lg font-bold text-rose-600 flex items-center gap-2" ><i class="fa-solid fa-file-invoice"></i> রিপোর্ট ফিল্টার </h2><button onclick="closeReport()" class="bg-gray-200 dark:bg-gray-600 w-8 h-8 rounded-full flex items-center justify-center hover:bg-rose-500 hover:text-white transition-all" > &times; </button></div><div class="grid grid-cols-2 gap-2 sm:grid-cols-3"><input type="date" id="reportStart" title="তারিখ dd/mm/yy" onchange="filterReport()" class="p-2 border rounded text-xs dark:bg-[#2d2d2d]" ><input type="date" id="reportEnd" title="তারিখ dd/mm/yy" onchange="filterReport()" class="p-2 border rounded text-xs dark:bg-[#2d2d2d]" ><button onclick="filterReport()" class="col-span-2 sm:col-span-1 bg-rose-600 text-white px-3 py-1 rounded text-xs font-bold shadow active:scale-95" > ফিল্টার </button></div></div><div class="flex-1 overflow-y-auto bg-gray-100 dark:bg-[#1a1a1a] p-2 sm:p-4" ><div id="receiptArea" class="bg-white p-6 max-w-2xl mx-auto shadow-xl rounded-lg text-black" ><div class="text-center border-b-2 border-rose-500 pb-4 mb-4"><h1 class="text-3xl font-bold text-rose-600 mb-1">মেসার্স শব্দর আলী এন্ড সন্স</h1><p class="text-sm text-gray-600"> সুজন গার্মেন্টস </p><p class="text-sm text-gray-600"> পরিচালনায়ঃ সুজন | মোবাইল: 019122-88470 </p><p class="text-xs text-gray-500"> ঠিকানা: বাগানবাড়ি রোড, ভৈরব বাজার </p></div><div class="flex justify-between items-end mb-4 text-sm border-b pb-2 border-gray-200 border-dashed" ><div><p class="text-gray-500 text-xs"> অ্যাকাউন্ট নাম </p><h3 id="rcptName" class="font-bold text-lg" > নাম </h3><p id="rcptPhone" class="text-gray-600 font-bold" ></p><p id="rcptAddress" class="text-xs text-gray-400 font-medium" ></p></div><div class="text-right"><p class="text-xs text-gray-500"> পিরিয়ড </p><p id="rcptDateRange" class="font-mono font-bold text-xs" > - </p><p id="genDate" class="text-[9px] text-gray-400 mt-1" ></p></div></div><div id="previousBalanceRow" class="previous-balance-row flex justify-between bg-gray-100 p-2 rounded mb-2 text-sm" ><span class="font-bold text-gray-600"> পূর্বের জের </span><span id="prevBalance" class="font-bold" > ৳ ০ </span></div><table class="w-full text-sm mb-4"><thead><tr class="border-b-2 border-black text-xs"><th class="text-left py-2"> তারিখ ও সময় </th><th class="text-left py-2"> বিবরণ </th><th class="text-right py-2 text-green-700"> জমা </th><th class="text-right py-2 text-rose-700"> বাকি </th><th class="text-right py-2"> কাজ </th></tr></thead><tbody id="rcptBody" class="font-mono text-xs" ></tbody></table><div class="border-t-2 border-black pt-2 flex flex-col items-end gap-1" ><div class="flex justify-between w-48 text-sm"><span>মোট জমা:</span><span id="totalJoma" class="font-bold text-green-700" > ৳ ০ </span></div><div class="flex justify-between w-48 text-sm"><span>মোট বাকি:</span><span id="totalBaki" class="font-bold text-rose-700" > ৳ ০ </span></div><div class="flex justify-between w-48 text-base bg-rose-600 text-white p-1 rounded font-bold mt-2" ><span>বর্তমান দেনা:</span><span id="finalBalance"> ৳ ০ </span></div></div></div></div><div class="p-4 border-t dark:border-gray-600 bg-white dark:bg-[#383838] flex gap-3" ><button onclick="downloadPDF()" class="flex-1 bg-red-600 text-white py-3 rounded-lg font-bold flex items-center justify-center gap-2 shadow-lg active:scale-95" ><i class="fa-solid fa-file-pdf"></i> PDF </button><button onclick="shareReport()" class="flex-1 bg-blue-600 text-white py-3 rounded-lg font-bold flex items-center justify-center gap-2 shadow-lg active:scale-95" ><i class="fa-solid fa-share-nodes"></i> Share </button></div></div></div><!-- ===================================================== PRICE LIST EMBED ===================================================== -->
+<div id="priceListModal" class="fixed inset-0 bg-black/70 hidden z-[130] p-0 sm:p-4 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="priceListTitle">
+<div class="bg-white dark:bg-[#2d2d2d] w-full h-full sm:max-w-6xl sm:h-[94vh] sm:mx-auto sm:rounded-2xl overflow-hidden shadow-2xl flex flex-col">
+<div class="p-3 sm:p-4 border-b dark:border-gray-700 flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center"><i class="fa-solid fa-tags"></i></div>
+<div class="min-w-0 flex-1"><h2 id="priceListTitle" class="font-bold">মূল্য তালিকা</h2><p id="priceListUrlText" class="text-[10px] text-gray-400 truncate">অ্যাপের ভিতরে প্রদর্শিত ওয়েব পেজ</p></div>
+<button onclick="setPriceListUrl()" class="w-9 h-9 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-200" title="মূল্য তালিকার লিংক সেট করুন"><i class="fa-solid fa-link"></i></button>
+<button onclick="closePriceList()" class="w-9 h-9 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-200" title="বন্ধ করুন"><i class="fa-solid fa-xmark"></i></button>
+</div>
+<div class="flex-1 bg-gray-100 dark:bg-[#171717] relative"><div id="priceListEmpty" class="absolute inset-0 flex items-center justify-center p-6 text-center"><div><i class="fa-solid fa-tags text-4xl text-amber-500 mb-3"></i><p class="font-bold">মূল্য তালিকার লিংক সেট করুন</p><p class="text-xs text-gray-500 mt-1">আপনার ওয়েব URL দিলে এটি এই অ্যাপের ভেতরেই খোলার চেষ্টা করবে।</p><button onclick="setPriceListUrl()" class="mt-4 bg-amber-500 text-white px-4 py-2 rounded-lg font-bold">লিংক সেট করুন</button></div></div><iframe id="priceListFrame" title="মূল্য তালিকা" class="w-full h-full border-0 hidden" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="fullscreen"></iframe></div>
+</div></div>
+<!-- ===================================================== FAB ===================================================== --><button onclick="toggleModal()" class="fab-button bg-rose-600 text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-2xl animate-bounce" ><i class="fa-solid fa-plus"></i></button><!-- ===================================================== ENTRY MODAL ===================================================== --><div id="entryModal" class="fixed inset-0 bg-black/50 hidden z-[100] p-4 flex items-center justify-center" ><div class="bg-white w-full max-w-md rounded-2xl p-6 overflow-y-auto max-h-[90vh] dark:bg-[#2d2d2d]" ><div class="flex justify-between items-center mb-4 border-b pb-2" ><h2 class="text-xl font-bold text-rose-600"> নতুন এন্ট্রি </h2><button onclick="toggleModal()" class="text-gray-500 text-2xl" > &times; </button></div><form id="dataForm" class="space-y-4"><select id="entrySource" class="w-full p-3 border rounded-lg dark:bg-[#3d3d3d]" onchange="updateFields()" ><option value="customer"> 👤 কাস্টমার এন্ট্রি </option><option value="company"> 🏢 কোম্পানি এন্ট্রি </option></select><div class="grid grid-cols-2 gap-2"><div><label class="text-xs font-bold"> তারিখ (dd/mm/yy) </label><input type="date" id="date" class="w-full p-3 border rounded-lg text-sm" required ></div><div><label class="text-xs font-bold"> ধরণ </label><select id="type" class="w-full p-3 border rounded-lg text-sm" ></select></div></div><div id="dynamicFields" class="space-y-4" ></div><datalist id="nameSuggestions"></datalist><datalist id="mobileSuggestions"></datalist><div><label class="text-xs font-bold"> টাকা (৳) </label><input type="text" id="amountDisplay" placeholder="৳ ০.০০" oninput="handleAmountInput(this)" class="w-full p-3 border rounded-lg font-bold" required ><input type="hidden" id="amount" ></div><div class="flex gap-2 pt-4"><button type="reset" onclick="resetEntryForm()" class="flex-1 bg-gray-200 dark:bg-gray-700 p-3 rounded-lg" > ক্লিয়ার </button><button type="submit" id="submitBtn" class="flex-1 bg-rose-600 text-white p-3 rounded-lg font-bold" > সাবমিট </button></div></form></div></div><!-- ===================================================== NAVIGATION ===================================================== --><nav class="fixed bottom-0 w-full bg-white dark:bg-[#2d2d2d] border-t flex justify-around p-2 shadow-2xl z-50" ><button onclick="showTab('customer',this)" class="nav-btn nav-active" ><i class="fa-solid fa-users"></i><span class="text-[10px]">কাস্টমার</span></button><button onclick="showTab('company',this)" class="nav-btn" ><i class="fa-solid fa-briefcase"></i><span class="text-[10px]">কোম্পানি</span></button><button onclick="showTab('summary',this)" class="nav-btn" ><i class="fa-solid fa-chart-pie"></i><span class="text-[10px]">সামারি</span></button><button onclick="showTab('menu',this)" class="nav-btn" ><i class="fa-solid fa-bars"></i><span class="text-[10px]">মেনু</span></button></nav><script>
+const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbzbeSc2DORxnjmQI87EPEBJ57WYpBpUGWD3ZdU3QP-8I1ULjWmAt2x2Yk8MUs_SGUptFA/exec";
+let mainData = [];
+let personMeta = {};
+let custChartInstance = null;
+let compChartInstance = null;
+let displayedCount = 100000;
+let isFetching = false;
+let isSyncing = false;
+let currentReportName = "";
+let currentReportSource = "";
+let knownLocalTransactions = new Map();
+let currentSortOrder = null;
+let MAIN_PIN =
+localStorage.getItem("app_pin") || "8899";
+let RECOVERY_PIN =
+"01816311351";
+const successAudio =
+new Audio(
+"https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"
+);
+const refreshAudio =
+new Audio(
+"https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3"
+);
+const db =
+new Dexie("SamiyaFashionDB");
+db.version(1).stores({
+    entries:
+    '++id,date,source,type,name,amount,status',
+    meta:
+    'key,value'
+});
+db.version(2).stores({
+    entries:
+    '++id,transactionId,date,source,type,name,amount,status',
+    meta:
+    'key,value'
+});
+db.version(3).stores({
+    entries:
+    '++id,transactionId,date,source,type,name,amount,status',
+    outbox:
+    '++id,action,transactionId,status,createdAt',
+    meta:
+    'key,value'
+});
+function convertToEnDigit(str) {
+    const banglaDigits = {
+        '০':'0',
+        '১':'1',
+        '২':'2',
+        '৩':'3',
+        '৪':'4',
+        '৫':'5',
+        '৬':'6',
+        '৭':'7',
+        '৮':'8',
+        '৯':'9'
+    };
+    return String(str || '')
+        .replace(
+            /[০-৯]/g,
+            d => banglaDigits[d]
+        );
+}
+function convertToBnDigit(str) {
+    const digits = {
+        '0':'০',
+        '1':'১',
+        '2':'২',
+        '3':'৩',
+        '4':'৪',
+        '5':'৫',
+        '6':'৬',
+        '7':'৭',
+        '8':'৮',
+        '9':'৯'
+    };
+    return String(str)
+        .replace(
+            /[0-9]/g,
+            d => digits[d]
+        );
+}
+function normalizeSearch(str) {
+    return convertToEnDigit(
+        String(str || '')
+            .normalize('NFKC')
+            .toLowerCase()
+            .trim()
+    )
+    .replace(/[ী]/g, 'ি')
+    .replace(/[ুূ]/g, 'ু')
+    .replace(/[েৈ]/g, 'ে')
+    .replace(/[োৌ]/g, 'ো')
+    .replace(/ড়/g, 'ড়')
+    .replace(/ঢ়/g, 'ঢ়')
+    .replace(/য়/g, 'য')
+    .replace(/়/g, '')
+    .replace(/[৳,\.\-\s]/g, '');
+}
+function normalizeSearchLoose(str) {
+    return normalizeSearch(str)
+    .replace(/[ািীুূৃেৈোৌ]/g, '')
+    .replace(/[ংঃঁ]/g, '')
+    .replace(/্/g, '');
+}
+function levenshteinDistance_(a, b) {
+    a = String(a || '');
+    b = String(b || '');
+    if (a === b) return 0;
+    if (!a.length) return b.length;
+    if (!b.length) return a.length;
+    if (a.length > b.length) {
+        const tmp = a;
+        a = b;
+        b = tmp;
+    }
+    let prev = Array.from({length:a.length + 1}, (_, i) => i);
+    for (let j = 1; j <= b.length; j++) {
+        const cur = [j];
+        for (let i = 1; i <= a.length; i++) {
+            const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+            cur[i] = Math.min(
+                cur[i - 1] + 1,
+                prev[i] + 1,
+                prev[i - 1] + cost
+            );
+        }
+        prev = cur;
+    }
+    return prev[a.length];
+}
+function fuzzyTokenScore_(query, token) {
+    const q = normalizeSearch(query);
+    const t = normalizeSearch(token);
+    if (!q || !t) return 0;
+    if (t.includes(q)) return 1;
+    const qLoose = normalizeSearchLoose(q);
+    const tLoose = normalizeSearchLoose(t);
+    if (qLoose && tLoose && tLoose.includes(qLoose)) return 0.97;
+    const maxLen = Math.max(q.length, t.length);
+    const minLen = Math.min(q.length, t.length);
+    if (q.length <= 2) return 0;
+    const distance = levenshteinDistance_(q, t);
+    const looseDistance =
+        qLoose && tLoose
+            ? levenshteinDistance_(qLoose, tLoose)
+            : distance;
+    const allowed =
+        q.length <= 3 ? 1 :
+        q.length <= 5 ? 2 : 3;
+    const bestDistance = Math.min(distance, looseDistance);
+    if (bestDistance <= allowed) {
+        return Math.max(
+            0.55,
+            1 - (bestDistance / Math.max(maxLen, 1))
+        );
+    }
+    if (minLen >= 3) {
+        const prefixLen = Math.min(
+            q.length,
+            t.length,
+            Math.max(2, Math.floor(q.length * 0.65))
+        );
+        if (
+            q.slice(0, prefixLen) === t.slice(0, prefixLen) ||
+            qLoose.slice(0, Math.min(prefixLen, qLoose.length)) ===
+            tLoose.slice(0, Math.min(prefixLen, tLoose.length))
+        ) {
+            return 0.58;
+        }
+    }
+    return 0;
+}
+function fuzzySearchScore_(query, text) {
+    const q = normalizeSearch(query);
+    if (!q) return 1;
+    const raw = String(text || '');
+    const exact = normalizeSearch(raw);
+    if (exact.includes(q)) return 1;
+    const looseQ = normalizeSearchLoose(q);
+    const looseText = normalizeSearchLoose(raw);
+    if (looseQ && looseText.includes(looseQ)) return 0.98;
+    const tokens = raw
+        .split(/[\s,;|/\\]+/)
+        .filter(Boolean);
+    let best = 0;
+    tokens.forEach(token => {
+        best = Math.max(best, fuzzyTokenScore_(q, token));
+    });
+    best = Math.max(best, fuzzyTokenScore_(q, raw));
+    return best;
+}
+function accountSearchScore_(account, query) {
+    const q = normalizeSearch(query);
+    if (!q) return 1;
+    const fields = [
+        account.name,
+        account.mobile,
+        account.details,
+        account.source,
+        account.balance,
+        formatNumber(account.balance),
+        ...(account.searchData || [])
+    ];
+    let best = 0;
+    fields.forEach(field => {
+        best = Math.max(
+            best,
+            fuzzySearchScore_(q, field)
+        );
+    });
+    return best;
+}
+function roundMoney(value) {
+    const n =
+    Number(
+        convertToEnDigit(
+            String(value || '')
+                .replace(/[৳,\s]/g,'')
+        )
+    );
+    if (!isFinite(n)) return 0;
+    return Math.round(
+        (n + Number.EPSILON) * 100
+    ) / 100;
+}
+function formatNumber(value) {
+    value = roundMoney(value);
+    return new Intl.NumberFormat(
+        "en-IN",
+        {
+            minimumFractionDigits:
+                value % 1 !== 0 ? 2 : 0,
+            maximumFractionDigits: 2
+        }
+    ).format(value);
+}
+function localDateISO(d = new Date()) {
+    const y =
+    d.getFullYear();
+    const m =
+    String(d.getMonth() + 1)
+        .padStart(2,"0");
+    const day =
+    String(d.getDate())
+        .padStart(2,"0");
+    return `${y}-${m}-${day}`;
+}
+function parseToISODate(rawDate) {
+    if (!rawDate) return "";
+    let str =
+    String(rawDate);
+    if (
+        str.includes("T") &&
+        !str.includes("/")
+    ) {
+        const d =
+        new Date(str);
+        if (!isNaN(d)) {
+            return localDateISO(d);
+        }
+    }
+    str =
+    str
+    .split(" Time:")[0]
+    .trim();
+    const parts =
+    str.split("/");
+    if (parts.length === 3) {
+        let y =
+        parts[2].length === 2
+            ? "20" + parts[2]
+            : parts[2];
+        return (
+            y +
+            "-" +
+            parts[1].padStart(2,"0") +
+            "-" +
+            parts[0].padStart(2,"0")
+        );
+    }
+    return "";
+}
+function getFormattedDate(e) {
+    if (!e) return "";
+    if (/^\d{4}-\d{2}-\d{2}$/.test(e)) {
+        const p =
+        e.split("-");
+        return (
+            p[2] +
+            "/" +
+            p[1] +
+            "/" +
+            p[0].slice(-2)
+        );
+    }
+    const n =
+    new Date(e);
+    if (isNaN(n)) return e;
+    return (
+        String(n.getDate()).padStart(2,"0") +
+        "/" +
+        String(n.getMonth()+1).padStart(2,"0") +
+        "/" +
+        String(n.getFullYear()).slice(-2)
+    );
+}
+function formatDisplayTime(rawTime) {
+    if (!rawTime) return "";
+    let s = String(rawTime).trim().replace(/^Time\s*:/i, "").trim();
+    const m = s.match(/(\d{1,2}):(\d{2})(?::\d{2})?\s*([AaPp][Mm])/);
+    if (m) return `${m[1]}:${m[2]} ${m[3].toUpperCase()}`;
+    const m24 = s.match(/(\d{1,2}):(\d{2})(?::\d{2})?/);
+    if (m24) return `${m24[1]}:${m24[2]}`;
+    return s;
+}
+function getRowDateText(item) {
+    const a = item?.[0], b = item?.[1];
+    let dateText = "";
+    if (a instanceof Date && !isNaN(a)) {
+        dateText = String(a.getDate()).padStart(2,"0") + "/" + String(a.getMonth()+1).padStart(2,"0") + "/" + String(a.getFullYear()).slice(-2);
+    } else {
+        const raw = String(a ?? "").trim();
+        const iso = parseToISODate(raw);
+        dateText = iso ? getFormattedDate(iso) : raw.split(" Time:")[0].trim();
+    }
+    const timeText = formatDisplayTime(b);
+    return dateText + (timeText ? ` Time:${timeText}` : "");
+}
+function generateTransactionId() {
+    const stamp =
+    Date.now()
+        .toString(36)
+        .toUpperCase();
+    const rand =
+    window.crypto?.randomUUID
+        ? window.crypto.randomUUID()
+            .replace(/-/g,"")
+            .slice(0,16)
+        : Math.random()
+            .toString(36)
+            .slice(2,18);
+    return (
+        `TXN-${stamp}-${rand.toUpperCase()}`
+    );
+}
+function checkPin() {
+    const e =
+    convertToEnDigit(
+        document.getElementById("pinInput").value
+    );
+    if (e === MAIN_PIN) {
+        sessionStorage.setItem(
+            "isLoggedIn",
+            "true"
+        );
+        document
+        .getElementById("loginOverlay")
+        .classList.add(
+            "animate__fadeOutUp"
+        );
+        setTimeout(() => {
+            document
+            .getElementById("loginOverlay")
+            .classList.add("hidden");
+        },500);
+    } else {
+        Swal.fire({
+            icon:"error",
+            title:"ভুল পিন!",
+            confirmButtonColor:"#e11d48"
+        });
+        document
+        .getElementById("pinInput")
+        .value = "";
+    }
+}
+async function showRecovery() {
+    const {
+        value:e
+    } =
+    await Swal.fire({
+        title:"রিকোভারি পিন দিন",
+        input:"password",
+        showCancelButton:true,
+        confirmButtonColor:"#e11d48"
+    });
+    const r =
+    convertToEnDigit(e || "");
+    if (r === RECOVERY_PIN) {
+        const {
+            value:n
+        } =
+        await Swal.fire({
+            title:"নতুন ৪ ডিজিটের পিন",
+            input:"text",
+            inputAttributes:{
+                maxlength:4
+            },
+            showCancelButton:true,
+            confirmButtonColor:"#10b981"
+        });
+        const p =
+        convertToEnDigit(n || "");
+        if (
+            p &&
+            p.length === 4
+        ) {
+            localStorage.setItem(
+                "app_pin",
+                p
+            );
+            MAIN_PIN = p;
+            Swal.fire(
+                "সফল!",
+                "পিন পরিবর্তন হয়েছে।",
+                "success"
+            );
+        }
+    }
+}
+function showLoading(text="আপনার হিসাব প্রস্তুত করছি…") {
+    document
+    .getElementById("loadingText")
+    .innerText = text;
+    document
+    .getElementById("loadingOverlay")
+    .classList.add("show");
+}
+function hideLoading() {
+    document
+    .getElementById("loadingOverlay")
+    .classList.remove("show");
+}
+function extractServerData(payload) {
+    if (
+        Array.isArray(payload)
+    ) {
+        return payload;
+    }
+    if (
+        payload &&
+        Array.isArray(payload.data)
+    ) {
+        return payload.data;
+    }
+    throw new Error(
+        payload?.message ||
+        "Invalid server data"
+    );
+}
+function localTimeText(d=new Date()){
+    return d.toLocaleTimeString("en-US",{hour:"2-digit",minute:"2-digit",hour12:true});
+}
+function localEntryRow(t){
+    return [t.entryDate,localTimeText(),t.source||"",t.name||"",t.mobile||"",t.details||"",t.type||"",roundMoney(t.amount),t.transactionId||""];
+}
+async function loadLocalData(){
+    const cached=await db.meta.get("mainData");
+    let data=Array.isArray(cached?.value)?cached.value:[];
+    if(!data.length)return data;
+    return await appendPendingRows(data);
+}
+async function appendPendingRows(data){
+    const pending=await db.entries.where("status").equals("pending").toArray();
+    if(!pending.length)return data;
+    const out=Array.isArray(data)?data.map(r=>Array.isArray(r)?r.slice():r):[];
+    const ids=new Set(out.slice(1).map(r=>String(r?.[8]||"").trim()).filter(Boolean));
+    for(const item of pending){
+        const id=String(item.transactionId||"").trim();
+        if(id&&!ids.has(id)){out.push(localEntryRow(item));ids.add(id);}
+    }
+    return out;
+}
+async function saveLocalMainData(){
+    await db.meta.put({key:"mainData",value:mainData});
+}
+function setSyncBadge_(state,text){
+    const el=document.getElementById("syncBadge");
+    if(!el)return;
+    el.className=state||"";
+    el.id="syncBadge";
+    el.innerText=text||"";
+}
+function isKeyboardVisible_(){
+    if(!window.visualViewport)return false;
+    return window.innerHeight-window.visualViewport.height>120;
+}
+function updateViewportHeight_(){
+    const vv=window.visualViewport;
+    const h=vv ? vv.height : window.innerHeight;
+    document.documentElement.style.setProperty("--app-vh",`${Math.max(320,Math.round(h))}px`);
+    document.body.classList.toggle("keyboard-open",isKeyboardVisible_());
+}
+function keepFocusedFieldVisible_(el){
+    if(!el)return;
+    setTimeout(()=>{
+        try{el.scrollIntoView({behavior:"smooth",block:"center",inline:"nearest"});}catch(_){}
+    },180);
+}
+function showToast_(icon,title,text="",timer=1800){
+    const toast=Swal.mixin({
+        toast:true,
+        position:"top-end",
+        showConfirmButton:false,
+        timer,
+        timerProgressBar:true,
+        didOpen:(toastEl)=>{
+            toastEl.addEventListener("mouseenter",Swal.stopTimer);
+            toastEl.addEventListener("mouseleave",Swal.resumeTimer);
+        }
+    });
+    return toast.fire({icon,title,text});
+}
+function applyLocalEdit_(transactionId,newAmount){
+    const id=String(transactionId||"").trim();
+    const amount=roundMoney(newAmount);
+    let changed=false;
+    mainData=mainData.map(row=>{
+        if(String(row?.[8]||"").trim()===id){
+            const copy=Array.isArray(row)?row.slice():row;
+            copy[7]=amount;
+            changed=true;
+            return copy;
+        }
+        return row;
+    });
+    if(changed){
+        knownLocalTransactions.delete(id);
+        const updated=mainData.slice(1).find(r=>String(r?.[8]||"").trim()===id);
+        if(updated)knownLocalTransactions.set(id,updated);
+    }
+    return changed;
+}
+function applyLocalDelete_(transactionId){
+    const id=String(transactionId||"").trim();
+    const before=mainData.length;
+    mainData=[mainData[0]||[],...mainData.slice(1).filter(r=>String(r?.[8]||"").trim()!==id)];
+    knownLocalTransactions.delete(id);
+    return mainData.length!==before;
+}
+async function queueOutboxAction_(action,payload){
+    await db.outbox.add({
+        action,
+        transactionId:String(payload.transactionId||"").trim(),
+        payload,
+        status:"pending",
+        createdAt:Date.now()
+    });
+    setSyncBadge_("pending","সিঙ্ক অপেক্ষায়");
+}
+
+async function fetchData(
+    isSilent = false
+) {
+    if (isFetching) {
+        return false;
+    }
+    isFetching = true;
+    try {
+        updateOnlineStatus();
+        if (!navigator.onLine) {
+            mainData=await loadLocalData();
+            if(mainData.length){
+                extractPersonMeta();
+                processAndDisplayData();
+                return true;
+            }
+            throw new Error("Offline and no cache");
+        }
+        if (!isSilent) {
+            showLoading(
+                "আপনার হিসাব প্রস্তুত করছি…"
+            );
+        }
+        await syncOfflineData();
+        const url =
+        SCRIPT_URL +
+        "?t=" +
+        Date.now();
+        const res =
+        await fetch(
+            url,
+            {
+                method:"GET",
+                cache:"no-store",
+                redirect:"follow"
+            }
+        );
+        if (!res.ok) {
+            throw new Error(
+                "Server fetch failed"
+            );
+        }
+        const payload =
+        await res.json();
+        const serverData =
+        extractServerData(payload);
+        if (
+            !serverData.length
+        ) {
+            throw new Error(
+                "Server returned empty data"
+            );
+        }
+        const merged =
+        mergeServerAndLocalData(
+            serverData
+        );
+        mainData = merged;
+        await db.meta.put({
+            key:"mainData",
+            value:mainData
+        });
+        if (isSilent && typeof window.__sujanRenderIfChanged === "function") {
+            window.__sujanRenderIfChanged(false);
+        } else {
+            extractPersonMeta();
+            processAndDisplayData();
+            if (typeof window.__sujanRenderIfChanged === "function") {
+                window.__sujanRenderIfChanged(true);
+            }
+        }
+        await syncOfflineData();
+        return true;
+    } catch (e) {
+        console.error(
+            "fetchData:",
+            e
+        );
+        try {
+            mainData=await loadLocalData();
+            if (mainData.length) {
+                extractPersonMeta();
+                processAndDisplayData();
+                if (!isSilent) {
+                    Swal.fire({
+                        icon:"info",
+                        title:"ক্যাশড ডাটা দেখানো হচ্ছে",
+                        text:"সার্ভারের নতুন ডাটা পাওয়া যায়নি। আবার Refresh করলে চেষ্টা করা হবে।",
+                        confirmButtonColor:"#e11d48"
+                    });
+                }
+                return true;
+            }
+        } catch(cacheError) {
+            console.error(
+                cacheError
+            );
+        }
+        if (!isSilent) {
+            Swal.fire({
+                icon:"warning",
+                title:"ডাটা লোড হয়নি",
+                text:"ইন্টারনেট/সার্ভার সংযোগ পরীক্ষা করুন।",
+                confirmButtonColor:"#e11d48"
+            });
+        }
+        return false;
+    } finally {
+        isFetching = false;
+        hideLoading();
+    }
+}
+function mergeServerAndLocalData(
+    serverData
+) {
+    if (
+        !Array.isArray(serverData) ||
+        serverData.length === 0
+    ) {
+        return mainData;
+    }
+    const serverIds =
+    new Set();
+    for (
+        let i=1;
+        i<serverData.length;
+        i++
+    ) {
+        const id =
+        String(
+            serverData[i]?.[8] || ""
+        ).trim();
+        if (id) {
+            serverIds.add(id);
+            knownLocalTransactions.delete(id);
+        }
+    }
+    const header =
+    serverData[0];
+    const localRows =
+    Array.from(
+        knownLocalTransactions.values()
+    );
+    const result =
+    [header];
+    const localIds =
+    new Set();
+    localRows.forEach(row => {
+        const id =
+        String(
+            row?.[8] || ""
+        ).trim();
+        if (
+            id &&
+            !serverIds.has(id)
+        ) {
+            result.push(row);
+            localIds.add(id);
+        }
+    });
+    for (
+        let i=1;
+        i<serverData.length;
+        i++
+    ) {
+        const id =
+        String(
+            serverData[i]?.[8] || ""
+        ).trim();
+        if (!localIds.has(id)) {
+            result.push(
+                serverData[i]
+            );
+        }
+    }
+    return result;
+}
+async function syncOfflineData(){
+    if(!navigator.onLine || isSyncing)return;
+    isSyncing=true;
+    setSyncBadge_("syncing","সিঙ্ক হচ্ছে...");
+    try{
+        const pendingEntries=await db.entries.where("status").equals("pending").toArray();
+        for(const item of pendingEntries){
+            try{
+                const {id,status,...dataToSend}=item;
+                const res=await fetch(
+                    SCRIPT_URL+"?sync="+Date.now(),
+                    {
+                        method:"POST",
+                        headers:{"Content-Type":"text/plain;charset=utf-8"},
+                        body:JSON.stringify(dataToSend),
+                        cache:"no-store"
+                    }
+                );
+                const result=await res.json().catch(()=>({}));
+                if(res.ok && (result.status==="success"||result.status==="duplicate")){
+                    await db.entries.update(id,{status:"synced"});
+                    const syncId=result.transactionId||dataToSend.transactionId;
+                    const row=Array.isArray(result.row)
+                        ? result.row
+                        : [
+                            result.date||dataToSend.entryDate||localDateISO(),
+                            result.time||"",
+                            dataToSend.source||"",
+                            dataToSend.name||"",
+                            dataToSend.mobile||"",
+                            dataToSend.details||"",
+                            dataToSend.type||"",
+                            roundMoney(dataToSend.amount),
+                            syncId
+                        ];
+                    knownLocalTransactions.set(syncId,row);
+                }
+            }catch(e){console.warn("Pending entry sync failed:",e);}
+        }
+
+        const pendingActions=await db.outbox.where("status").equals("pending").toArray();
+        for(const item of pendingActions){
+            try{
+                const payload={...(item.payload||{}),action:item.action};
+                const res=await fetch(
+                    SCRIPT_URL+"?action="+encodeURIComponent(item.action)+"&sync="+Date.now(),
+                    {
+                        method:"POST",
+                        headers:{"Content-Type":"text/plain;charset=utf-8"},
+                        body:JSON.stringify(payload),
+                        cache:"no-store"
+                    }
+                );
+                const result=await res.json().catch(()=>({}));
+                const ok=res.ok && (
+                    result.status==="success" ||
+                    result.status==="duplicate" ||
+                    (item.action==="deleteTransaction" && result.status==="notFound")
+                );
+                if(ok)await db.outbox.update(item.id,{status:"synced"});
+            }catch(e){console.warn("Pending action sync failed:",e);}
+        }
+    }finally{
+        isSyncing=false;
+        try{
+            const a=await db.entries.where("status").equals("pending").count();
+            const b=await db.outbox.where("status").equals("pending").count();
+            setSyncBadge_((a+b)?"pending":"synced",(a+b)?`অপেক্ষায় ${a+b}`:"সিঙ্ক ঠিক আছে");
+        }catch(_){setSyncBadge_("synced","সিঙ্ক ঠিক আছে");}
+    }
+}
+document
+.getElementById("dataForm")
+.onsubmit = async function(e) {
+    e.preventDefault();
+    const confirm =
+    await Swal.fire({
+        title:"নিশ্চিত?",
+        text:
+        "এই হিসাবটি সংরক্ষণ করবেন?",
+        icon:"question",
+        showCancelButton:true,
+        confirmButtonText:"হ্যাঁ, সংরক্ষণ",
+        cancelButtonText:"বাতিল",
+        confirmButtonColor:"#e11d48"
+    });
+    if (
+        confirm.isConfirmed
+    ) {
+        await processSubmission();
+    }
+};
+async function processSubmission() {
+    const btn =
+    document.getElementById(
+        "submitBtn"
+    );
+    btn.innerText =
+    "সংরক্ষণ হচ্ছে...";
+    btn.disabled = true;
+    const transactionId =
+    generateTransactionId();
+    const entryDate =
+    document.getElementById(
+        "date"
+    ).value ||
+    localDateISO();
+    const name =
+    document.getElementById(
+        "name"
+    )?.value.trim() || "";
+    const mobile =
+    convertToEnDigit(
+        document.getElementById(
+            "mobile"
+        )?.value || ""
+    )
+    .replace(/\D/g,"");
+    const details =
+    document.getElementById(
+        "details"
+    )?.value.trim() || "";
+    const amount =
+    roundMoney(
+        document.getElementById(
+            "amount"
+        ).value
+    );
+    const t = {
+        transactionId,
+        entryDate,
+        source:
+        document.getElementById(
+            "entrySource"
+        ).value,
+        type:
+        document.getElementById(
+            "type"
+        ).value,
+        name,
+        mobile,
+        details,
+        amount,
+        status:"pending"
+    };
+    if (!name) {
+        Swal.fire(
+            "নাম দিন",
+            "কাস্টমার/কোম্পানির নাম দিতে হবে।",
+            "warning"
+        );
+        btn.disabled = false;
+        btn.innerText = "সাবমিট";
+        return;
+    }
+    if (
+        !amount ||
+        amount <= 0
+    ) {
+        Swal.fire(
+            "টাকার পরিমাণ ভুল",
+            "সঠিক amount দিন।",
+            "warning"
+        );
+        btn.disabled = false;
+        btn.innerText = "সাবমিট";
+        return;
+    }
+    try {
+        const localId=await db.entries.add(t);
+        setSyncBadge_("pending","সিঙ্ক অপেক্ষায়");
+        const localRow=localEntryRow(t);
+        const localIds=new Set(mainData.slice(1).map(r=>String(r?.[8]||"").trim()));
+        if(!localIds.has(transactionId))mainData.push(localRow);
+        await saveLocalMainData();
+        extractPersonMeta();
+        processAndDisplayData();
+        let saved = false;
+        let serverResult = null;
+        if (navigator.onLine) {
+            try {
+                const res =
+                await fetch(
+                    SCRIPT_URL +
+                    "?post=" +
+                    Date.now(),
+                    {
+                        method:"POST",
+                        headers:{
+                            "Content-Type":
+                            "text/plain;charset=utf-8"
+                        },
+                        body:
+                        JSON.stringify(t)
+                    }
+                );
+                serverResult =
+                await res
+                .json()
+                .catch(
+                    () => ({})
+                );
+                if (
+                    res.ok &&
+                    (
+                        serverResult.status ===
+                        "success" ||
+                        serverResult.status ===
+                        "duplicate"
+                    )
+                ) {
+                    await db.entries.update(
+                        localId,
+                        {
+                            status:"synced"
+                        }
+                    );
+                    saved = true;
+                    if (
+                        Array.isArray(
+                            serverResult.row
+                        )
+                    ) {
+                        knownLocalTransactions.set(
+                            serverResult.transactionId ||
+                            transactionId,
+                            serverResult.row
+                        );
+                    } else {
+                        const fallbackRow = [
+                            serverResult.date ||
+                            entryDate,
+                            serverResult.time ||
+                            "",
+                            t.source,
+                            t.name,
+                            t.mobile,
+                            t.details,
+                            t.type,
+                            t.amount,
+                            t.transactionId
+                        ];
+                        knownLocalTransactions.set(
+                            transactionId,
+                            fallbackRow
+                        );
+                    }
+                    mainData =
+                    mergeServerAndLocalData(
+                        mainData
+                    );
+                    if (typeof window.__sujanRenderIfChanged === "function") {
+                        window.__sujanRenderIfChanged(false);
+                    } else {
+                        extractPersonMeta();
+                        processAndDisplayData();
+                    }
+                    await saveLocalMainData();
+                }
+            } catch(err) {
+                console.warn(
+                    "Online save failed:",
+                    err
+                );
+            }
+        }
+        if (saved) {
+            successAudio
+            .play()
+            .catch(()=>{});
+            showToast_("success","সফল!","হিসাব সংরক্ষণ হয়েছে।");
+        } else if (
+            navigator.onLine
+        ) {
+            showToast_("warning","অটো-সিঙ্কের জন্য রাখা হয়েছে","সংযোগ ঠিক হলে Sheet-এ যাবে।",2600);
+        } else {
+            showToast_("info","অফলাইনে সেভ হয়েছে","ইন্টারনেট এলে অটো-সিঙ্ক হবে।",2400);
+        }
+        document
+        .getElementById(
+            "dataForm"
+        )
+        .reset();
+        document
+        .getElementById(
+            "amount"
+        )
+        .value = "";
+        document
+        .getElementById(
+            "amountDisplay"
+        )
+        .value = "";
+        toggleModal();
+        setTimeout(
+            () => fetchData(true),
+            1200
+        );
+    } catch(e) {
+        console.error(e);
+        Swal.fire(
+            "ত্রুটি",
+            "ডাটা সেভ করা সম্ভব হয়নি।",
+            "error"
+        );
+    } finally {
+        btn.innerText =
+        "সাবমিট";
+        btn.disabled =
+        false;
+    }
+}
+function calculateCurrentBalances() {
+    const accounts = {};
+    mainData
+    .slice(1)
+    .forEach(
+        (row,index) => {
+            const src =
+            String(row[2] || "")
+            .toLowerCase()
+            .trim();
+            const name =
+            String(row[3] || "")
+            .trim();
+            const mob =
+            String(row[4] || "")
+            .trim();
+            const det =
+            String(row[5] || "")
+            .trim();
+            const typ =
+            String(row[6] || "")
+            .trim();
+            const amt =
+            roundMoney(row[7]);
+            if (!name) return;
+            const key =
+            src +
+            "::" +
+            name;
+            if (!accounts[key]) {
+                accounts[key] = {
+                    key,
+                    name,
+                    mobile:mob,
+                    details:det,
+                    source:src,
+                    balance:0,
+                    lastIndex:index,
+                    searchData:[]
+                };
+            }
+            const a =
+            accounts[key];
+            a.searchData.push(
+                row.map(v => String(v ?? "")).join(" ")
+            );
+            a.lastIndex =
+            Math.min(
+                a.lastIndex,
+                index
+            );
+            if (mob) {
+                a.mobile = mob;
+            }
+            if (det) {
+                a.details = det;
+            }
+            if (src === "customer") {
+                if (typ === "Joma") {
+                    a.balance =
+                    roundMoney(
+                        a.balance - amt
+                    );
+                } else {
+                    a.balance =
+                    roundMoney(
+                        a.balance + amt
+                    );
+                }
+            } else if (
+                src === "company"
+            ) {
+                if (typ === "Payment") {
+                    a.balance =
+                    roundMoney(
+                        a.balance - amt
+                    );
+                } else {
+                    a.balance =
+                    roundMoney(
+                        a.balance + amt
+                    );
+                }
+            }
+        }
+    );
+    return accounts;
+}
+function extractPersonMeta() {
+    personMeta = {};
+    mainData
+    .slice(1)
+    .forEach(row => {
+        const src =
+        String(row[2] || "")
+        .toLowerCase()
+        .trim();
+        const name =
+        String(row[3] || "")
+        .trim();
+        const mob =
+        String(row[4] || "")
+        .trim();
+        const det =
+        String(row[5] || "")
+        .trim();
+        if (!name) return;
+        const key =
+        src +
+        "::" +
+        name;
+        if (!personMeta[key]) {
+            personMeta[key] = {
+                mobile:mob,
+                details:det,
+                source:src,
+                name:name
+            };
+        } else {
+            if (mob) {
+                personMeta[key].mobile =
+                mob;
+            }
+            if (det) {
+                personMeta[key].details =
+                det;
+            }
+        }
+    });
+    updateSuggestions();
+}
+function renderCustomerUI(
+    sortedData,
+    customerQuery="",
+    companyQuery=""
+) {
+    const customerList =
+    document.getElementById(
+        "customerList"
+    );
+    const companyList =
+    document.getElementById(
+        "companyList"
+    );
+    if (
+        !customerList ||
+        !companyList
+    ) {
+        return;
+    }
+    customerList.innerHTML = "";
+    companyList.innerHTML = "";
+    const custResults = [];
+    const compResults = [];
+    const custQ =
+    normalizeSearch(
+        customerQuery
+    );
+    const compQ =
+    normalizeSearch(
+        companyQuery
+    );
+    sortedData.forEach(
+        account => {
+            const score =
+                accountSearchScore_(
+                    account,
+                    account.source === "customer"
+                        ? customerQuery
+                        : companyQuery
+                );
+            if (
+                account.source ===
+                "customer"
+            ) {
+                if (!custQ || score >= 0.55) {
+                    custResults.push({ account, score });
+                }
+            } else {
+                if (!compQ || score >= 0.55) {
+                    compResults.push({ account, score });
+                }
+            }
+        }
+    );
+    if (custQ) {
+        custResults.sort((a, b) =>
+            (b.score - a.score) ||
+            (a.account.lastIndex - b.account.lastIndex)
+        );
+    }
+    if (compQ) {
+        compResults.sort((a, b) =>
+            (b.score - a.score) ||
+            (a.account.lastIndex - b.account.lastIndex)
+        );
+    }
+    const customerAccounts =
+        custResults.map(item => item.account);
+    const companyAccounts =
+        compResults.map(item => item.account);
+    customerAccounts
+    .slice(0,displayedCount)
+    .forEach(account => {
+        const key =
+        account.source +
+        "::" +
+        account.name;
+        const info =
+        personMeta[key] || {};
+        const balance =
+        roundMoney(
+            account.balance
+        );
+        const balanceColor =
+        balance > 0
+            ? "text-rose-600"
+            : (
+                balance < 0
+                ? "text-green-600"
+                : "text-gray-600"
+            );
+        const borderColor =
+        "border-rose-500";
+        const safeName =
+        escapeHtml(
+            account.name
+        );
+        const safeDetails =
+        escapeHtml(
+            info.details ||
+            account.details ||
+            "ঠিকানা নেই"
+        );
+        const safeMobile =
+        escapeHtml(
+            info.mobile ||
+            account.mobile ||
+            ""
+        );
+        const encodedName =
+        encodeURIComponent(
+            account.name
+        );
+        const card = `
+        <div
+            class="bg-white dark:bg-[#2d2d2d] p-4 rounded-xl shadow-sm flex flex-wrap justify-between items-center border-l-4 ${borderColor} mb-2"
+        >
+            <div class="flex-1 min-w-[150px]">
+                <h3 class="font-bold text-lg">
+                    ${safeName}
+                </h3>
+                <div class="flex flex-col gap-0.5 mt-1">
+                    <p class="text-xs text-gray-500">
+                        <i class="fa-solid fa-location-dot"></i>
+                        ${safeDetails}
+                    </p>
+                    ${
+                        safeMobile
+                        ?
+                        `<a
+                            href="tel:${safeMobile}"
+                            class="text-blue-600 text-xs font-medium"
+                        >
+                            <i class="fa-solid fa-phone-flip"></i>
+                            ${safeMobile}
+                        </a>`
+                        :
+                        `<span class="text-gray-400 text-xs italic">
+                            মোবাইল নেই
+                        </span>`
+                    }
+                </div>
+            </div>
+            <button
+                onclick="openCustomReport(decodeURIComponent('${encodedName}'),'customer')"
+                class="flex items-center gap-2 bg-gray-50 dark:bg-gray-800 p-2 rounded-lg border ml-2 shadow-sm active:scale-95 transition-transform"
+            >
+                <span class="${balanceColor} font-bold">
+                    ৳ ${formatNumber(
+                        Math.abs(balance)
+                    )}
+                    ${
+                        balance < 0
+                        ? "(জমা)"
+                        : ""
+                    }
+                </span>
+                <i class="fa-solid fa-file-lines text-gray-400"></i>
+            </button>
+        </div>
+        `;
+        customerList.innerHTML +=
+        card;
+    });
+    companyAccounts
+    .slice(0,displayedCount)
+    .forEach(account => {
+        const key =
+        account.source +
+        "::" +
+        account.name;
+        const info =
+        personMeta[key] || {};
+        const balance =
+        roundMoney(
+            account.balance
+        );
+        const color =
+        balance > 0
+        ? "text-rose-600"
+        : (
+            balance < 0
+            ? "text-green-600"
+            : "text-gray-600"
+        );
+        const safeName =
+        escapeHtml(
+            account.name
+        );
+        const safeDetails =
+        escapeHtml(
+            info.details ||
+            account.details ||
+            "নোট নেই"
+        );
+        const safeMobile =
+        escapeHtml(
+            info.mobile ||
+            account.mobile ||
+            ""
+        );
+        const encodedName =
+        encodeURIComponent(
+            account.name
+        );
+        const card = `
+        <div
+            class="bg-white dark:bg-[#2d2d2d] p-4 rounded-xl shadow-sm flex flex-wrap justify-between items-center border-l-4 border-blue-500 mb-2"
+        >
+            <div class="flex-1 min-w-[150px]">
+                <h3 class="font-bold text-lg">
+                    ${safeName}
+                </h3>
+                <div class="flex flex-col gap-0.5 mt-1">
+                    <p class="text-xs text-gray-500">
+                        <i class="fa-solid fa-note-sticky"></i>
+                        ${safeDetails}
+                    </p>
+                    ${
+                        safeMobile
+                        ?
+                        `<a
+                            href="tel:${safeMobile}"
+                            class="text-blue-600 text-xs font-medium"
+                        >
+                            <i class="fa-solid fa-phone-flip"></i>
+                            ${safeMobile}
+                        </a>`
+                        :
+                        ""
+                    }
+                </div>
+            </div>
+            <button
+                onclick="openCustomReport(decodeURIComponent('${encodedName}'),'company')"
+                class="flex items-center gap-2 bg-gray-50 dark:bg-gray-800 p-2 rounded-lg border ml-2 shadow-sm active:scale-95 transition-transform"
+            >
+                <span class="${color} font-bold">
+                    ৳ ${formatNumber(
+                        Math.abs(balance)
+                    )}
+                    ${
+                        balance < 0
+                        ? "(অগ্রিম)"
+                        : ""
+                    }
+                </span>
+                <i class="fa-solid fa-file-lines text-gray-400"></i>
+            </button>
+        </div>
+        `;
+        companyList.innerHTML +=
+        card;
+    });
+    document
+    .getElementById(
+        "customerResultCount"
+    )
+    .innerText =
+    convertToBnDigit(
+        custResults.length
+    ) +
+    " জন";
+    document
+    .getElementById(
+        "companyResultCount"
+    )
+    .innerText =
+    convertToBnDigit(
+        compResults.length
+    ) +
+    " টি";
+    if (
+        customerAccounts.length === 0
+    ) {
+        customerList.innerHTML = `
+            <div class="empty-state">
+                <i class="fa-solid fa-user-slash text-3xl mb-2"></i>
+                <p>কোনো কাস্টমার পাওয়া যায়নি</p>
+            </div>
+        `;
+    }
+    if (
+        companyAccounts.length === 0
+    ) {
+        companyList.innerHTML = `
+            <div class="empty-state">
+                <i class="fa-solid fa-building-circle-xmark text-3xl mb-2"></i>
+                <p>কোনো কোম্পানি পাওয়া যায়নি</p>
+            </div>
+        `;
+    }
+}
+function escapeHtml(value) {
+    return String(value || "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+function searchCustomer() {
+    currentSortOrder = null;
+    processAndDisplayData();
+}
+function searchCompany() {
+    currentSortOrder = null;
+    processAndDisplayData();
+}
+function clearSearch(id) {
+    const input =
+    document.getElementById(id);
+    if (!input) return;
+    input.value = "";
+    clearVoiceStatus_(id);
+    processAndDisplayData();
+    input.focus();
+}
+let activeRecognition = null;
+function setVoiceStatus_(inputId, state, text) {
+    const status =
+        document.getElementById(
+            inputId === "custSearch"
+                ? "custVoiceStatus"
+                : "compVoiceStatus"
+        );
+    if (!status) return;
+    const textEl =
+        status.querySelector(
+            ".voice-status-text"
+        );
+    status.className =
+        "voice-status show " +
+        (state || "");
+    if (textEl) {
+        textEl.innerText = text || "";
+    }
+}
+function clearVoiceStatus_(inputId) {
+    const status =
+        document.getElementById(
+            inputId === "custSearch"
+                ? "custVoiceStatus"
+                : "compVoiceStatus"
+        );
+    if (!status) return;
+    status.className = "voice-status";
+}
+function voiceSearch(inputId) {
+    const input =
+        document.getElementById(
+            inputId
+        );
+    const SpeechRecognition =
+        window.SpeechRecognition ||
+        window.webkitSpeechRecognition;
+    if (!input) return;
+    if (!SpeechRecognition) {
+        setVoiceStatus_(
+            inputId,
+            "error",
+            "এই ব্রাউজারে ভয়েস সার্চ সাপোর্ট নেই"
+        );
+        setTimeout(
+            () => clearVoiceStatus_(inputId),
+            2500
+        );
+        return;
+    }
+    if (activeRecognition) {
+        try {
+            activeRecognition.stop();
+        } catch (e) {}
+        activeRecognition = null;
+        setVoiceStatus_(
+            inputId,
+            "processing",
+            "বন্ধ করা হচ্ছে..."
+        );
+        return;
+    }
+    const recognition =
+        new SpeechRecognition();
+    activeRecognition = recognition;
+    recognition.lang = "bn-BD";
+    recognition.continuous = false;
+    recognition.interimResults = true;
+    recognition.maxAlternatives = 5;
+    input.classList.add(
+        "ring-2",
+        "ring-rose-500"
+    );
+    setVoiceStatus_(
+        inputId,
+        "listening",
+        "শুনছি..."
+    );
+    recognition.onstart = function() {
+        setVoiceStatus_(
+            inputId,
+            "listening",
+            "শুনছি..."
+        );
+    };
+    recognition.onresult = function(event) {
+        let finalText = "";
+        let interimText = "";
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+            const text =
+                event.results[i][0].transcript.trim();
+            if (event.results[i].isFinal) {
+                finalText += " " + text;
+            } else {
+                interimText += " " + text;
+            }
+        }
+        const text =
+            (finalText || interimText).trim();
+        if (text) {
+            input.value = text;
+            setVoiceStatus_(
+                inputId,
+                finalText ? "processing" : "listening",
+                finalText
+                    ? "খুঁজছি..."
+                    : "শুনছি: " + text
+            );
+            input.dispatchEvent(
+                new Event("input", { bubbles:true })
+            );
+        }
+    };
+    recognition.onerror = function(event) {
+        console.warn(
+            "Voice error:",
+            event.error
+        );
+        let message = "ভয়েস সার্চ করা যায়নি";
+        if (event.error === "not-allowed" || event.error === "service-not-allowed") {
+            message = "মাইক্রোফোনের অনুমতি দিন";
+        } else if (event.error === "no-speech") {
+            message = "কিছু শোনা যায়নি, আবার বলুন";
+        } else if (event.error === "network") {
+            message = "ইন্টারনেট সংযোগ পরীক্ষা করুন";
+        }
+        setVoiceStatus_(
+            inputId,
+            "error",
+            message
+        );
+    };
+    recognition.onend = function() {
+        activeRecognition = null;
+        input.classList.remove(
+            "ring-2",
+            "ring-rose-500"
+        );
+        const hasText =
+            Boolean(input.value.trim());
+        if (hasText) {
+            setVoiceStatus_(
+                inputId,
+                "success",
+                "সার্চ সম্পন্ন"
+            );
+            setTimeout(
+                () => clearVoiceStatus_(inputId),
+                1400
+            );
+        } else {
+            setTimeout(
+                () => clearVoiceStatus_(inputId),
+                1600
+            );
+        }
+    };
+    try {
+        recognition.start();
+    } catch (e) {
+        console.error(e);
+        activeRecognition = null;
+        input.classList.remove(
+            "ring-2",
+            "ring-rose-500"
+        );
+        setVoiceStatus_(
+            inputId,
+            "error",
+            "ভয়েস সার্চ শুরু করা যায়নি"
+        );
+    }
+}
+function sortDataByBalance(order) {
+    currentSortOrder =
+    order;
+    processAndDisplayData();
+}
+function processAndDisplayData() {
+    let totals = {
+        joma:0,
+        baki:0,
+        compPaid:0,
+        compBuy:0
+    };
+    let filterTotals = {
+        joma:0,
+        baki:0,
+        compPaid:0,
+        compBuy:0
+    };
+    const start =
+    document.getElementById(
+        "sumStart"
+    )?.value || "";
+    const end =
+    document.getElementById(
+        "sumEnd"
+    )?.value || "";
+    mainData
+    .slice(1)
+    .forEach(row => {
+        const src =
+        String(row[2] || "")
+        .toLowerCase()
+        .trim();
+        const typ =
+        String(row[6] || "")
+        .trim();
+        const amt =
+        roundMoney(row[7]);
+        const iso =
+        parseToISODate(
+            row[0]
+        );
+        if (
+            src ===
+            "customer"
+        ) {
+            if (
+                typ === "Joma"
+            ) {
+                totals.joma =
+                roundMoney(
+                    totals.joma +
+                    amt
+                );
+            } else {
+                totals.baki =
+                roundMoney(
+                    totals.baki +
+                    amt
+                );
+            }
+            if (
+                (!start ||
+                iso >= start) &&
+                (!end ||
+                iso <= end)
+            ) {
+                if (
+                    typ === "Joma"
+                ) {
+                    filterTotals.joma =
+                    roundMoney(
+                        filterTotals.joma +
+                        amt
+                    );
+                } else {
+                    filterTotals.baki =
+                    roundMoney(
+                        filterTotals.baki +
+                        amt
+                    );
+                }
+            }
+        } else if (
+            src ===
+            "company"
+        ) {
+            if (
+                typ === "Payment"
+            ) {
+                totals.compPaid =
+                roundMoney(
+                    totals.compPaid +
+                    amt
+                );
+            } else {
+                totals.compBuy =
+                roundMoney(
+                    totals.compBuy +
+                    amt
+                );
+            }
+            if (
+                (!start ||
+                iso >= start) &&
+                (!end ||
+                iso <= end)
+            ) {
+                if (
+                    typ === "Payment"
+                ) {
+                    filterTotals.compPaid =
+                    roundMoney(
+                        filterTotals.compPaid +
+                        amt
+                    );
+                } else {
+                    filterTotals.compBuy =
+                    roundMoney(
+                        filterTotals.compBuy +
+                        amt
+                    );
+                }
+            }
+        }
+    });
+    document
+    .getElementById(
+        "dashJoma"
+    )
+    .innerText =
+    "৳ " +
+    formatNumber(
+        totals.joma
+    );
+    document
+    .getElementById(
+        "dashBaki"
+    )
+    .innerText =
+    "৳ " +
+    formatNumber(
+        totals.baki
+    );
+    document
+    .getElementById(
+        "dashBalance"
+    )
+    .innerText =
+    "৳ " +
+    formatNumber(
+        roundMoney(
+            totals.baki -
+            totals.joma
+        )
+    );
+    document
+    .getElementById(
+        "compPaid"
+    )
+    .innerText =
+    "৳ " +
+    formatNumber(
+        totals.compPaid
+    );
+    document
+    .getElementById(
+        "compBuy"
+    )
+    .innerText =
+    "৳ " +
+    formatNumber(
+        totals.compBuy
+    );
+    document
+    .getElementById(
+        "compDena"
+    )
+    .innerText =
+    "৳ " +
+    formatNumber(
+        roundMoney(
+            totals.compBuy -
+            totals.compPaid
+        )
+    );
+    const accounts =
+    Object.values(
+        calculateCurrentBalances()
+    );
+    if (
+        currentSortOrder ===
+        "desc"
+    ) {
+        accounts.sort(
+            (a,b) =>
+            b.balance -
+            a.balance
+        );
+    } else if (
+        currentSortOrder ===
+        "asc"
+    ) {
+        accounts.sort(
+            (a,b) =>
+            a.balance -
+            b.balance
+        );
+    } else {
+        accounts.sort(
+            (a,b) =>
+            a.lastIndex -
+            b.lastIndex
+        );
+    }
+    const custSearch =
+    document.getElementById(
+        "custSearch"
+    )?.value || "";
+    const compSearch =
+    document.getElementById(
+        "compSearch"
+    )?.value || "";
+    renderCustomerUI(
+        accounts,
+        custSearch,
+        compSearch
+    );
+    if (
+        document.getElementById(
+            "sumCustBakiTotal"
+        )
+    ) {
+        document
+        .getElementById(
+            "sumCustBakiTotal"
+        )
+        .innerText =
+        "৳ " +
+        formatNumber(
+            filterTotals.baki
+        );
+        document
+        .getElementById(
+            "sumCustJomaTotal"
+        )
+        .innerText =
+        "৳ " +
+        formatNumber(
+            filterTotals.joma
+        );
+        document
+        .getElementById(
+            "sumCustRemaining"
+        )
+        .innerText =
+        "৳ " +
+        formatNumber(
+            roundMoney(
+                filterTotals.baki -
+                filterTotals.joma
+            )
+        );
+        document
+        .getElementById(
+            "sumCompBuyTotal"
+        )
+        .innerText =
+        "৳ " +
+        formatNumber(
+            filterTotals.compBuy
+        );
+        document
+        .getElementById(
+            "sumCompPaidTotal"
+        )
+        .innerText =
+        "৳ " +
+        formatNumber(
+            filterTotals.compPaid
+        );
+        document
+        .getElementById(
+            "sumCompDenaTotal"
+        )
+        .innerText =
+        "৳ " +
+        formatNumber(
+            roundMoney(
+                filterTotals.compBuy -
+                filterTotals.compPaid
+            )
+        );
+        updateCharts(
+            filterTotals
+        );
+    }
+}
+function toggleModal() {
+    const modal =
+    document.getElementById(
+        "entryModal"
+    );
+    modal
+    .classList
+    .toggle("hidden");
+    if (
+        !modal.classList.contains(
+            "hidden"
+        )
+    ) {
+        document
+        .getElementById(
+            "date"
+        )
+        .value =
+        localDateISO();
+        updateFields();
+    }
+}
+function resetEntryForm() {
+    setTimeout(() => {
+        document
+        .getElementById(
+            "date"
+        )
+        .value =
+        localDateISO();
+        document
+        .getElementById(
+            "amount"
+        )
+        .value = "";
+        document
+        .getElementById(
+            "amountDisplay"
+        )
+        .value = "";
+        updateFields();
+    },50);
+}
+function updateFields() {
+    const source =
+    document.getElementById(
+        "entrySource"
+    ).value;
+    const type =
+    document.getElementById(
+        "type"
+    );
+    const fields =
+    document.getElementById(
+        "dynamicFields"
+    );
+    if (
+        source ===
+        "customer"
+    ) {
+        type.innerHTML = `
+            <option value="Baki">
+                বাকি এন্ট্রি
+            </option>
+            <option value="Joma">
+                জমা এন্ট্রি
+            </option>
+        `;
+        fields.innerHTML = `
+            <input
+                type="text"
+                id="name"
+                list="nameSuggestions"
+                onchange="autoFillByName(this.value)"
+                placeholder="কাস্টমারের নাম"
+                class="w-full p-3 border rounded-lg"
+                required
+            >
+            <input
+                type="tel"
+                id="mobile"
+                list="mobileSuggestions"
+                oninput="formatMobileInput(this)"
+                placeholder="মোবাইল নম্বর"
+                class="w-full p-3 border rounded-lg"
+            >
+            <textarea
+                id="details"
+                placeholder="ঠিকানা"
+                class="w-full p-3 border rounded-lg h-20"
+            ></textarea>
+        `;
+    } else {
+        type.innerHTML = `
+            <option value="Purchase">
+                মাল ক্রয়
+            </option>
+            <option value="Payment">
+                পরিশোধ
+            </option>
+        `;
+        fields.innerHTML = `
+            <input
+                type="text"
+                id="name"
+                list="nameSuggestions"
+                onchange="autoFillByName(this.value)"
+                placeholder="কোম্পানি নাম"
+                class="w-full p-3 border rounded-lg"
+                required
+            >
+            <input
+                type="tel"
+                id="mobile"
+                list="mobileSuggestions"
+                oninput="formatMobileInput(this)"
+                placeholder="মোবাইল নম্বর"
+                class="w-full p-3 border rounded-lg"
+            >
+            <textarea
+                id="details"
+                placeholder="নোট"
+                class="w-full p-3 border rounded-lg h-20"
+            ></textarea>
+        `;
+    }
+    updateSuggestions();
+}
+function handleAmountInput(e) {
+    let raw =
+    convertToEnDigit(
+        e.value
+    )
+    .replace(/[^\d.]/g,"");
+    const firstDot =
+    raw.indexOf(".");
+    if (
+        firstDot !== -1
+    ) {
+        raw =
+        raw.slice(
+            0,
+            firstDot + 1
+        ) +
+        raw
+        .slice(firstDot + 1)
+        .replace(/\./g,"");
+    }
+    const num =
+    roundMoney(raw);
+    if (num > 0) {
+        e.value =
+        "৳ " +
+        formatNumber(num);
+        document
+        .getElementById(
+            "amount"
+        )
+        .value =
+        num;
+    } else {
+        e.value = "";
+        document
+        .getElementById(
+            "amount"
+        )
+        .value = "";
+    }
+}
+function formatMobileInput(e) {
+    let n =
+    convertToEnDigit(
+        e.value
+    )
+    .replace(/\D/g,"")
+    .substring(0,11);
+    e.value = n;
+}
+function updateSuggestions() {
+    const nameList =
+    document.getElementById(
+        "nameSuggestions"
+    );
+    const mobileList =
+    document.getElementById(
+        "mobileSuggestions"
+    );
+    const source =
+    document.getElementById(
+        "entrySource"
+    ).value;
+    nameList.innerHTML = "";
+    mobileList.innerHTML = "";
+    const seenNames =
+    new Set();
+    const seenMobiles =
+    new Set();
+    Object.values(
+        personMeta
+    )
+    .forEach(info => {
+        if (
+            info.source !==
+            source
+        ) {
+            return;
+        }
+        if (
+            info.name &&
+            !seenNames.has(
+                info.name
+            )
+        ) {
+            nameList.innerHTML +=
+            `<option value="${escapeHtml(info.name)}">`;
+            seenNames.add(
+                info.name
+            );
+        }
+        if (
+            info.mobile &&
+            !seenMobiles.has(
+                info.mobile
+            )
+        ) {
+            mobileList.innerHTML +=
+            `<option value="${escapeHtml(info.mobile)}">`;
+            seenMobiles.add(
+                info.mobile
+            );
+        }
+    });
+}
+function autoFillByName(v) {
+    const source =
+    document.getElementById(
+        "entrySource"
+    ).value;
+    const key =
+    source +
+    "::" +
+    v;
+    const info =
+    personMeta[key];
+    if (!info) return;
+    const mobile =
+    document.getElementById(
+        "mobile"
+    );
+    const details =
+    document.getElementById(
+        "details"
+    );
+    if (mobile) {
+        mobile.value =
+        info.mobile || "";
+    }
+    if (details) {
+        details.value =
+        info.details || "";
+    }
+}
+function toggleDarkMode() {
+    document
+    .documentElement
+    .classList
+    .toggle("dark");
+    localStorage.setItem(
+        "theme",
+        document
+        .documentElement
+        .classList
+        .contains("dark")
+            ? "dark"
+            : "light"
+    );
+    updateDarkIcon();
+}
+function updateDarkIcon() {
+    document
+    .getElementById(
+        "darkIcon"
+    )
+    .className =
+    document
+    .documentElement
+    .classList
+    .contains("dark")
+        ? "fa-solid fa-sun"
+        : "fa-solid fa-moon";
+}
+async function updateOnlineStatus(){
+    const t=document.getElementById("statusText");
+    const p=document.getElementById("statusPing");
+    const d=document.getElementById("statusDot");
+    if(navigator.onLine){
+        p?.classList.remove("hidden");
+        if(d)d.className="relative inline-flex rounded-full h-2 w-2 bg-green-500";
+        if(t)t.innerText="Online";
+        try{
+            const a=await db.entries.where("status").equals("pending").count();
+            const b=await db.outbox.where("status").equals("pending").count();
+            const total=a+b;
+            setSyncBadge_(total?"pending":"synced",total?`অপেক্ষায় ${total}`:"সিঙ্ক ঠিক আছে");
+        }catch(_){}
+    }else{
+        p?.classList.add("hidden");
+        if(d)d.className="relative inline-flex rounded-full h-2 w-2 bg-red-500";
+        if(t)t.innerText="Offline";
+        setSyncBadge_("pending","অফলাইন • লোকাল সেভ");
+    }
+}
+function showTab(
+    tabName,
+    button
+) {
+    document
+    .querySelectorAll(
+        ".tab-content"
+    )
+    .forEach(el =>
+        el.classList.remove(
+            "active-tab"
+        )
+    );
+    const target =
+    document.getElementById(
+        tabName
+    );
+    if (target) {
+        target.classList.add(
+            "active-tab"
+        );
+    }
+    document
+    .querySelectorAll(
+        ".nav-btn"
+    )
+    .forEach(el =>
+        el.classList.remove(
+            "nav-active"
+        )
+    );
+    if (button) {
+        button.classList.add(
+            "nav-active"
+        );
+    }
+    if (
+        tabName ===
+        "summary"
+    ) {
+        processAndDisplayData();
+    }
+}
+function updateCharts(data) {
+    const options = {
+        responsive:true,
+        maintainAspectRatio:false,
+        plugins:{
+            legend:{
+                position:"bottom",
+                labels:{
+                    boxWidth:12,
+                    font:{
+                        size:10
+                    }
+                }
+            }
+        }
+    };
+    if (
+        custChartInstance
+    ) {
+        custChartInstance.destroy();
+    }
+    custChartInstance =
+    new Chart(
+        document.getElementById(
+            "custChart"
+        ),
+        {
+            type:"doughnut",
+            data:{
+                labels:[
+                    "বাকি",
+                    "জমা"
+                ],
+                datasets:[{
+                    data:[
+                        data.baki,
+                        data.joma
+                    ]
+                }]
+            },
+            options
+        }
+    );
+    if (
+        compChartInstance
+    ) {
+        compChartInstance.destroy();
+    }
+    compChartInstance =
+    new Chart(
+        document.getElementById(
+            "compChart"
+        ),
+        {
+            type:"pie",
+            data:{
+                labels:[
+                    "ক্রয়",
+                    "পরিশোধ"
+                ],
+                datasets:[{
+                    data:[
+                        data.compBuy,
+                        data.compPaid
+                    ]
+                }]
+            },
+            options
+        }
+    );
+}
+function openCustomReport(
+    name,
+    source="customer"
+) {
+    currentReportName = name;
+    currentReportSource = source;
+    // Report start date is intentionally blank.
+    // Blank start means all transactions from the beginning.
+    const startEl = document.getElementById("reportStart");
+    const endEl = document.getElementById("reportEnd");
+    if (startEl) startEl.value = "";
+    if (endEl) endEl.value = localDateISO();
+    filterReport();
+    document.getElementById("reportModal").classList.remove("hidden");
+}
+function closeReport() {
+    document
+    .getElementById(
+        "reportModal"
+    )
+    .classList
+    .add("hidden");
+}
+function filterReport() {
+    const name = currentReportName;
+    const source = currentReportSource;
+    const start = document.getElementById("reportStart")?.value || "";
+    const end = document.getElementById("reportEnd")?.value || "";
+    const meta = personMeta[source + "::" + name] || {};
+    document.getElementById("rcptName").innerText = name;
+    document.getElementById("rcptPhone").innerHTML = meta.mobile
+        ? `<a href="tel:${escapeHtml(meta.mobile)}" style="color:#2563eb;font-weight:bold;">${escapeHtml(meta.mobile)}</a>`
+        : "মোবাইল নেই";
+    document.getElementById("rcptAddress").innerText = meta.details || "ঠিকানা নেই";
+    const startText = start ? getFormattedDate(start) : "শুরু থেকে";
+    const endText = end ? getFormattedDate(end) : "শেষ পর্যন্ত";
+    document.getElementById("rcptDateRange").innerText = `${startText} হতে ${endText}`;
+    document.getElementById("genDate").innerText =
+        getFormattedDate(localDateISO()) + " " + localTimeText();
+    let prevBal = 0;
+    let periodJoma = 0;
+    let periodBaki = 0;
+    let rows = "";
+    mainData.slice(1).forEach(item => {
+        const itemSource = String(item[2] || "").toLowerCase().trim();
+        const itemName = String(item[3] || "").trim();
+        if (itemSource !== source || itemName !== name) return;
+        const iso = parseToISODate(item[0]);
+        if (!iso) return;
+        const typ = String(item[6] || "").trim();
+        const amt = roundMoney(item[7]);
+        const isCredit = source === "customer"
+            ? typ === "Joma"
+            : typ === "Payment";
+        if (start && iso < start) {
+            prevBal = roundMoney(
+                prevBal + (isCredit ? -amt : amt)
+            );
+            return;
+        }
+        if ((!start || iso >= start) && (!end || iso <= end)) {
+            if (isCredit) {
+                periodJoma = roundMoney(periodJoma + amt);
+            } else {
+                periodBaki = roundMoney(periodBaki + amt);
+            }
+            const dateText = escapeHtml(getRowDateText(item));
+            const detail = escapeHtml(item[5] || "-");
+            const txId = String(item[8] || "").trim();
+            const safeTxId = escapeHtml(txId);
+            const dateHtml = dateText.includes(" Time:")
+                ? dateText.replace(
+                    " Time:",
+                    "<br><span class='text-gray-400 text-[8px]'>"
+                  ) + "</span>"
+                : dateText;
+            const txArg = JSON.stringify(txId)
+                .replace(/</g, "\\u003c")
+                .replace(/>/g, "\\u003e")
+                .replace(/&/g, "\\u0026");
+            rows += `<tr class="border-b border-gray-100 align-middle">
+                <td class="py-2 text-[10px] leading-tight">${dateHtml}</td>
+                <td class="py-2 text-[10px]">${detail}</td>
+                <td class="py-2 text-right font-bold text-green-600">${isCredit ? formatNumber(amt) : "-"}</td>
+                <td class="py-2 text-right font-bold text-rose-600">${isCredit ? "-" : formatNumber(amt)}</td>
+                <td class="py-2 text-right report-action-cell">
+                    <button
+                        type="button"
+                        class="report-action-btn report-action-edit"
+                        title="টাকার পরিমাণ পরিবর্তন"
+                        aria-label="টাকার পরিমাণ পরিবর্তন"
+                        onclick='editReportTransaction(${txArg})'
+                    >
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+                    <button
+                        type="button"
+                        class="report-action-btn report-action-delete"
+                        title="সম্পূর্ণ লেনদেন মুছুন"
+                        aria-label="সম্পূর্ণ লেনদেন মুছুন"
+                        onclick='deleteReportTransaction(${txArg})'
+                    >
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </td>
+            </tr>`;
+        }
+    });
+    document.getElementById("prevBalance").innerText =
+        "৳ " + formatNumber(prevBal);
+    document.getElementById("rcptBody").innerHTML = rows ||
+        `<tr><td colspan="5" class="text-center py-6 text-gray-400">এই সময়ের কোনো লেনদেন নেই</td></tr>`;
+    document.getElementById("totalJoma").innerText =
+        "৳ " + formatNumber(periodJoma);
+    document.getElementById("totalBaki").innerText =
+        "৳ " + formatNumber(periodBaki);
+    document.getElementById("finalBalance").innerText =
+        "৳ " + formatNumber(
+            roundMoney(prevBal + periodBaki - periodJoma)
+        );
+}
+async function postReportAction_(payload) {
+    const res = await fetch(
+        SCRIPT_URL + "?action=" + encodeURIComponent(payload.action) + "&t=" + Date.now(),
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "text/plain;charset=utf-8"
+            },
+            body: JSON.stringify(payload),
+            cache: "no-store"
+        }
+    );
+    let result = {};
+    try {
+        result = await res.json();
+    } catch (e) {
+        throw new Error("সার্ভার থেকে সঠিক উত্তর পাওয়া যায়নি।");
+    }
+    if (!res.ok || result.status !== "success") {
+        throw new Error(result.message || "সার্ভার আপডেট করা যায়নি।");
+    }
+    return result;
+}
+async function editReportTransaction(transactionId){
+    if(!transactionId){showToast_("error","সমস্যা","Transaction ID পাওয়া যায়নি।");return;}
+    const row=mainData.slice(1).find(item=>String(item?.[8]||"").trim()===String(transactionId).trim());
+    if(!row){showToast_("warning","ডাটা পাওয়া যায়নি","আবার সিঙ্ক করা হচ্ছে।");await fetchData(true);return;}
+    const currentAmount=roundMoney(row[7]);
+    const result=await Swal.fire({
+        title:"টাকার পরিমাণ পরিবর্তন",
+        html:`<div class="text-sm text-gray-500 mb-2">${escapeHtml(row[3]||"")} — ${escapeHtml(row[5]||"")}</div>`,
+        input:"number",inputValue:currentAmount,
+        inputAttributes:{min:"0.01",step:"0.01",inputmode:"decimal"},
+        showCancelButton:true,confirmButtonText:"সেভ করুন",cancelButtonText:"বাতিল",
+        confirmButtonColor:"#e11d48",
+        inputValidator:value=>{
+            const amount=Number(convertToEnDigit(value));
+            if(!isFinite(amount)||amount<=0)return "সঠিক টাকার পরিমাণ দিন。";
+        }
+    });
+    if(!result.isConfirmed)return;
+    const newAmount=roundMoney(Number(convertToEnDigit(result.value)));
+    if(newAmount===currentAmount){showToast_("info","কোনো পরিবর্তন হয়নি");return;}
+
+    applyLocalEdit_(transactionId,newAmount);
+    await saveLocalMainData();
+    extractPersonMeta();processAndDisplayData();filterReport();
+
+    if(navigator.onLine){
+        try{
+            await postReportAction_({action:"editTransaction",transactionId,amount:newAmount});
+            await fetchData(true);filterReport();
+            showToast_("success","আপডেট হয়েছে","Sheet-এও পরিবর্তন হয়েছে।");
+        }catch(err){
+            await queueOutboxAction_("editTransaction",{transactionId,amount:newAmount});
+            showToast_("warning","লোকালে সেভ হয়েছে","ইন্টারনেট ঠিক হলে Sheet-এ যাবে।",2600);
+        }
+    }else{
+        await queueOutboxAction_("editTransaction",{transactionId,amount:newAmount});
+        showToast_("info","অফলাইনে সেভ হয়েছে","অনলাইনে গেলে Sheet-এ আপডেট হবে।",2600);
+    }
+}
+async function deleteReportTransaction(transactionId){
+    if(!transactionId){showToast_("error","সমস্যা","Transaction ID পাওয়া যায়নি।");return;}
+    const row=mainData.slice(1).find(item=>String(item?.[8]||"").trim()===String(transactionId).trim());
+    if(!row){showToast_("warning","ডাটা পাওয়া যায়নি","আবার সিঙ্ক করা হচ্ছে।");await fetchData(true);return;}
+    const amount=roundMoney(row[7]),name=String(row[3]||"").trim(),detail=String(row[5]||"").trim();
+    const confirm=await Swal.fire({
+        icon:"warning",title:"লেনদেনটি মুছে ফেলবেন?",
+        html:`<div class="text-sm text-gray-600"><b>${escapeHtml(name)}</b><br>${escapeHtml(detail||"লেনদেন")}<br><span class="text-rose-600 font-bold">৳ ${formatNumber(amount)}</span></div><div class="text-xs text-red-500 mt-3">এই পুরো লেনদেনটি অ্যাপ ও Sheet—দুই জায়গা থেকেই মুছে যাবে।</div>`,
+        showCancelButton:true,confirmButtonText:"হ্যাঁ, মুছুন",cancelButtonText:"বাতিল",
+        confirmButtonColor:"#dc2626",reverseButtons:true
+    });
+    if(!confirm.isConfirmed)return;
+
+    applyLocalDelete_(transactionId);
+    await saveLocalMainData();extractPersonMeta();processAndDisplayData();filterReport();
+
+    if(navigator.onLine){
+        try{
+            await postReportAction_({action:"deleteTransaction",transactionId});
+            await fetchData(true);filterReport();
+            showToast_("success","মুছে ফেলা হয়েছে","Sheet থেকেও মুছে গেছে।");
+        }catch(err){
+            await queueOutboxAction_("deleteTransaction",{transactionId});
+            showToast_("warning","লোকালে মুছে ফেলা হয়েছে","ইন্টারনেট ঠিক হলে Sheet-এও মুছে যাবে।",2600);
+        }
+    }else{
+        await queueOutboxAction_("deleteTransaction",{transactionId});
+        showToast_("info","অফলাইনে মুছে ফেলা হয়েছে","অনলাইনে গেলে Sheet আপডেট হবে।",2600);
+    }
+}
+function openAllCustomerReports() {
+    const accounts =
+    Object.values(
+        calculateCurrentBalances()
+    )
+    .filter(
+        x =>
+        x.source ===
+        "customer"
+    );
+    if (!accounts.length) {
+        Swal.fire(
+            "কোনো কাস্টমার নেই",
+            "",
+            "info"
+        );
+        return;
+    }
+    showTab("customer");
+    document
+    .getElementById(
+        "custSearch"
+    )
+    .focus();
+}
+async function downloadPDF() {
+    const el =
+    document.getElementById(
+        "receiptArea"
+    );
+    Swal.fire({
+        title:"অপেক্ষা করুন...",
+        text:
+        "হাই-কোয়ালিটি পিডিএফ তৈরি হচ্ছে",
+        allowOutsideClick:false,
+        didOpen:() => {
+            Swal.showLoading();
+        }
+    });
+    const opt = {
+        margin:[
+            0.2,
+            0.2,
+            0.2,
+            0.2
+        ],
+        filename:
+        `Samiya_Fashion_${currentReportName}.pdf`,
+        image:{
+            type:"jpeg",
+            quality:1
+        },
+        html2canvas:{
+            scale:4,
+            useCORS:true,
+            letterRendering:false,
+            allowTaint:false,
+            logging:false
+        },
+        jsPDF:{
+            unit:"in",
+            format:"a4",
+            orientation:"portrait",
+            compress:true
+        }
+    };
+    try {
+        await html2pdf()
+        .set(opt)
+        .from(el)
+        .save();
+        Swal.close();
+    } catch(error) {
+        console.error(error);
+        Swal.fire(
+            "ত্রুটি",
+            "পিডিএফ তৈরি করা সম্ভব হয়নি",
+            "error"
+        );
+    }
+}
+async function shareReport() {
+    const txt =
+    `সুজন গার্মেন্টস
+অ্যাকাউন্ট: ${currentReportName}
+বর্তমান দেনা: ${document.getElementById("finalBalance").innerText}`;
+    if (
+        navigator.share
+    ) {
+        try {
+            await navigator.share({
+                title:"Statement",
+                text:txt
+            });
+        } catch(e) {}
+    } else {
+        try {
+            await navigator.clipboard.writeText(
+                txt
+            );
+            Swal.fire(
+                "কপি হয়েছে!",
+                "",
+                "success"
+            );
+        } catch(e) {
+            Swal.fire(
+                "কপি করা যায়নি",
+                "",
+                "error"
+            );
+        }
+    }
+}
+window.addEventListener("online",async()=>{
+    await updateOnlineStatus();
+    await syncOfflineData();
+    await fetchData(true);
+    await updateOnlineStatus();
+});
+window.addEventListener(
+    "offline",
+    updateOnlineStatus
+);
+if (
+    window.PullToRefresh
+) {
+    PullToRefresh.init({
+        mainElement:"body",
+        onRefresh:() => {
+            refreshAudio
+            .play()
+            .catch(()=>{});
+            return fetchData();
+        }
+    });
+}
+setInterval(() => {
+    if(document.visibilityState==="visible" && navigator.onLine && !isFetching && !isSyncing) fetchData(true);
+}, 10000);
+
+function initMobileViewport_(){
+    updateViewportHeight_();
+    if(window.visualViewport){
+        window.visualViewport.addEventListener("resize",updateViewportHeight_);
+        window.visualViewport.addEventListener("scroll",updateViewportHeight_);
+    }
+    window.addEventListener("resize",updateViewportHeight_);
+    document.addEventListener("focusin",e=>{
+        const target=e.target;
+        if(target && /INPUT|TEXTAREA|SELECT/.test(target.tagName)){
+            keepFocusedFieldVisible_(target);
+            setTimeout(updateViewportHeight_,250);
+        }
+    });
+    document.addEventListener("focusout",()=>setTimeout(updateViewportHeight_,200));
+}
+initMobileViewport_();
+
+window.onload =
+async function() {
+    try {
+        if (
+            "serviceWorker" in
+            navigator
+        ) {
+            navigator.serviceWorker
+            .register(
+                "service-worker.js"
+            )
+            .then(reg => {
+                if (reg && reg.update) reg.update();
+            })
+            .catch(
+                err =>
+                console.warn(
+                    "Service worker:",
+                    err
+                )
+            );
+        }
+        if (
+            sessionStorage
+            .getItem(
+                "isLoggedIn"
+            ) === "true"
+        ) {
+            document
+            .getElementById(
+                "loginOverlay"
+            )
+            .classList
+            .add("hidden");
+        }
+        if (
+            localStorage.theme ===
+            "dark"
+        ) {
+            document
+            .documentElement
+            .classList
+            .add("dark");
+        }
+        updateDarkIcon();
+        
+        await updateOnlineStatus();
+        updateFields();
+        await fetchData(false);
+        await updateOnlineStatus();
+    } catch(e) {
+        console.error(
+            "Startup error:",
+            e
+        );
+    }
+};
+
+/* =========================================================
+   V6.2 PROFESSIONAL POLISH / STABLE REAL-TIME UI
+   Existing features are preserved; these additions improve
+   rendering stability, keyboard/mouse access, date filtering,
+   offline search/voice behavior and embedded price list.
+   ========================================================= */
+(function(){
+  const V62 = {
+    priceListUrlKey: "sujan_price_list_url_v62",
+    lastDataSignature: "",
+    lastActiveTab: "customer"
+  };
+
+  function dataSignature_(data){
+    if(!Array.isArray(data)) return "";
+    try{
+      return JSON.stringify(data.map((row,i)=> i===0 ? row : [
+        row?.[0] ?? "", row?.[1] ?? "", row?.[2] ?? "", row?.[3] ?? "",
+        row?.[4] ?? "", row?.[5] ?? "", row?.[6] ?? "", row?.[7] ?? "",
+        row?.[8] ?? ""
+      ]));
+    }catch(_){ return String(data.length); }
+  }
+
+  function renderIfChanged_(force=false){
+    const sig=dataSignature_(mainData);
+    if(force || sig!==V62.lastDataSignature){
+      V62.lastDataSignature=sig;
+      extractPersonMeta();
+      processAndDisplayData();
+      return true;
+    }
+    return false;
+  }
+
+  window.__sujanRenderIfChanged = renderIfChanged_;
+
+  /* Stop account cards from visually blinking when the 10-second
+     live mirror checks return the same data. */
+  const originalRenderCustomerUI = window.renderCustomerUI;
+  if(typeof originalRenderCustomerUI === "function"){
+    window.renderCustomerUI = function(){
+      const args=arguments;
+      return originalRenderCustomerUI.apply(this,args);
+    };
+  }
+
+  /* Year/month summary filter. */
+  function populateSummaryYears_(){
+    const select=document.getElementById("sumYear");
+    if(!select)return;
+    const current=select.value;
+    const years=new Set();
+    mainData.slice(1).forEach(row=>{
+      const iso=parseToISODate(row?.[0]);
+      if(iso && /^\d{4}-/.test(iso)) years.add(iso.slice(0,4));
+    });
+    const sorted=[...years].sort((a,b)=>Number(b)-Number(a));
+    select.innerHTML='<option value="">সব বছর</option>'+sorted.map(y=>`<option value="${y}">${convertToBnDigit(y)}</option>`).join("");
+    if(sorted.includes(current)) select.value=current;
+  }
+
+  function applySummaryPeriod_(){
+    const y=document.getElementById("sumYear")?.value || "";
+    const m=document.getElementById("sumMonth")?.value || "";
+    const start=document.getElementById("sumStart");
+    const end=document.getElementById("sumEnd");
+    if(y && m){
+      const mm=String(m).padStart(2,"0");
+      const last=new Date(Number(y),Number(m),0).getDate();
+      if(start)start.value=`${y}-${mm}-01`;
+      if(end)end.value=`${y}-${mm}-${String(last).padStart(2,"0")}`;
+    }else if(y){
+      if(start)start.value=`${y}-01-01`;
+      if(end)end.value=`${y}-12-31`;
+    }else if(m){
+      /* A month without a year means the selected month across all years.
+         Keep date boxes unchanged so the normal date-range filter remains available. */
+      if(start)start.value="";
+      if(end)end.value="";
+    }else{
+      if(start)start.value="";
+      if(end)end.value="";
+    }
+    const hint=document.getElementById("summaryPeriodHint");
+    if(hint){
+      const names=["","জানুয়ারি","ফেব্রুয়ারি","মার্চ","এপ্রিল","মে","জুন","জুলাই","আগস্ট","সেপ্টেম্বর","অক্টোবর","নভেম্বর","ডিসেম্বর"];
+      hint.textContent = y&&m ? `${convertToBnDigit(y)} সালের ${names[Number(m)]} মাসের পূর্ণ হিসাব` :
+        y ? `${convertToBnDigit(y)} সালের পূর্ণ হিসাব` :
+        m ? `সব বছরের ${names[Number(m)]} মাসের হিসাব` :
+        "সব ডাটা দেখানো হচ্ছে";
+    }
+    processAndDisplayData();
+  }
+
+  window.applySummaryPeriod=applySummaryPeriod_;
+  window.populateSummaryYears=populateSummaryYears_;
+
+  window.resetSummaryPeriod=function(){
+    const y=document.getElementById("sumYear"),m=document.getElementById("sumMonth");
+    if(y)y.value="";
+    if(m)m.value="";
+    applySummaryPeriod_();
+  };
+
+  /* Month-only summary filter: processAndDisplayData is extended via a
+     temporary date-independent filter by calculating the selected month
+     directly, then updating the visible summary values/charts. */
+  const originalProcess = window.processAndDisplayData;
+  window.processAndDisplayData = function(){
+    const y=document.getElementById("sumYear")?.value || "";
+    const m=document.getElementById("sumMonth")?.value || "";
+    if(m && !y){
+      let filterTotals={joma:0,baki:0,compPaid:0,compBuy:0};
+      mainData.slice(1).forEach(row=>{
+        const iso=parseToISODate(row?.[0]); if(!iso)return;
+        const parts=iso.split("-");
+        if(parts[1]!==String(m).padStart(2,"0"))return;
+        const src=String(row?.[2]||"").toLowerCase().trim();
+        const typ=String(row?.[6]||"").trim();
+        const amt=roundMoney(row?.[7]);
+        if(src==="customer"){ if(typ==="Joma")filterTotals.joma+=amt; else filterTotals.baki+=amt; }
+        else if(src==="company"){ if(typ==="Payment")filterTotals.compPaid+=amt; else filterTotals.compBuy+=amt; }
+      });
+      /* Preserve the original account/dashboard/list calculation. */
+      originalProcess.apply(this,arguments);
+      const ids=[
+        ["sumCustBakiTotal",filterTotals.baki],["sumCustJomaTotal",filterTotals.joma],
+        ["sumCustRemaining",filterTotals.baki-filterTotals.joma],
+        ["sumCompBuyTotal",filterTotals.compBuy],["sumCompPaidTotal",filterTotals.compPaid],
+        ["sumCompDenaTotal",filterTotals.compBuy-filterTotals.compPaid]
+      ];
+      ids.forEach(([id,v])=>{const el=document.getElementById(id);if(el)el.innerText="৳ "+formatNumber(v);});
+      updateCharts(filterTotals);
+      return;
+    }
+    return originalProcess.apply(this,arguments);
+  };
+
+  /* Price list: same-app embedded iframe. URL is saved locally. */
+  window.openPriceList=function(){
+    const modal=document.getElementById("priceListModal");
+    const frame=document.getElementById("priceListFrame");
+    const empty=document.getElementById("priceListEmpty");
+    const url=(localStorage.getItem(V62.priceListUrlKey)||"").trim();
+    if(!modal)return;
+    modal.classList.remove("hidden");
+    if(url){
+      frame.src=url;
+      frame.classList.remove("hidden");
+      empty.classList.add("hidden");
+      const text=document.getElementById("priceListUrlText"); if(text)text.textContent=url;
+    }else{
+      frame.removeAttribute("src");
+      frame.classList.add("hidden");
+      empty.classList.remove("hidden");
+    }
+    document.body.classList.add("modal-open-v62");
+  };
+  window.closePriceList=function(){
+    const modal=document.getElementById("priceListModal");
+    const frame=document.getElementById("priceListFrame");
+    if(frame)frame.src="about:blank";
+    if(modal)modal.classList.add("hidden");
+    document.body.classList.remove("modal-open-v62");
+  };
+  window.setPriceListUrl=async function(){
+    const current=localStorage.getItem(V62.priceListUrlKey)||"";
+    const result=await Swal.fire({
+      title:"মূল্য তালিকার ওয়েব লিংক",
+      input:"url",
+      inputValue:current,
+      inputPlaceholder:"https://example.com/price-list",
+      confirmButtonText:"সেভ ও খুলুন",
+      cancelButtonText:"বাতিল",
+      showCancelButton:true,
+      confirmButtonColor:"#f59e0b",
+      inputValidator:value=>{
+        if(!String(value||"").trim())return "একটি ওয়েব URL দিন।";
+        if(!/^https?:\/\//i.test(String(value).trim()))return "http:// অথবা https:// দিয়ে শুরু করুন।";
+      }
+    });
+    if(result.isConfirmed){
+      const url=String(result.value||"").trim();
+      localStorage.setItem(V62.priceListUrlKey,url);
+      openPriceList();
+    }
+  };
+
+  /* Better mobile/desktop scrolling and keyboard focus. */
+  document.documentElement.style.scrollBehavior="smooth";
+  document.body.classList.add("professional-v62");
+  document.addEventListener("keydown",function(e){
+    const tag=(e.target?.tagName||"").toUpperCase();
+    const typing=["INPUT","TEXTAREA","SELECT"].includes(tag);
+    if(e.key==="Escape"){
+      if(!document.getElementById("priceListModal")?.classList.contains("hidden")){closePriceList();return;}
+      if(!document.getElementById("reportModal")?.classList.contains("hidden")){closeReport();return;}
+      if(!document.getElementById("entryModal")?.classList.contains("hidden")){toggleModal();return;}
+    }
+    if(e.ctrlKey && e.key.toLowerCase()==="k"){
+      e.preventDefault();
+      const target=document.getElementById(document.getElementById("customer")?.classList.contains("active-tab")?"custSearch":"compSearch");
+      target?.focus();
+      target?.select();
+      return;
+    }
+    if(!typing && e.altKey){
+      const map={"1":"customer","2":"company","3":"summary","4":"menu"};
+      const tab=map[e.key];
+      if(tab){e.preventDefault();showTab(tab);V62.lastActiveTab=tab;}
+    }
+    if(e.ctrlKey && e.key==="Enter" && !document.getElementById("entryModal")?.classList.contains("hidden")){
+      e.preventDefault();
+      document.getElementById("dataForm")?.requestSubmit();
+    }
+  },{passive:false});
+
+  /* Make showTab remember active section even when called without a button. */
+  const baseShowTab=window.showTab;
+  window.showTab=function(tabName,button){
+    let resolvedButton=button;
+    if(!resolvedButton){
+      const buttons=[...document.querySelectorAll(".nav-btn")];
+      resolvedButton=buttons.find(btn=>{
+        const onclick=btn.getAttribute("onclick")||"";
+        return onclick.includes(`showTab('${tabName}'`) || onclick.includes(`showTab("${tabName}"`);
+      }) || null;
+    }
+    baseShowTab.call(this,tabName,resolvedButton);
+    V62.lastActiveTab=tabName;
+    document.querySelectorAll(".nav-btn").forEach(btn=>{
+      btn.setAttribute("aria-current",btn.classList.contains("nav-active")?"page":"false");
+    });
+  };
+
+  /* Voice search: never block on navigator.onLine. Browser SpeechRecognition
+     may work offline when the installed browser/language engine supports it. */
+  const baseVoiceSearch=window.voiceSearch;
+  window.voiceSearch=function(inputId){
+    if(!navigator.onLine){
+      const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
+      if(!SpeechRecognition){
+        setVoiceStatus_(inputId,"error","অফলাইনে টাইপ করে সার্চ করুন; এই ব্রাউজারে ভয়েস ইঞ্জিন নেই");
+        setTimeout(()=>clearVoiceStatus_(inputId),2800);
+        return;
+      }
+    }
+    return baseVoiceSearch(inputId);
+  };
+
+  /* Startup and every successful data refresh update the year list. */
+  const originalExtract=window.extractPersonMeta;
+  window.extractPersonMeta=function(){
+    const r=originalExtract.apply(this,arguments);
+    populateSummaryYears_();
+    return r;
+  };
+
+  /* Small quality-of-life: restore saved summary selectors. */
+  try{
+    const savedY=localStorage.getItem("sujan_summary_year_v62");
+    const savedM=localStorage.getItem("sujan_summary_month_v62");
+    if(savedY)document.getElementById("sumYear").value=savedY;
+    if(savedM)document.getElementById("sumMonth").value=savedM;
+  }catch(_){}
+
+  document.addEventListener("change",function(e){
+    if(e.target?.id==="sumYear"){
+      localStorage.setItem("sujan_summary_year_v62",e.target.value);
+      applySummaryPeriod_();
+    }
+    if(e.target?.id==="sumMonth"){
+      localStorage.setItem("sujan_summary_month_v62",e.target.value);
+      applySummaryPeriod_();
+    }
+  });
+
+  /* If an iframe refuses embedding, keep the app shell visible and explain why. */
+  document.addEventListener("DOMContentLoaded",function(){
+    const frame=document.getElementById("priceListFrame");
+    if(frame)frame.addEventListener("load",function(){
+      const empty=document.getElementById("priceListEmpty");
+      if(frame.src && empty)empty.classList.add("hidden");
+    });
+    populateSummaryYears_();
+    const savedY=document.getElementById("sumYear")?.value || "";
+    const savedM=document.getElementById("sumMonth")?.value || "";
+    if(savedY || savedM) applySummaryPeriod_();
+  });
+})();
+
+</script></body></html>
