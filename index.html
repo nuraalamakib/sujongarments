@@ -1024,6 +1024,26 @@ async function processSubmission() {
         btn.innerText = "সাবমিট";
         return;
     }
+    // Keep customer/company suggestions separate and warn about cross-type duplicates.
+    const otherSource = t.source === "customer" ? "company" : "customer";
+    const normalizedEntryName = normalizePersonName_(name);
+    const conflictingAccount = Object.values(personMeta).find(info =>
+        String(info.source || "").toLowerCase() === otherSource &&
+        normalizePersonName_(info.name) === normalizedEntryName
+    );
+    if (conflictingAccount) {
+        btn.disabled = false;
+        btn.innerText = "সাবমিট";
+        await Swal.fire({
+            title: "একই নামে অন্য অ্যাকাউন্ট আছে",
+            html: `“${escapeHtml(name)}” নামে আগে থেকেই ${otherSource === "customer" ? "কাস্টমার" : "কোম্পানি"} অ্যাকাউন্ট আছে। ভুল অ্যাকাউন্টে হিসাব জমা এড়াতে নামটি পরিবর্তন করে আলাদা করুন।`,
+            icon: "warning",
+            confirmButtonText: "নাম পরিবর্তন করুন",
+            confirmButtonColor: "#e11d48"
+        });
+        document.getElementById("name")?.focus();
+        return;
+    }
     if (
         !amount ||
         amount <= 0
@@ -2335,17 +2355,22 @@ function updateSuggestions() {
         }
     });
 }
+function normalizePersonName_(value) {
+    return String(value || "")
+        .trim()
+        .replace(/\s+/g, " ")
+        .toLocaleLowerCase();
+}
 function autoFillByName(v) {
     const source =
     document.getElementById(
         "entrySource"
     ).value;
-    const key =
-    source +
-    "::" +
-    v;
-    const info =
-    personMeta[key];
+    const normalizedName = normalizePersonName_(v);
+    const info = Object.values(personMeta).find(item =>
+        String(item.source || "").toLowerCase() === source &&
+        normalizePersonName_(item.name) === normalizedName
+    );
     if (!info) return;
     const mobile =
     document.getElementById(
@@ -3130,7 +3155,7 @@ async function() {
       title:"মূল্য তালিকার ওয়েব লিংক",
       input:"url",
       inputValue:current,
-      inputPlaceholder:"https://example.com/price-list",
+      inputPlaceholder:"https://nuraalamakib.github.io/samiya-fashion/",
       confirmButtonText:"সেভ ও খুলুন",
       cancelButtonText:"বাতিল",
       showCancelButton:true,
